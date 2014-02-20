@@ -47,11 +47,23 @@ Alle papers staan als volgt in de lijst:
 7. (2009) - Aulbach, S.; Jakobs, D.; Kemper, A.; Seibold, M. - _A comparison of flexible schemas for software as a service_
 8. (2011) - Aulbach, S.; Seibold, M. ; Jacobs, D. ; Kemper, A. - _Extensibility and Data Sharing in evolving multi-tenant databases_
 
-###Papers over scalability en dan specifiek over QoS:
+###Papers over QoS:
 1. (2010) - Hasselmeyer, P.; d'Heureuse, N. - _Towards holistic multi-tenant monitoring for virtual data centers_
 2. (2009) - Hailue Lin; Kai Sun ; Shuan Zhao ; Yanbo Han - _Feedback-Control-Based Performance Regulation for Multi-Tenant Applications_
 3. (2008) - Kwok, T.; Mohindra, A. - _Resource Calculations with Constraints, and Placement of Tenants and Instances for Multi-tenant SaaS Applications_
 4. (2012) - Walraven, S.; Monheim, T.; Truyen, E.; Joosen, W. - _Towards performance isolation in multi-tenant SaaS applications_
 5. (2013) - Krebs, R.; Momm, C.; Kounev, S. - _Metrics and techniques for quantifying performance isolation in cloud environments_
+
+
+##Papers over Variability:
+1. (2009) - Mietzner, R.; Metzger, A.; Leymann, F.; Pohl, K. - _Variability modeling to support customization and deployment of multi-tenant-aware Software as a Service applications_
+2. (2011) - Kabbedijk, J.; Jansen, S.; - _Variability in Multi-tenant Environments: Architectural Design Patterns from Industry_
+3. (2008) - Mietzner, R.; Leymann, F. ; Papazoglou, M.P. - _Defining Composite Configurable SaaS Application Packages Using SCA, Variability Descriptors and Multi-tenancy Patterns_
+4. (2014) - Walraven, S.; Van Landuyt, D.; Truyen, E.; Handekyn, K.; Joosen, W. - _Efficient customization of multi-tenant Software-as-a-Service applications with service lines_
+5. _(masterthesis)_ (2013) - Mijwaart, H.R. - _Variability in Multi-tenant Environments: Usability versus flexibility in tenant-dependent reporting_
+6. (2008) - Wei Sun; Xin Zhang ; Chang Jie Guo ; Pei Sun ; Hui Su - _Software as a Service: Configuration and Customization Perspectives_
+7. (2010) - Jansen, S.; Houben, G.-J.; Brinkkemper, S.; - _Customization Realization in Multi-tenant Web Applications: Case Studies from the Library Sector_
+8. (2008) - Mietzner, R.; Leymann, F. - _Generation of BPEL Customization Processes for SaaS Applications from Variability Descriptors_
+9. (2012) - Truyen, E.; Cardozo, N.; Walraven, S.; Vallejos, J.; Bainomugisha, E.; Gunther, S.; D'Hondt, T.; Wouter, J. - _Context-oriented programming for customizable SaaS applications_
 
 
