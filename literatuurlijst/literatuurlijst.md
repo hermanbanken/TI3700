@@ -34,3 +34,24 @@ Alle papers staan als volgt in de lijst:
 5. (2012) - Takahashi, T.; Blanc, G. ; Kadobayashi, Y. ; Fall, D. ; Hazeyama, H. ; Matsuo, S. - _Enabling secure multitenancy in cloud computing: Challenges and approaches_
 6. (2013) - Modi, C.; Patel, D.; Borisaniya, B.; Patel, A.; Rajarajan, M. - _A survey on security issues and solutions at different layers of Cloud computing_
 7. (2010) - Almorsy, M.; Grundy, J.; Mueller, I. - _An analysis of the cloud computing security problem._
+
+
+##Papers over Scalability:
+
+1. (2008) - Aulbach, S.; Grust, T.; Jacobs, D.; Kemper, A.; Rittinger, J. - _Multi-tenant databases for software as a service: schema-mapping techniques_
+2. (2013) - Gerges, S.; Khattab, S.; Hesham, H.; Omara, F.A. - _Scalable Multi-Tenant Authorization in Highly-Collaborative Cloud Applications_
+3. (2008) - Zhi Hu Wang; Chang Jie Guo ; Bo Gao ; Wei Sun ; Zhen Zhang ; Wen Hao An - _A Study and Performance Evaluation of the Multi-Tenant Data Tier Design Patterns for Service Oriented Computing_
+4. (2013) - Espadas, J.; Molina, A.; Jimenez, G.; Molina, M.; Ramirez, R.; Concha, D. - _A tenant-based resource allocation model for scaling Software-as-a-Service applications over cloud computing infrastructures_
+5. (2011) - Schiller, O.; Schiller, B.; Brodt, A.; Mitschang, B. - _Native support of multi-tenancy in RDBMS for software as a service_
+6. (2011) - Shen, Z.; Subbiah, S.; Gu, X.; Wilkes, J. - _CloudScale: elastic resource scaling for multi-tenant cloud systems_
+7. (2009) - Aulbach, S.; Jakobs, D.; Kemper, A.; Seibold, M. - _A comparison of flexible schemas for software as a service_
+8. (2011) - Aulbach, S.; Seibold, M. ; Jacobs, D. ; Kemper, A. - _Extensibility and Data Sharing in evolving multi-tenant databases_
+
+###Papers over scalability en dan specifiek over QoS:
+1. (2010) - Hasselmeyer, P.; d'Heureuse, N. - _Towards holistic multi-tenant monitoring for virtual data centers_
+2. (2009) - Hailue Lin; Kai Sun ; Shuan Zhao ; Yanbo Han - _Feedback-Control-Based Performance Regulation for Multi-Tenant Applications_
+3. (2008) - Kwok, T.; Mohindra, A. - _Resource Calculations with Constraints, and Placement of Tenants and Instances for Multi-tenant SaaS Applications_
+4. (2012) - Walraven, S.; Monheim, T.; Truyen, E.; Joosen, W. - _Towards performance isolation in multi-tenant SaaS applications_
+5. (2013) - Krebs, R.; Momm, C.; Kounev, S. - _Metrics and techniques for quantifying performance isolation in cloud environments_
+
+
