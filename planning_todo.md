@@ -26,7 +26,7 @@ Todo voor einde week:
 - Outline paper maken.
 
 ####Week 3 (24/2 - 02/3)
-_BB: Bespreken meg begeleider: relevante details m.b.t. inhoud literatuur, outline van paper._ 
+_BB: Bespreken met begeleider: relevante details m.b.t. inhoud literatuur, outline van paper._ 
 
 Todo voor meeting Cor-Paul (dinsdag 14:00):
 - Alle algemene papers gelezen hebben.
