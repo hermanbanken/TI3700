@@ -29,22 +29,27 @@ Todo voor einde week:
 _BB: Bespreken meg begeleider: relevante details m.b.t. inhoud literatuur, outline van paper._ 
 
 Todo voor meeting Cor-Paul (dinsdag 14:00):
-- Verdelen onderwerpen.
-- Meer dan 60% van de papers gelezen hebben.
+- Alle algemene papers gelezen hebben.
+- Meer dan 50% van onderwerpspecifieke de papers gelezen hebben.
 
 Todo voor einde week:
-- Toegewezen papers gelezen hebben.
-- Evt: begin maken schrijven.
+- Alle papers gelezen hebben.
+- Begin maken schrijven.
 
 ####Week 4 (03/3 - 09/3)
 _BB: schrijven, schrijven, schrijven._
 
-- Schrijven, schrijven, schrijven.
+- Schrijven onderwerpspecifieke secties
 
 ####Week 5 (10/3 - 16/3)
 _BB: Eerste draft._
 
-- Schrijven, schrijven, schrijven.
+Begin van de week
+- Afronden onderwerpspecifieke secties.
+- Inleiding & conclusie.
+
+Voor eind van de week
+- Eindredactie & controle.
 - Draft insturen. (WIE!?)
 
 ####Week 6 (17/3 - 23/3)
