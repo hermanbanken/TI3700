@@ -17,12 +17,9 @@ Alle papers staan als volgt in de lijst:
 1. (2010) - Bezemer, C.-P.; Zaidman, A. - _Multi-tenant SaaS applications: maintenance dream or nightmare?_
 2. (2007) - Chang Jie Guo; Wei sun; Ying Huang; Zhi Hu Wang; Bo Gao - _A Framework for Native Multi-Tenancy Application Development and Management._
 3. (2010) - Bezemer, C.-P.; Zaidman, A. ; Platzbeecker, B. ; Hurkmans, T. ; t Hart, A. - _Enabling multi-tenancy: An industrial experience report._
-4. (2013) - Gey, F; Walraven, S; Van Landuyt, D; Joosen, W - _Building a Customizable Business-Process-as-a-Service Application with Current State-of-Practice._
-5. (2011) - Walraven, S; Truyen, E.; Joosen, W - _A Middleware Layer for Flexible and Cost-Efficient Multi-tenant Applications._
-6. (2012) - Krebs, R.; Momm, S.; Kounev, S. - _Architectural Concerns in Multi-Tenant SaaS Applications._
-7. (2012) - Schroeter, J.; Cech, S.; Götz, S.; Wilke, C.; Aßmann, U. - _Towards modeling a variable architecture for multi-tenant SaaS-applications._
-8. (2010) - Dillon, T.; Chen Wu ; Chang, E. - _Cloud Computing: Issues and Challenges_
-9. (2010) - Azeez, A.; Perera, S. ; Gamage, D. ; Linton, R. ; Siriwardana, P. ; Leelaratne, D. ; Weerawarana, S. ; Fremantle, P. - _Multi-tenant SOA Middleware for Cloud Computing._
+4. (2012) - Krebs, R.; Momm, S.; Kounev, S. - _Architectural Concerns in Multi-Tenant SaaS Applications._
+5. (2010) - Dillon, T.; Chen Wu ; Chang, E. - _Cloud Computing: Issues and Challenges_
+6. (2010) - Azeez, A.; Perera, S. ; Gamage, D. ; Linton, R. ; Siriwardana, P. ; Leelaratne, D. ; Weerawarana, S. ; Fremantle, P. - _Multi-tenant SOA Middleware for Cloud Computing._
 
 
 ##Papers over Security:
@@ -60,10 +57,12 @@ Alle papers staan als volgt in de lijst:
 2. (2011) - Kabbedijk, J.; Jansen, S.; - _Variability in Multi-tenant Environments: Architectural Design Patterns from Industry_
 3. (2008) - Mietzner, R.; Leymann, F. ; Papazoglou, M.P. - _Defining Composite Configurable SaaS Application Packages Using SCA, Variability Descriptors and Multi-tenancy Patterns_
 4. (2014) - Walraven, S.; Van Landuyt, D.; Truyen, E.; Handekyn, K.; Joosen, W. - _Efficient customization of multi-tenant Software-as-a-Service applications with service lines_
-5. _(masterthesis)_ (2013) - Mijwaart, H.R. - _Variability in Multi-tenant Environments: Usability versus flexibility in tenant-dependent reporting_
-6. (2008) - Wei Sun; Xin Zhang ; Chang Jie Guo ; Pei Sun ; Hui Su - _Software as a Service: Configuration and Customization Perspectives_
-7. (2010) - Jansen, S.; Houben, G.-J.; Brinkkemper, S.; - _Customization Realization in Multi-tenant Web Applications: Case Studies from the Library Sector_
-8. (2008) - Mietzner, R.; Leymann, F. - _Generation of BPEL Customization Processes for SaaS Applications from Variability Descriptors_
-9. (2012) - Truyen, E.; Cardozo, N.; Walraven, S.; Vallejos, J.; Bainomugisha, E.; Gunther, S.; D'Hondt, T.; Wouter, J. - _Context-oriented programming for customizable SaaS applications_
+5. (2008) - Wei Sun; Xin Zhang ; Chang Jie Guo ; Pei Sun ; Hui Su - _Software as a Service: Configuration and Customization Perspectives_
+6. (2010) - Jansen, S.; Houben, G.-J.; Brinkkemper, S.; - _Customization Realization in Multi-tenant Web Applications: Case Studies from the Library Sector_
+7. (2008) - Mietzner, R.; Leymann, F. - _Generation of BPEL Customization Processes for SaaS Applications from Variability Descriptors_
+8. (2012) - Truyen, E.; Cardozo, N.; Walraven, S.; Vallejos, J.; Bainomugisha, E.; Gunther, S.; D'Hondt, T.; Wouter, J. - _Context-oriented programming for customizable SaaS applications_
+9. (2013) - Gey, F; Walraven, S; Van Landuyt, D; Joosen, W - _Building a Customizable Business-Process-as-a-Service Application with Current State-of-Practice._
+10. (2011) - Walraven, S; Truyen, E.; Joosen, W - _A Middleware Layer for Flexible and Cost-Efficient Multi-tenant Applications._
+11. (2012) - Schroeter, J.; Cech, S.; Götz, S.; Wilke, C.; Aßmann, U. - _Towards modeling a variable architecture for multi-tenant SaaS-applications._
 
 
