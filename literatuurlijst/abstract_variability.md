@@ -37,3 +37,33 @@ Incorporating Variability in System Component Architectures. Proposes different 
 **Good**: early, very thorough research on variability of deployment packages and types of components
 **Bad**: very UMLish. No example of SCA package files given
 
+# 4. (2014) - Walraven, S.; Van Landuyt, D.; Truyen, E.; Handekyn, K.; Joosen, W. - Efficient customization of multi-tenant Software-as-a-Service applications with service lines
+
+Two key challenges:
+- Efficient development, management and reuse of software variations in a SaaS offering. _Because of the high impact of variability on the SaaS application, it cannot be realized as an afterthought in the development process._
+- Efficient, tenant-driven customization of the multi-tenant SaaS application. _By implementing a interface for tenant self-service that allows tenants to create valid configurations_
+
+A service line is a SaaS application made of customizable services that can be configured and selected dynamically. One major difference with classic Service Line Engineering: one single instance is supporting different application variants.
+
+Full example of a document processing application prototyped by Walraven et al using the SPLE-method. The method is thus validated in a prototype-driven validation approach. Made a:
+- Service line management support layer
+- Prototype implementation (JBoss Java EE 6) 
+
+Traceability support build in to the software that makes it easy to make feature mappings of feature based configuration to component based variation.
+
+Future work:
+    - Support tool for evolution and management. E.g. a tool to analyze the impact of an impact of an update on the service line architecture and the different tenant-specific configurations.
+    - Integrate with frameworks for Automated Testing to support multi-tenant applications
+    - Gradual roll-out tools
+Describes related work:
+    - Service oriented product line engineering by Cohen and Krut (2008), but this focuses on delivering customized software for tenants to be deployed separately.
+    - Nguygen et al. describe a way to make sure only one instance per total variant is deployed to increase cost efficiency, however when there are many variants (high amount of features) this is less efficient.
+    - Dynamic software product lines (DSPL) make it easier to get run-time variability, and thus handle unforeseen situations, however these variations hold for each tenant. DSPL doesn't support co-existing configurations.
+    - Mietzner et al. apply variability modeling techniques to support the management of variability in SaaS applications delivering BPEL processes. They let tenants fill in application templates which have to be deployed separately as tenant-specific BPEL processes. The solution could however be integrated in Walraven et al.'s work, instead of the current prototype using jBPM and Drools.
+    - Schroeter et al. also propose a dynamic configuration manager thus they  cover only the tenant requirement analysis. This paper thus complements Schroeters paper.
+    - Mietzner et al. (2011) present several multi-tenancy patterns. 'Our' paper only focuses on customization that maps to their single configurable instance pattern.
+    - Kabbedijk and Jansen present patterns to realize run-time variability. These patterns are also relevant in SLDP, for example, their Component Interceptor Pattern corresponds to 'our' dynamic composition technology.
+    - Groher and Weinreich (2012) provide an approach that results in one consistent model which links architectural artifacts (requirements, features, components) with variability models, making these fully traceable. This paper is complementary, however their method would need to be modified to add support for versioning, co-existing configurations and evolutions of service lines.
+
+**Good**: very extensive paper on the whole process of developing a multi-tenant single instance SaaS application. They cover almost all aspects and even develop a prove of concept prototype for a company called UnifiedPost.
+**Bad**: very long paper that easily gets boring when they discuss some of the same topics in different levels of detail at different sections.
