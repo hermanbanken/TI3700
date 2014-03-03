@@ -104,3 +104,20 @@ Future work: annotate each CRT with customization experiences, such as technical
 
 **Good**: research using case studies. Paper by GJ Houben from TU Delft
 **Bad**: boring case studies about public libraries
+
+# 7. (2008) - Mietzner, R.; Leymann, F. - Generation of BPEL Customization Processes for SaaS Applications from Variability Descriptors
+
+Defines Variability Points in a template piece of software and proposes an automated way to generate a customization tool that allows tenants to make custom solutions from that software template.
+
+"Opaque tokens" from BPEL offer variations not filled in, but lack the constrains that are allowed for a variation point. Also dependencies of some variation points on others should be made explicit.
+
+We can define Alternatives, Dependencies and Enabling Conditions for each Variability Point. The latter meaning that some alternatives can only be enabled based on some earlier alternatives. 
+
+These customizations must then be validated in an automated manner. Starting with the VP's without dependencies resolving until every VP is checked.
+
+We propose an the automated generation of a customization tool that prompts the user for input about the VP's in the order that the dependencies require and leaving out VP's that no longer have valid options or only one alternative and thus can be bound automatically. Including the ways XPath is used to modify the XML BPEL files.
+
+Future work: automated generation of templates of configurations that are definitely valid. This will be done by introducing rules and algorithms for variability descriptors. Furthermore to better link to the SaaS scenarios we will implement a Web-interface to drive the customization process.
+
+**Good**: Thorough description of dependencies and decision points, and describes in great detail the creation of a customization.
+**Bad**: not about real multi tenancy as the methods proposed deliver a tenant specific solution to be deployed on its own.
