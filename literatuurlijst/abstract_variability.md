@@ -55,6 +55,7 @@ Future work:
     - Support tool for evolution and management. E.g. a tool to analyze the impact of an impact of an update on the service line architecture and the different tenant-specific configurations.
     - Integrate with frameworks for Automated Testing to support multi-tenant applications
     - Gradual roll-out tools
+
 Describes related work:
     - Service oriented product line engineering by Cohen and Krut (2008), but this focuses on delivering customized software for tenants to be deployed separately.
     - Nguygen et al. describe a way to make sure only one instance per total variant is deployed to increase cost efficiency, however when there are many variants (high amount of features) this is less efficient.
@@ -67,3 +68,16 @@ Describes related work:
 
 **Good**: very extensive paper on the whole process of developing a multi-tenant single instance SaaS application. They cover almost all aspects and even develop a prove of concept prototype for a company called UnifiedPost.
 **Bad**: very long paper that easily gets boring when they discuss some of the same topics in different levels of detail at different sections.
+
+# 5. (2008) - Wei Sun; Xin Zhang ; Chang Jie Guo ; Pei Sun ; Hui Su - Software as a Service: Configuration and Customization Perspectives
+
+Lists main reasons for variance: industry focus, customer behavior, product offering, regulation, culture and operation strategy differences.
+
+Different levels of Configuration Competency: entry, aware, capable, mature and world class. These describe the level of how much configuration is possible to support different tenants needs.
+
+4 different scales of keeping configuration in mind during development. Keeping configuration in mind from the start will end up being the cheapest, but requires a high initial workload and thus costs, while building in configuration later will cost less upfront but will cost more in the long run. Moving an application to the SaaS model where payment is done on a monthly basis the initial development costs of the first model may be a real issue.
+
+Different fields for variation are: Data Structure & Processing, Organization Structure, User Interface, Workflow, Business Rule, Reporting.
+
+**Good**: some listings of reasons for variation, levels of configurability, configurable fields and ways to develop with MT in mind.
+**Bad**: Lots of misspelling's including "Through SaaS application is usually developed.", "SalesFoce.com" (including not working hyperlink...). 
