@@ -81,3 +81,26 @@ Different fields for variation are: Data Structure & Processing, Organization St
 
 **Good**: some listings of reasons for variation, levels of configurability, configurable fields and ways to develop with MT in mind.
 **Bad**: Lots of misspelling's including "Through SaaS application is usually developed.", "SalesFoce.com" (including not working hyperlink...). 
+
+# 6. (2010) - Jansen, S.; Houben, G.-J.; Brinkkemper, S.; - Customization Realization in Multi-tenant Web Applications: Case Studies from the Library Sector
+
+Chong and Carraro [5] suggest four ways to customize: UI and branding, workflow and business rules, data model extensions, and access control. 
+
+Analyzes that there is a lack of research on Customization Realization Techniques (CRT's).
+
+Defines 5 CRT's in two categories. 
+## MVC customization
+- Model changes: adding fields, relations or adding domain specific entities.
+- View changes: look&feel, different templates (Wordpress) or interfaces
+- Controller changes: tenant specific data, different license types
+
+## System customization
+- System connector changes: the connection to another system is variable: connect to different providers offering the same functionality
+- System component change: swap complete components for example the tenants own system that they want to continue using.
+
+Two case studies; library website (only controller changes), homework support system (almost all CRT's).
+
+Future work: annotate each CRT with customization experiences, such as technical implementation details, code fragments, patterns used and implications such as performance and reliability.
+
+**Good**: research using case studies. Paper by GJ Houben from TU Delft
+**Bad**: boring case studies about public libraries
