@@ -79,6 +79,8 @@ Different levels of Configuration Competency: entry, aware, capable, mature and 
 
 Different fields for variation are: Data Structure & Processing, Organization Structure, User Interface, Workflow, Business Rule, Reporting.
 
+Important point: configuration is preferred over customization which is considered too complex (as cited by Truyen, 2012)
+
 **Good**: some listings of reasons for variation, levels of configurability, configurable fields and ways to develop with MT in mind.
 **Bad**: Lots of misspelling's including "Through SaaS application is usually developed.", "SalesFoce.com" (including not working hyperlink...). 
 
@@ -121,3 +123,20 @@ Future work: automated generation of templates of configurations that are defini
 
 **Good**: Thorough description of dependencies and decision points, and describes in great detail the creation of a customization.
 **Bad**: not about real multi tenancy as the methods proposed deliver a tenant specific solution to be deployed on its own.
+
+# 8. (2012) - Truyen, E.; Cardozo, N.; Walraven, S.; Vallejos, J.; Bainomugisha, E.; Gunther, S.; D'Hondt, T.; Wouter, J. - Context-oriented programming for customizable SaaS applications
+
+Presents Context Oriented Programming as an alternative to Dependency Injection to support multi-tenancy by showing ContextJ performs equally good as Guice (Dep. inj. from Google).
+
+Interesting Ref: Tsai et al [26] show that single instance MT yields scalability increases of 60-90% over traditional multi-VM based customization. => scalability
+
+Interesting Ref: Google introduced an API for isolation of application data of different tenants [14]. => security
+
+Shows detailed examples of Context Oriented Programming using 'layers'. Layers are code blocks that redefine methods for different variations, still allowing them to call the original method (like calling super.method()) to not write the same method twice, and simple adjust the value.
+
+ContextJ proves to perform slightly better than dependency injection by Guice, as Guice needs to do database lookups for each variation point encountered in the code, whereas ContextJ just looks up all the tenants layers once, within the 'with'-block.
+
+Future work contains looking in to asynchronism. Currently ContextJ doesn't pass layer state between thread so when spawning a new thread all tenant specific layer state is lost. Middle ware to prevent this exists and needs to be fitted to ContextJ. Futhermore research could be done to provide better quality of service to specific tenants. Currently GAE lacks the performance isolation that some tenants would want to pay for in SLA's. Now some requests of tenants were cut off because the instances couldn't handle the load and GAE doesn't scale during requests.
+
+**Good**: technical case study of building on top of PaaS Google App Engine => awesome. Extensive explanation of Context-Oriented Programming by giving very clear code examples.
+**Bad**: some assumptions are made in the analysis of the findings that might need further research. They extrapolate after doing a test run with n = 1.
