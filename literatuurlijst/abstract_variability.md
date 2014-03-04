@@ -138,6 +138,10 @@ ContextJ proves to perform slightly better than dependency injection by Guice, a
 
 Future work contains looking in to asynchronism. Currently ContextJ doesn't pass layer state between thread so when spawning a new thread all tenant specific layer state is lost. Middle ware to prevent this exists and needs to be fitted to ContextJ. Futhermore research could be done to provide better quality of service to specific tenants. Currently GAE lacks the performance isolation that some tenants would want to pay for in SLA's. Now some requests of tenants were cut off because the instances couldn't handle the load and GAE doesn't scale during requests.
 
+Further lookup by Herman:
+ContextJ: http://prg.is.titech.ac.jp/members/masuhara/papers/jssst2009.pdf
+Comparable to Dep. Injection since the ContextJ compiler converts 'layers' to different classes (extending each other to provide access to super.method()) therefore compiling to about the same byte-code.
+
 **Good**: technical case study of building on top of PaaS Google App Engine => awesome. Extensive explanation of Context-Oriented Programming by giving very clear code examples.
 **Bad**: some assumptions are made in the analysis of the findings that might need further research. They extrapolate after doing a test run with n = 1.
 
@@ -162,3 +166,22 @@ Conclusions. The passing of parameters in BPMN is not optimal to support modular
 
 **Good**: little
 **Bad**: very much business modeling talks, not very interesting. Uses a lot of boring tooling like JBosss, jBPM. Boasts about sticking to these tools using workarounds while others implement their own variations of other tooling.
+
+# 10. (2011) - Walraven, S; Truyen, E.; Joosen, W - A Middleware Layer for Flexible and Cost-Efficient Multi-tenant Applications.
+
+Middleware layer that brings configuration and customization closer together on Google's PaaS _App Engine_. Providing the following functionality:
+- feature management facility, providing an API.
+- configuration management facility
+- feature injector
+
+_Feature Management_ is concerned with storing all available features and available feature implementations. _Configuration Management_ manages which tenant has selected which implementation for a specific feature. It also sets the default implementation. The _Feature Injector_ consults the configuration manager for each variation point and the tenant specific configuration is looked up and cached.
+
+**Extensive cost model.** CPU consumption is higher in a single instance mt situation, however memory and storage consumption is lower, while the higher CPU consumption is limited to authenticating tenants and ensuring tenant isolation. Maintenance cost is constant with multi tenancy while for a traditional application maintenance has to be done for each individual tenant.
+Administration costs are divided in the creating of a new instance and the provisioning of a new tenant. In Single Tenancy both these things have to be done each time while in MT only the provisioning (eg registering tenant ID, providing access, etc.) needs to be done more than once.
+
+**Case study results**: the single and multi tenant applications used about the same amount of CPU, however while single tenant application instances scaled linearly with the amount of tenants the multi tenant application only needed a little extra amount of instances (about a fourth). To implement multi tenancy using Dep. Injection only 74 more lines of code (about 10% increase) were used and some configurations lines became unnecessary.
+
+Closely related to Truyen, Cardozo, Walraven, et al. (2012)
+
+**Good**: App Engine, mathematical cost model comparison, graphs of CPU, memory consumption
+**Bad**: -
