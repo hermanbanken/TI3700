@@ -185,3 +185,36 @@ Closely related to Truyen, Cardozo, Walraven, et al. (2012)
 
 **Good**: App Engine, mathematical cost model comparison, graphs of CPU, memory consumption
 **Bad**: -
+
+# 11. (2012) - Schroeter, J.; Cech, S.; Götz, S.; Wilke, C.; Aßmann, U. - Towards modeling a variable architecture for multi-tenant SaaS-applications.
+
+Fairly recent paper on MT. Relates also to Quality of Service, since not so much about features but more about non-functional properties.
+
+There are different stakeholders, the tenants and their customers, requiring maximal usability, the SaaS provider striving for maximum users minimizing used resources to maximize profit, and resource providers  minimizing energy consumption and for example license fees per CPU. In order to allow the negotiation between these stakeholders variability should be modeled in, problem space, e.g. variability in functionality:
+    - feature modeling [14, 3]
+    - decision modeling [22, 23]
+    - orthogonal variability modeling [16]
+and in solution space variability in component implementation on the architectural level needs to be modeled [19].
+
+Defines several requirements to Multi Tenant Applications. 
+**Design Time Requirements **
+    - Software and Hardware Component Modeling
+    - Specification of Non-Functional Properties
+    - Tenant Configuration Modeling
+**Runtime Requirements **
+    - Self-Optimizing Runtime Environment
+    - Monitoring of NFPs
+    - Management of Tenants and Users
+    - Multi-tenant specific Platform Services
+    - Resource Sharing
+
+Using Multi-Quality Auto-Tuning Architecture. This is a concept from the energy branch but was adapted in this paper to fit MTA's, because:
+    - it is a component based auto-tuning architecture allowing self-optimization of NFPs;
+    - it explicitly considers hardware in addition to software components;
+    - it offers adaptivity at deploy and run time.
+
+This paper is mainly about the non-functional requirements that are relevant in MT environments like where servers are deployed (eg servers should be in Europe.), what the throughput or frame rate is. This is modeled with a method derived from the Energy branch and is used to determine when to scale up or down and when to spawn specific new instances with determined software but also hardware.
+
+**Good**: finally some research on monitoring performance and providing a solution to keep SLA guarantees and contracts.
+**Bad**: seems to be for high data rate applications like video processing where rules from contracts can be measured since the level of detail is much lower. Not sure how this relate to much more lightweight SaaS applications like document processors as the mathematical variance in resource utilization is very different.
+
