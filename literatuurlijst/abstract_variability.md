@@ -140,3 +140,25 @@ Future work contains looking in to asynchronism. Currently ContextJ doesn't pass
 
 **Good**: technical case study of building on top of PaaS Google App Engine => awesome. Extensive explanation of Context-Oriented Programming by giving very clear code examples.
 **Bad**: some assumptions are made in the analysis of the findings that might need further research. They extrapolate after doing a test run with n = 1.
+
+# 9. (2013) - Gey, F; Walraven, S; Van Landuyt, D; Joosen, W - Building a Customizable Business-Process-as-a-Service Application with Current State-of-Practice.
+
+Migrated an existing document processing application to state-of-practice workflow processing techniques in the context of multi-tenant applications. They focused on:
+    - Management of Variations: time to market for new tenants is very important in order to be competitive; the tooling should be usable by non-programmers as business analysts and domain experts.
+    - Resilience of Workflow Execution: in SaaS environments there tends to be maximum utilization of resources, so keeping the promises made in a SLA might be hard when some remote service fails.
+
+They propose to add explicit support in BPMN (Business Process Modeling and Notation) for Tenant-specific Variations by introducing twe elements:
+- variation points
+- the workflow engine should be able to import knowledge about VP's such as a feature model, or an external source, e.g. a configuration repository.
+
+Potential types of failures:
+- After a redefinition of the process, and old process instance can still be running and this may lead to failures or incorrect results.
+- In case a task fails the complete workflow has to be re-executed.
+- In case a workflow engine crashes the entire workflow has to be re-run.
+
+Compared to other work Gey et al. use more standard tools to comply with existing SaaS platforms and tools.
+
+Conclusions. The passing of parameters in BPMN is not optimal to support modular and individual tasks. Secondly, BPMN lacks support for multi-tenancy and variability so in order to express tenant-specific variabilities workflow branches are used as a workaround. Thirdly, a centralized controller running the entire workflow may not be desirable since it makes a single point of failure that - when failing - requires all task to be completely re-run.
+
+**Good**: little
+**Bad**: very much business modeling talks, not very interesting. Uses a lot of boring tooling like JBosss, jBPM. Boasts about sticking to these tools using workarounds while others implement their own variations of other tooling.
