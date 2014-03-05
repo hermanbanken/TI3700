@@ -6,9 +6,9 @@ The paper has a nice overview of different schema mapping techniques, contains a
 
 Also included are descriptions of a query rewrite layer.
 
-**Good** Clear list of schema mapping techniques, good description of testbed.\\
-**Bad** Very specific.\\
-**Future work** Migration of database layouts.\\
+* **Good** Clear list of schema mapping techniques, good description of testbed.
+* **Bad** Very specific.
+* **Future work** Migration of database layouts.
 
 ## 3. (2013) - Espadas, J.; Molina, A.; Jimenez, G.; Molina, M.; Ramirez, R.; Concha, D. - A tenant-based resource allocation model for scaling Software-as-a-Service applications over cloud computing infrastructures
 
@@ -18,9 +18,9 @@ The formal measure used defines seperate ways to quantify overutilization and un
 
 The proposed model uses usage data per tenant, reliably obtained by properly seperating tenants in the system to calculate a 'tenant weight'. After determining how much weight a single VM can handle tenants are assigned to one or multiple VMs based on their weight using a greedy knapsack algorithm. Finally a tenant aware load balancer is used to send request from tenant users to the proper instances and request new instances if needed.
 
-**Good** The paper lists a lot of related works that may be nice to follow up on. Extensive descriptions of testbed / platform. Statistically significant reduction in underutilisation.
-**Bad** Only CPU / mem / troughput used as metric. Example implementation extremely dependant on JVM/Java features. No statistically significant reduction in overutilisation.
-**Future work** Validate proposed system and metrics on other platforms.
+* **Good** The paper lists a lot of related works that may be nice to follow up on. Extensive descriptions of testbed / platform. Statistically significant reduction in underutilisation.
+* **Bad** Only CPU / mem / troughput used as metric. Example implementation extremely dependant on JVM/Java features. No statistically significant reduction in overutilisation.
+* **Future work** Validate proposed system and metrics on other platforms.
 
 
 ## 4. (2011) - Schiller, O.; Schiller, B.; Brodt, A.; Mitschang, B. - Native support of multi-tenancy in RDBMS for software as a service 
@@ -33,8 +33,8 @@ The paper explains how the data is kept in memory and what parts of Postgres the
 
 Finally a performance comparison is done comparing 'Shared process', 'Shared table' and 'Native MT support' database performance.
 
-**Good** Detailed description of storage methods, especially 'shared table.'. Working prototype of tenant aware database created and performance tested.
-**Bad** Other database schemas (chunk folding, etc..) not included in performance comparison.
-**Future work** Tenant aware database administration tools (backup, recovery, etc..).
+* **Good** Detailed description of storage methods, especially 'shared table.'. Working prototype of tenant aware database created and performance tested.
+* **Bad** Other database schemas (chunk folding, etc..) not included in performance comparison. 
+* **Future work** Tenant aware database administration tools (backup, recovery, etc..).
 
 
