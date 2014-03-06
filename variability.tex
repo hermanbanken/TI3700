@@ -1,0 +1,17 @@
+In multi-tenancy \textit{variability} is a key concept. The term was first introduced in the car industry, where customers could choose certain \textit{variants} of chassis, engine and color \cite[p. 153]{kabbedijk2011variability}. 
+In research on software engineering the concept was defined as ``the ability of a software system or artefact to be efficiently extended, changed, customized or configured for use in a particular context'' \cite{svahnberg2005taxonomy}.
+Two keywords from this definition are customization and configuration. In a multi-tenant context configuration is preferred over customization \cite{sun2008software} as customization defines the process of reengineering an application, maintaining multiple branches and deploying these branches separately, while configuration can be done at run-time and does not require multiple instances or branches.
+
+\subsubsection{Why is variability needed}
+There are several reasons why variability is needed. 
+First of all based on country, segment or branch different currencies, legislation and tax rules may apply. This is especially important in financial applications. 
+Secondly different customers can require different functionality properties, layout options and/or quality of service (such as privacy and performance).
+
+\subsubsection{Levels of variability}
+Variability can be accomplished on different levels. 
+Dependent on the scale of the application different patterns become be relevant. Large applications often consist of \textit{components} offering a specific \textit{service} and variability can be accomplished by dynamically swapping these components for different tenants, or by activating or deactivating specific components \cite{mietzner2008defining}. 
+In smaller applications and within components different patterns become relevant. For example one can customize an application by using dependency injection \cite{walraven2011middleware} or context oriented programming \cite{truyen2012context}.
+
+\subsubsection{variability techniques}
+\subsubsection{variability modeling}
+\subsubsection{future work in variability}
