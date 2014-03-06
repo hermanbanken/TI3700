@@ -64,3 +64,12 @@ After comparing the various schema's performance on different databases the auth
 * **Future work** Lots of suggestions for the ideal SaaS DB system.
 
 ## 7. (2011) - Aulbach, S.; Seibold, M. ; Jacobs, D. ; Kemper, A. - Extensibility and Data Sharing in evolving multi-tenant databases
+
+In this paper a new database schema type, FLEXSCHEME, is proposed. This is a scheme that can properly handle shared data and/or different versions of the same data without having to add lots of additional logic in the application layer. It gives the database control of the data again.
+
+The new schema type is compared to several different ways of handling multiple versions of data and multiple tenants.
+
+* **Good** Working prototype, good descriptions of how a multi-tenant system can at the same time evolve and be extended.
+* **Bad** Slightly slower performance in some cases.
+* **Future work** Branching in various versions of the data.
+
