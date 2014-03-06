@@ -38,3 +38,19 @@ Finally a performance comparison is done comparing 'Shared process', 'Shared tab
 * **Future work** Tenant aware database administration tools (backup, recovery, etc..).
 
 
+## 5. (2011) - Shen, Z.; Subbiah, S.; Gu, X.; Wilkes, J. - CloudScale: elastic resource scaling for multi-tenant cloud systems
+
+The paper describes and evaluates a prediction driven resource scaling system. 
+
+The prediction system uses a FFT to identify repeating patters / signatures in resource usage. If no signature is discovered a discrete-time Markov chain is employed to predict resource demand. The predicted resource demand is then 'padded' based on the burst pattern of the resource demand. Finally padding may be even further increased if the system was recently under-provisioned.
+
+The system also attempts to prevent Scaling conflicts, where the physical host cannot meet demand of the VMs running on it. It does this by striving to maintain resource requirements for high priority VMs first. The other option is predictive migration of machines.
+
+It also proposes to use predictive frequency / voltage scaling on the host machine to save energy when resource demand is low.
+
+* **Good** Principles also applicable to SaaS architectures. Extensive comparison of various scaling methods.
+* **Bad** Focused more on IaaS architectures.
+* **Future work** More accurate prediction of resource demand, interaction of various metrics (mem/cpu).  
+
+
+
