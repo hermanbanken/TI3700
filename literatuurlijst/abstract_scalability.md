@@ -53,4 +53,14 @@ It also proposes to use predictive frequency / voltage scaling on the host machi
 * **Future work** More accurate prediction of resource demand, interaction of various metrics (mem/cpu).  
 
 
+## 6. (2009) - Aulbach, S.; Jakobs, D.; Kemper, A.; Seibold, M. - A comparison of flexible schemas for software as a service
 
+The paper compares the following schemas for SaaS applications: private tables, extension tables, sparse columns, xml, pivot tables.
+
+After comparing the various schema's performance on different databases the authors conclude that the ideal database for SaaS applications does not exist yet. A lot of suggestions concerning how such a database might me made are given.
+
+* **Good** Characteristics of testset modeled on real world data. Explanation of testbed.
+* **Bad** No real novel ideas, just comparing.
+* **Future work** Lots of suggestions for the ideal SaaS DB system.
+
+## 7. (2011) - Aulbach, S.; Seibold, M. ; Jacobs, D. ; Kemper, A. - Extensibility and Data Sharing in evolving multi-tenant databases
