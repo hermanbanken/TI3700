@@ -91,3 +91,12 @@ Both controllers try to limit prediction errors by using a PI(Proportional-integ
 * **Future work** Apply principles to cluster, make controllers work with other application level resources.
 
 ### 3. (2008) - Kwok, T.; Mohindra, A. - Resource Calculations with Constraints, and Placement of Tenants and Instances for Multi-tenant SaaS Applications
+
+In this papers formula for tenant resource consumption, in this case memory and CPU, are defined.
+These formula take into account shared and nonshared data among tenants and instances.
+
+The data from these formula are used in a proposed tool to efficiently place, or allocate new resources, for new tenants. This to maximise cost savings and server utilisation.
+
+* **Good** Working prototype, clear formula for reasource consumption
+* **Bad** Focuses on memory/CPU, ignores other metrics.
+* **Future work** Additional metrics / application specific metrics. 
