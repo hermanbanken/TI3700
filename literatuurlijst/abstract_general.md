@@ -60,6 +60,32 @@ They expected the further studies on these topics will improve the SLA managemen
 * **Bad**: Little bit old/outdated
 
 
+# 3. (2010) - Bezemer, C.-P.; Zaidman, A. ; Platzbeecker, B. ; Hurkmans, T. ; t Hart, A. - Enabling multi-tenancy: An industrial experience report.
+
+This paper uses (logically) the same definitions as 1. They apply the described framework of 1 to Exact, a Dutch-based software company specialized in enterprise resource planning, customer relationship management and financial administration software.
+
+They took the following steps:
+1. Migrate a single-tenant to a multi-tenant application with **minor** adjustments to existing business logic
+2. Application developers stay unaware of the fact that the application is multi-tenant
+3. Separate multi-tenant components clearly
+
+They describe Exact Codename very detailed, including their case study of enabling multi-tenancy in a single-tenant application using their pattern.
+
+## Lessons learned
+* Only 100 lines added to original Codename code (high efficiency)
+* Layered architecture is essential
+* Since it was easy, they wonder whether this process could be automated. However, they don't expect it to be possible (cheaply), because one needs a very large amount of architectural and domain knowledge
+* The end-user isn't aware of the fact that its application is actually multi-tenant (positive!)
+* Most developers can stay uneducated, because only small adjustments were made
+* Their case study was limited to the degree of configuration currently possible in Codename
+* Codename was well-designed and layered, which added to the ease of application
+* Their approach was tested manually, but they would like to see automated tests for this
+
+
+* **Good**: They evaluate their own framework and describe their experiences very in-depth
+* **Bad**: It is very specific, since it is applied specifically to Exact Codename
+
+
 # 4. (2012) - Krebs, R.; Momm, S.; Kounev, S. - Architectural Concerns in Multi-Tenant SaaS Applications.
 
 ## Different layers
