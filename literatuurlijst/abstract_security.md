@@ -44,7 +44,7 @@ The table II in the paper shows the different categories. The categories they us
 Web (Server-side, Client-Side), Application (secure data storing, authentication, 
 user data insolation), OS (Privilege seperation, Kernel integrity), Hypervisor (VMM
 security, VM security), HW&SW (programming code, hardware processing). For every 
-security issue/problem the paper lists, if avialable, the current solutions and 
+security issue/problem the paper lists, if available, the current solutions and 
 the current research. The issues that are listed are only a snapshot and the issues 
 are mainly related to resource isolation. 
 
@@ -130,7 +130,23 @@ consider vulnerabilities, threats, risks, requirements and solutions of security
 defines the differences between a threat and vulnerability. It classifies the issues 
 in three categories, namely the SaaS, PaaS and IaaS. Next, the paper gives a full
 overview (table) of the issues, followed by the possible countermeasures of each of these 
-issues.
+issues. The issues discussed are:
+*   SaaS:
+ *   Application security
+ *   Multi-tenancy
+ *   Data security
+ *   Accessiblity 
+*   PaaS:
+ *   Third-Party relationships
+ *   Development Life Cycle (keeping up with..)
+*   IaaS:
+ *   Virtualization
+ *   Virtual Machine Monitor
+ *   Shared Resources
+ *   Public VM image repository
+ *   VM rollback
+ *   Virtual machine life cycle
+ *   Virtual networks
 
 
 ## Good:
@@ -138,6 +154,7 @@ issues.
 
 ## Bad:
 - Misses descriptions of some items of table 4 (see future).
+- Limited issues regarding PaaS.
 
 ## Future:
 - The paper suggests completing the items of table 4 as misuse patterns.
