@@ -77,3 +77,17 @@ The new schema type is compared to several different ways of handling multiple v
 
 
 #QOS
+
+### 2. (2009) - Hailue Lin; Kai Sun ; Shuan Zhao ; Yanbo Han - Feedback-Control-Based Performance Regulation for Multi-Tenant Applications
+
+In this paper a system for managing QoS for multiple tenants at different QoS levels is presented.
+
+The system uses a two-level controller approach. One controller decides the number of requests per tenant, a second controller decides the allocation of resources to those requests. In this system resource allocation is done via thread pools and linux 'nice' values.
+
+Both controllers try to limit prediction errors by using a PI(Proportional-integral) controller to continiously adjust resource and/or request allocations.
+
+* **Good** Working prototype, good description of related works.
+* **Bad** Limited amount of metrics used (only CPU / number of requests.)
+* **Future work** Apply principles to cluster, make controllers work with other application level resources.
+
+### 3. (2008) - Kwok, T.; Mohindra, A. - Resource Calculations with Constraints, and Placement of Tenants and Instances for Multi-tenant SaaS Applications
