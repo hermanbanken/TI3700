@@ -2,10 +2,10 @@
 
 ## Definitions
 
-tenant = organizational entity which rents a multi-tenant SaaS solution (usually grouping a number of users)
-multi-tenant application = hardware resource sharing by offering one shared application and database instance to multiple tenants
-multi-user = all users use the same application with limited configuration options
-multi-instance = each tenant has own instance of application (and (optionally) database)
+* tenant = organizational entity which rents a multi-tenant SaaS solution (usually grouping a number of users)
+* multi-tenant application = hardware resource sharing by offering one shared application and database instance to multiple tenants
+* multi-user = all users use the same application with limited configuration options
+* multi-instance = each tenant has own instance of application (and (optionally) database)
 
 ## Characteristics of Multi-Tenancy
 
@@ -30,9 +30,9 @@ higher utilization of resources, easier and cheaper maintenance, lower overall c
 
 The paper also describes a conceptual blueprint for converting an application into a multi-tenant application.
 
-**Good**: Good notion of definition of multi-tenancy
-**Bad**: Blueprint quite high-level
-**Future work**: evaluation of approach in an existing industrial application
+* **Good**: Good notion of definition of multi-tenancy
+* **Bad**: Blueprint quite high-level
+* **Future work**: evaluation of approach in an existing industrial application
 
 
 # 2. (2007) - Chang Jie Guo; Wei sun; Ying Huang; Zhi Hu Wang; Bo Gao - A Framework for Native Multi-Tenancy Application Development and Management.
@@ -56,8 +56,8 @@ Benefits: lower costs, separation of development teams.
 
 They expected the further studies on these topics will improve the SLA management of native multi-tenant applications significantly. 
 
-**Good**: Extensive description of the framework
-**Bad**: Little bit old/outdated
+* **Good**: Extensive description of the framework
+* **Bad**: Little bit old/outdated
 
 
 # 4. (2012) - Krebs, R.; Momm, S.; Kounev, S. - Architectural Concerns in Multi-Tenant SaaS Applications.
@@ -72,11 +72,10 @@ They expected the further studies on these topics will improve the SLA managemen
 
 ## Definition of MTA
 
-tenant = group of users sharing the same view
-multi-tenancy = sharing an application instance between multiple tenants (by providing a dedicated "share" per tenant)
-tenant space = customers rent predifined space of resources (example: IaaS)
-
-multiple application deployment = multiple applications in one instance of the same runtime environment (is not multi-tenancy!)
+* tenant = group of users sharing the same view
+* multi-tenancy = sharing an application instance between multiple tenants (by providing a dedicated "share" per tenant)
+* tenant space = customers rent predifined space of resources (example: IaaS)
+* multiple application deployment = multiple applications in one instance of the same runtime environment (is not multi-tenancy!)
 
 ## Design concerns
 1. Affinity
@@ -101,5 +100,5 @@ multiple application deployment = multiple applications in one instance of the s
 
 All of the above might influence each other.
 
-**Good**: Very wide description of various aspects
-**Bad**: -
+* **Good**: Very wide description of various aspects
+* **Bad**: -
