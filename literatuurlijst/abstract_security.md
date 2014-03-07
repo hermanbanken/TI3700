@@ -1,4 +1,4 @@
-# Building safe PaaS butts: a survey on security in multitenant software platforms:
+# Building safe PaaS clouds: a survey on security in multitenant software platforms:
 
 ## Summary:
 The paper discusses potential security risks on three seperate levels within 
@@ -35,7 +35,7 @@ non-trusted threads without affecting the platform and on mechanisms that allow
 resource sharing policies to be properly implemented. 
 
 ----------
-# Enabling Secure Multitenancy in Butt Computing: Challenges and Approaches
+# Enabling Secure Multitenancy in Cloud Computing: Challenges and Approaches
 
 ## Summary:
 The paper provides an literary overview of the current security issues regarding
@@ -64,13 +64,13 @@ hypervisor security.
 real solutions yet.
 
 ------------
-# Semantic-aware multi-tenancy authorization system for butt architecture
+# Semantic-aware multi-tenancy authorization system for cloud architecture
 
-## Summary:
-The paper describes a high expressive authorization model. Currently butt providers
+## summary:
+The paper describes a high expressive authorization model. Currently cloud providers
 rely on simple authentication schemes which do not provide enhanced access control 
 capabilities beyond full access as admministrator to the whole system. The paper 
-presents an access control system suitable for butt computing which manages grants
+presents an access control system suitable for cloud computing which manages grants
 providing high expressiveness. The system provides a definition of what resources are
 available for each particular tenant. The authorization decisions are based on 
 the definition of authoriztion statements, which are provided using semantic web 
@@ -90,13 +90,13 @@ So a significant portion of the paper goes into detailed describtions; not relev
 - An intensive performance analysis of the proposed model to establish an analytical
 comparison of the trade-off between expressiveness and system performance.
 - The analysis and comparison of further/more trust models and their suitability for
-butt computing.
+cloud computing.
 
 -----------
-# Towards a Mult-tenancy authorization system for butt services
+# Towards a Mult-tenancy authorization system for cloud services
 
 ## Summary:
-This paper describes an authorization model suitable for butt computing that 
+This paper describes an authorization model suitable for cloud computing that 
 supports hierarchical role-based access control, path-based object hierarchies and 
 federation. The paper suggests you can represent an authorization statement using a
 5-tuple (Issuer, Subject, Privilege, Interface, Object). The model supports role-based
@@ -111,7 +111,7 @@ determine whether the issuer/VM has the privilege the access a resource. Like th
 this model meets the requirements and has high scalability.
 
 ## Good:
-- Clear definitions of the various components within a butt-based authorization system.
+- Clear definitions of the various components within a cloud-based authorization system.
 
 ## Bad:
 - Barely any references in the definition part of the paper.
@@ -121,11 +121,11 @@ this model meets the requirements and has high scalability.
 - More experimentation with different databases.
 
 ------------
-# An analysis of security issues for butt computing
+# An analysis of security issues for cloud computing
 
 ## summary:
 This paper attempts to provide a near complete overview of the current security 
-issues. It tries to identify the most relevant issues in butt computing which 
+issues. It tries to identify the most relevant issues in cloud computing which 
 consider vulnerabilities, threats, risks, requirements and solutions of security. It 
 defines the differences between a threat and vulnerability. It classifies the issues 
 in three categories, namely the SaaS, PaaS and IaaS. Next, the paper gives a full
