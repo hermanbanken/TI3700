@@ -1,4 +1,6 @@
-## 1. (2008) - Aulbach, S.; Grust, T.; Jacobs, D.; Kemper, A.; Rittinger, J. - Multi-tenant databases for software as a service: schema-mapping techniques
+# Scalability
+
+### 1. (2008) - Aulbach, S.; Grust, T.; Jacobs, D.; Kemper, A.; Rittinger, J. - Multi-tenant databases for software as a service: schema-mapping techniques
 
 This paper describes a new way to implement a database schema that allows extension by tenants: chunk folding.
 
@@ -10,7 +12,7 @@ Also included are descriptions of a query rewrite layer.
 * **Bad** Very specific.
 * **Future work** Migration of database layouts.
 
-## 3. (2013) - Espadas, J.; Molina, A.; Jimenez, G.; Molina, M.; Ramirez, R.; Concha, D. - A tenant-based resource allocation model for scaling Software-as-a-Service applications over cloud computing infrastructures
+### 3. (2013) - Espadas, J.; Molina, A.; Jimenez, G.; Molina, M.; Ramirez, R.; Concha, D. - A tenant-based resource allocation model for scaling Software-as-a-Service applications over cloud computing infrastructures
 
 The paper aims to make the following contributions: A formal measure for under and overprovisioning of virtualized resources and to propose new resource allocation mechanism based on tenant isolation, VM instance allocation and load balancing to create a cost-effective scalable environment.
 
@@ -23,7 +25,7 @@ The proposed model uses usage data per tenant, reliably obtained by properly sep
 * **Future work** Validate proposed system and metrics on other platforms.
 
 
-## 4. (2011) - Schiller, O.; Schiller, B.; Brodt, A.; Mitschang, B. - Native support of multi-tenancy in RDBMS for software as a service 
+### 4. (2011) - Schiller, O.; Schiller, B.; Brodt, A.; Mitschang, B. - Native support of multi-tenancy in RDBMS for software as a service 
 
 In this paper a tenant-aware RDBMS is proposed.
 This RDBMS supports extensible schemas using inheritance. (i.e. "childschema extends parentschema").
@@ -38,7 +40,7 @@ Finally a performance comparison is done comparing 'Shared process', 'Shared tab
 * **Future work** Tenant aware database administration tools (backup, recovery, etc..).
 
 
-## 5. (2011) - Shen, Z.; Subbiah, S.; Gu, X.; Wilkes, J. - CloudScale: elastic resource scaling for multi-tenant cloud systems
+### 5. (2011) - Shen, Z.; Subbiah, S.; Gu, X.; Wilkes, J. - CloudScale: elastic resource scaling for multi-tenant cloud systems
 
 The paper describes and evaluates a prediction driven resource scaling system. 
 
@@ -53,7 +55,7 @@ It also proposes to use predictive frequency / voltage scaling on the host machi
 * **Future work** More accurate prediction of resource demand, interaction of various metrics (mem/cpu).  
 
 
-## 6. (2009) - Aulbach, S.; Jakobs, D.; Kemper, A.; Seibold, M. - A comparison of flexible schemas for software as a service
+### 6. (2009) - Aulbach, S.; Jakobs, D.; Kemper, A.; Seibold, M. - A comparison of flexible schemas for software as a service
 
 The paper compares the following schemas for SaaS applications: private tables, extension tables, sparse columns, xml, pivot tables.
 
@@ -63,7 +65,7 @@ After comparing the various schema's performance on different databases the auth
 * **Bad** No real novel ideas, just comparing.
 * **Future work** Lots of suggestions for the ideal SaaS DB system.
 
-## 7. (2011) - Aulbach, S.; Seibold, M. ; Jacobs, D. ; Kemper, A. - Extensibility and Data Sharing in evolving multi-tenant databases
+### 7. (2011) - Aulbach, S.; Seibold, M. ; Jacobs, D. ; Kemper, A. - Extensibility and Data Sharing in evolving multi-tenant databases
 
 In this paper a new database schema type, FLEXSCHEME, is proposed. This is a scheme that can properly handle shared data and/or different versions of the same data without having to add lots of additional logic in the application layer. It gives the database control of the data again.
 
@@ -73,3 +75,5 @@ The new schema type is compared to several different ways of handling multiple v
 * **Bad** Slightly slower performance in some cases.
 * **Future work** Branching in various versions of the data.
 
+
+#QOS
