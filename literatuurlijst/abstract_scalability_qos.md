@@ -100,3 +100,35 @@ The data from these formula are used in a proposed tool to efficiently place, or
 * **Good** Working prototype, clear formula for reasource consumption
 * **Bad** Focuses on memory/CPU, ignores other metrics.
 * **Future work** Additional metrics / application specific metrics. 
+
+### 4. (2012) - Walraven, S.; Monheim, T.; Truyen, E.; Joosen, W. - Towards performance isolation in multi-tenant SaaS applications
+
+The authors describe a middleware system for performance isolation.
+
+This system, trough monitoring requests per tenant, puts tenants into seperate categories. Examples can be 'Agressive', 'Normal', and 'Passive'. Based on the group the tenant belongs to at the time of the request his/her request can get a higher or lower priority. Trough this system performance isolation per tenant can be achieved even in a clustered approach, where all tenants requests can be serviced by any server in the cluster.
+
+* **Good** Working prototype, promising result, clear explanation of VM level isolation VS tenant isolation.
+* **Bad** Tested with only one 'aggressive tenant', no support for multiple SLA's yet.
+* **Future work** Additional metrics / application specific balancing algorithms. Multiple aggressive tenants.
+
+### 5. (2013) - Krebs, R.; Momm, C.; Kounev, S. - Metrics and techniques for quantifying performance isolation in cloud environments
+
+In this paper the authors define several metrics to measure tenant seperation. Primarily based on comparing the effect of changes in 'Abiding workload' (workload from non disruptive tenants) and 'Disruptive workload'(workload from disruptive tenants) on QoS (Response time).
+
+Various isolation techniques are discussed: Introducing an artificial delay fro disruptive users, Simple round-robing queueing, Seperate thread pools per tenant, and finally maintaning a whitelist and blacklist queue, requests from disruptive tenants get placed on the blacklist queue and are only serviced if the whitelist queue is empty.
+
+These four approaches are compared based on the previously defined metrics. With Round-robin and blacklisting emerging as winners.
+
+* **Good** Clear description of metrics, large related works section.
+* **Bad** Isolation methods not completely fair.
+* **Future works** More fair metrics / isolation algorithms.
+
+### 6. (2008) - Zhi Hu Wang; Chang Jie Guo ; Bo Gao ; Wei Sun ; Zhen Zhang ; Wen Hao An - A Study and Performance Evaluation of the Multi-Tenant Data Tier Design Patterns for Service Oriented Computing
+
+In this paper the performance of various data tier scaling, customization and seperation patterns for multi-tenant applications are discussed.
+
+The performance of "Dedicated DB", "Dedicated schema" and "Shared schema" (w/ index, w/ Clustered index and w/ Multiple Dimensions Clustering ) are compared.
+
+* **Good** Nice overview of seperation techniques.
+* **Bad** No real new info taking into account other papers read.
+* **Future works** Tenant aware RDBMS,
