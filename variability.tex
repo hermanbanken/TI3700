@@ -6,6 +6,7 @@ Two keywords from this definition are customization and configuration. In a mult
 There are several reasons why variability is needed. 
 First of all based on country, segment or branch different currencies, legislation and tax rules may apply. This is especially important in financial applications. 
 Secondly different customers can require different functionality properties, layout options and/or quality of service (such as privacy and performance).
+% MAYBE-TODO: this paragraph could be more elaborate
 
 \subsubsection{Levels of variability}
 Variability can be accomplished on different levels. 
@@ -15,8 +16,31 @@ In smaller applications and within components different patterns become relevant
 
 %reasons for variability [5]
 %different papers describe different categorizations
+\subsubsection{Variability Modeling}
+For all stakeholders in a multi-tenant application it's important that a variability model exists. For the developer it's important to document all variation build in to the application to keep the application maintainable for both current and new developers. 
+For SaaS providers it's important to have a model of the application to build rules for automatically deploying new instances of the application that support (many) new tenants or migrating and reconfiguring instances. 
+A model can also be used to automatically create configuration wizards and bill tenants according to the used variants. 
+For tenants it's important that they can use the best tailored variant of the application for their needs and thus it's also in their interest that the SaaS provider has a good overview of it's own application and to have a good configuration tool.
 
-\subsubsection{variability modeling}
+Two types of variability can be distinguished, external and internal variability \cite{mietzner2009variability}:
+ \begin{itemize}
+\item External variability is this variability that is communicated to the customers and most of the times this variability is \textbf{Customer-driven} and is implemented because customers asked for it or because the developers thought the customers would ask for it. 
+\item In contrast internal variability exists because of implementation details. For example some - external - variants may depend on some internal variation.
+\end{itemize}
+
+\begin{figure}[htr]
+    \centering
+    \includegraphics[width=0.48\textwidth]{assets/OVM}
+    \caption{Example of a Variability Model in OVM notation}
+    \label{fig:ovm}
+\end{figure}
+
+Mietzner et al. \cite{mietzner2009variability} use OVM (Orthogonal Variability Model) as their variability model. OVM differs from other approaches in that it does provide a separate view on variability. This reduces the size of the model and makes it easier to understand the models as commonalities are left out and only the variability is modeled. This allows for understanding the model without understanding the application's design model.
+
+In OVM, the \textit{variation points} are the key items. One variation point has multiple \textit{variants} that are either optional or mandatory. Relations between VP's exist that define whether some variant is mutual exclusive with some other variant or whether some variant requires an other variant. Relations are drawn as lines between VP's. An example can be seen in figure \ref{fig:ovm}.
+
+% discus Julia Schroeter (2012) here
+
 % On a larger scale \textit{variation modeling} becomes important \cite{mietzner2009variability, schroeter2012towards} as it becomes harder to keep track of different \textit{variation points}. 
 
 % from Customization Realization in Multi-tenant Web Applications, Jansen en Houben (2010)
@@ -48,9 +72,11 @@ Truyen et al. \cite{truyen2012context} introduce \textit{Context Oriented Progra
 In COP layers are added to the code that override certain behavior when this layer is activated for a specific tenant. 
 The overriding methods can still call the original method allowing them to modify the output or implement a filter. 
 Multiple layers can be active at once, doing their work in a predefined order.
+% MAYBE-TODO: this paragraph could be more elaborate
 
 Another common variation technique is \textit{dependency injection (DI)} \cite{walraven2011middleware} where one of the classes that implement an interface are injected by a provider. 
 Walraven et al. mention in their Related Work section that Aspect Oriented Programming (another name for COP) proves more flexible in that way. 
 In DI, no two 'modules' providing the same functionality can interact or extend each other, while in COP those implementations can work together.
+% MAYBE-TODO: this paragraph could be more elaborate
 
 \subsubsection{future work in variability}

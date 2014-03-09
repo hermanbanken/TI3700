@@ -1,5 +1,7 @@
 # 1. (2009) - Mietzner, R.; Metzger, A.; Leymann, F.; Pohl, K. - Variability modeling to support customization and deployment of multi-tenant-aware Software as a Service applications
 
+Keywords: modeling
+
 The biggest difference between any generic multi-user application and a multi-tenant application is the level of customization possible, or the variability, per tenant. To describe the variability, one can model variation points in applications. OVM (Orthogonal Variability Model), a concept taken from product line engineering, is proposed by Mietzner et al. [Mietzner, Variability Modeling]. To use OVM a distinction is made between Customer-driven Variability and Realization-driven Variability. Customers can choose some variations and some other variations are introduced by the variety in technical realizations. Besides, some variations are chosen at configuration time, while some others might come in effect only when deploying. For example, when there is capacity left on a machine providing high availability, it might be more economic to put a new tenant that doesn't require high availability on the same machine instead of spawning a new machine.
 
 In the article MeetR is used as an example to model Variability. MeetR is an application that allows tenants to change the logo of the application and also lets tenants decide whether a long or a short work flow is to be used, if high availability is necessary and whether or not the data may be stored in a shared database or should be stored separately.
@@ -193,6 +195,8 @@ Closely related to Truyen, Cardozo, Walraven, et al. (2012)
 **Bad**: -
 
 # 11. (2012) - Schroeter, J.; Cech, S.; Götz, S.; Wilke, C.; Aßmann, U. - Towards modeling a variable architecture for multi-tenant SaaS-applications.
+
+Keywords: modeling
 
 Fairly recent paper on MT. Relates also to Quality of Service, since not so much about features but more about non-functional properties.
 
