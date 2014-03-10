@@ -128,3 +128,50 @@ All of the above might influence each other.
 
 * **Good**: Very wide description of various aspects
 * **Bad**: -
+
+
+# 5. (2010) - Dillon, T.; Chen Wu ; Chang, E. - Cloud Computing: Issues and Challenges
+
+## Definition of Cloud Computing
+Cloud computing is a model for enabling convenient, on- demand network access to a shared pool of configurable computing resources (e.g., networks, servers, storage, applications, and services) that can be rapidly provisioned and released with minimal management effort or service provider interaction.
+
+Essential characteristics:
+1. On-demand self-service (no human interactions)
+2. Broad network access (resources via internet)
+3. Resource pooling (service resources are pooled together using either the **multi-tenancy** of the virtualization model)
+4. Rapid elasticity (scalability)
+5. Measured service (infrastructure is able to measure usage of resources)
+
+Three (four actually) service models for cloud services:
+1. SaaS (example: Google Mail/Docs)
+2. PaaS (example: Google AppEngine)
+3. IaaS (example: Amazon EC2)
+4. DaaS (example: Google BigTable)
+
+Four cloud deployment models:
+1. Private cloud (cloud infrastructure is operated solely within a single organization)
+2. Community cloud (multiple organizations sharing the same cloud infrastructure)
+3. Public cloud (cloud service provider has full ownership; example: Google AppEngine)
+4. Hybrid cloud (combination of two or more from the above)
+
+The paper describes the relationship between cloud computing and service-oriented computing, stating the "cloud is more or less based on the evolving development on SOC", SaaS in particular. It also describes the relationships between the cloud and grid computing and high performance computing.
+
+The paper shows a nice graph of a survey in which companies rate the issues with the cloud model.
+
+The following challenges influence the adoption of cloud computing:
+1. Security
+  * Multi-tenancy model has created two new security issues: shared resources on the same physical machine and reputation fate-sharing (sharing resources with possible criminal users)
+2. Costing model (increased cost of data communication and cost per unit; also expensive is data integration with different clouds)
+3. Charging model (elastic resource pool makes cost analysis complicated)
+  * SaaS providers: costs of developing multi-tenancy can be very substential.
+    - re-design/re-development of single-tenancy software
+    - introducing new features for customization
+    - security enhancements
+    - dealing with earlier mentioned complexities
+4. Service Level Agreement (SLA)
+5. What to migrate
+
+Various definitions of "the cloud" make it difficult to develop cloud ecosystems and result in vendor lock-in. The paper describes some layers that should be added in order to allow interoperability.
+
+* **Good**: Extensive analysis of everything related to "the cloud"
+* **Bad**: 99% is about the cloud; multi-tenancy is only mentioned a few times
