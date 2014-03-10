@@ -196,7 +196,7 @@ Closely related to Truyen, Cardozo, Walraven, et al. (2012)
 
 # 11. (2012) - Schroeter, J.; Cech, S.; Götz, S.; Wilke, C.; Aßmann, U. - Towards modeling a variable architecture for multi-tenant SaaS-applications.
 
-Keywords: modeling
+Keywords: modeling, scaling, qos
 
 Fairly recent paper on MT. Relates also to Quality of Service, since not so much about features but more about non-functional properties.
 
