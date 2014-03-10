@@ -2,6 +2,9 @@
 \usepackage{a4wide}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{lastpage}
 
 \title{Seminarium TI3700\\ Multi-Tenancy}
 \author{Herman Banken\and
@@ -10,7 +13,10 @@
     Rick Wieman}
 \date{}
 
-\pagestyle{empty}
+\pagestyle{fancy}
+\lhead{TI3700, Multi-Tenancy}
+\rhead{page \thepage\ of \pageref{LastPage}}
+\cfoot{}
 
 \begin{document}
 \maketitle
