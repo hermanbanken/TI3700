@@ -1,4 +1,4 @@
-# Building safe PaaS clouds: a survey on security in multitenant software platforms:
+# 1. Building safe PaaS clouds: a survey on security in multitenant software platforms:
 
 ## Summary:
 The paper discusses potential security risks on three seperate levels within 
@@ -35,7 +35,7 @@ non-trusted threads without affecting the platform and on mechanisms that allow
 resource sharing policies to be properly implemented. 
 
 ----------
-# Enabling Secure Multitenancy in Cloud Computing: Challenges and Approaches
+# 2. Enabling Secure Multitenancy in Cloud Computing: Challenges and Approaches
 
 ## Summary:
 The paper provides an literary overview of the current security issues regarding
@@ -64,7 +64,7 @@ hypervisor security.
 real solutions yet.
 
 ------------
-# Semantic-aware multi-tenancy authorization system for cloud architecture
+# 3. Semantic-aware multi-tenancy authorization system for cloud architecture
 
 ## summary:
 The paper describes a high expressive authorization model. Currently cloud providers
@@ -93,7 +93,7 @@ comparison of the trade-off between expressiveness and system performance.
 cloud computing.
 
 -----------
-# Towards a Mult-tenancy authorization system for cloud services
+# 4. Towards a Mult-tenancy authorization system for cloud services
 
 ## Summary:
 This paper describes an authorization model suitable for cloud computing that 
@@ -121,7 +121,7 @@ this model meets the requirements and has high scalability.
 - More experimentation with different databases.
 
 ------------
-# An analysis of security issues for cloud computing
+# 5. An analysis of security issues for cloud computing
 
 ## summary:
 This paper attempts to provide a near complete overview of the current security 
