@@ -1,7 +1,21 @@
-%Intro QoS  wat is het.
+In this section various methods for maintianing a good quality of service level per tenants will be discussed.
+The main challenges here are the metrics to use for measuring the current resource usage per tenant and how to seperate tenants in such a way that the behaviour of one tenant will not affect the other tenants.\cite{krebs2013metrics}
 
 %WERKTITELS
-\subsubsection{Why QoS Matters.}
+\subsubsection{Why QoS Matters}
+Most tenants in a multi-tenant application will have some form of Service Level Agreement (SLA) with the provider of the application.
+In many cases these SLA's contain certain Quality of Service constraints the provider will have to meet, such as response time or minimum uptime. 
+The tenant on the other hand will also have certian limits and/or quotas, instead of unlimited access to the application.
+
+Based on these SLA's the available resources should be fairly distributed among tenants.
+Rouven Krebs\cite{krebs2013metrics} defines a system as fair when the following criteria are met:
+\begin{enumerate}
+	\item Tenants who do not exceed their quota should not be affected by tenats who do.
+	\item Tenants who do exceed their quota should experience performance degradation. 
+		It is important to note here that even if the system is not low on resources they should still get degraded performance.
+		This is because otherwise they would be getting more than is agreed upon in their SLA, wich is usually more than they are paying for.
+	\item Tenants with a higher quote should experience better performance compared to tenants with a lower quota.
+\end{enumerate}
 % SLA's, eerlijk gebruik resources.
 
 \subsubsection{Metrics for Tenant Load}

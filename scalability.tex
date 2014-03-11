@@ -1,20 +1,50 @@
-%Introductie onderwerp, wat is scalability.
+%INTRO: (section title is in main file.)
+%\subsection{scalability.tex}
+The scalability of a system, in general, describes how well a system can handle increasing workload, stored data and utilisation. 
+A system is considered scalable when it can be easily extended to support an increasing load. 
+For an unscalable system supporting increased load might be technically infeasable or prohibitively expensive.\cite{bondi2000scalability}
+
+In the scalability section we will focus specifically on how a multi-tenant application can deal with an increasing number of tenants, increasing amount of data and an increasing amount of data variability. 
+Seperation of tenants and maintaining performance during peak usage will be discussed in the QoS section.
 
 %WERKTITELS!
-\subsubsection{Why and how Scalability Matters}
-%Economics of scale!, scaling out vs scaling in.
+\subsubsection{Where and how Scalability Matters}
+As one of the key advantages of multi-tenant applications is a higher utilisation of resources and the associated cost reduction per tenant.\cite{bezemer2010multi} 
+It is required that a multi-tenant application is scalable to maintain this cost reduction and to accomodate for the, hopefully, ever increasing number of tenants.
+This also means that it is both undesirable to underprovision resources and to overprovision resources. The former causing performance degradation, the latter causing increased and unneeded costs.
 
-\subsubsection{Where Scalability Matters}
-%Wat zijn de huidige bottlenecks, waar richt onderzoek zich op?
+%TODO: 	Uitleg research richtingen, plaatsing van tenants, hoe/WANNEER moet ik opschalen als er meer tenants bij komen
+%	  	Uitleg DB onderzoeken. 
 
-\subsubsection{Storage Layer - Scalable Schema Mappings}
-%Schema mappings: chunk folding, pivot tables, schema-per-tenant, etc..
+\subsubsection{Scalability in the data layer}
+A database for a multi-tenant application should be extendable bij the tenants.
+This allows for tenant specific modifications to the schema.
+%TODO: Kijken in hoeverre dit al onder het algemene deel behandeld is.
 
-\subsubsection{Storage Layer - Tenant Aware RDBMSs}
+Thus, scalability in the data layer is important in two different ways.
+First, as the number of tenants increases so will the amount of data and load on the database.
+Second, as the number of tenants increases so will the amount of customisations to the schema. 
+The database schema should be managing this as effici\"ently as possible.
+
+In the sections after this we will look at various schema mapping techniques and their pro's \ cons.
+After we will discuss two prototype tenant aware DBMSes.
+
+\subsubsection{Schema mapping techniques}
+\begin{description}
+	\item[Universal table(s)]
+	\item[Private tables]
+	\item[Sparse columns]
+	\item[Extension field]
+	\item[Extension tables]
+	\item[Chunk folding] %Includes chunk tables! 
+	\item[Pivot table]
+\end{description}
+
+\subsubsection{Tenant aware DMBSes}
 %FLEXSCHEME and the tenant aware RDBMS.
 
-\subsubsection{App layer - resource allocation}
+\subsubsection{Resource allocation for new tenants}
 %Allocation of resources for new tenants, predicting & preventing conflicts / bottlenecks.
 
-\subsubsection{Discussion of challenges \& futere work}
+\subsubsection{Discussion of challenges \& future work}
 %Spreekt voor zich.
