@@ -75,6 +75,15 @@ The new schema type is compared to several different ways of handling multiple v
 * **Bad** Slightly slower performance in some cases.
 * **Future work** Branching in various versions of the data.
 
+### 8. (2012) - Koziolek, H. - _The SPOSAD Architectural Style for Multi-tenant Software Applications_
+
+This paper gives an overview of the SPOSAD (Share Polymorphic Scalable Application and Data) architectural style for cloud apps.
+
+Mainly included for the nice overview of architecture contraints a multitenant application has to stay within, what tradeoffs should be made/considered, etc..
+
+* **Good** Complete list of constraints and/or architecture choices to make and list of real world examples (Salesforce, MS. Azure). 
+* **Bad** Not a very 'deep' paper, lots of 'shallow' knowledge.
+
 
 #QOS
 

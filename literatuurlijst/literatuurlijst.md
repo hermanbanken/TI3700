@@ -42,6 +42,7 @@ Alle papers staan als volgt in de lijst:
 5. (2011) - Shen, Z.; Subbiah, S.; Gu, X.; Wilkes, J. - _CloudScale: elastic resource scaling for multi-tenant cloud systems_
 6. (2009) - Aulbach, S.; Jakobs, D.; Kemper, A.; Seibold, M. - _A comparison of flexible schemas for software as a service_
 7. (2011) - Aulbach, S.; Seibold, M. ; Jacobs, D. ; Kemper, A. - _Extensibility and Data Sharing in evolving multi-tenant databases_
+8. (2012) - Koziolek, H. - _The SPOSAD Architectural Style for Multi-tenant Software Applications_
 
 ###Papers over QoS:
 1. (2010) - Hasselmeyer, P.; d'Heureuse, N. - _Towards holistic multi-tenant monitoring for virtual data centers_
