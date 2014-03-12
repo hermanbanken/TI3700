@@ -10,15 +10,42 @@ The difference between multi-tenancy and multi-user is also made clear by Bezeme
 
 Krebs et al. also mention tenant space, which means that customers rent predifined space of resources (example: IaaS).
 
-
-\subsection{Multi-tenancy vs. the cloud}
-
-%% Relationship between multi-tenancy and the cloud
-
 \subsection{Different layers of multi-tenancy}
 
 %% ...
 
 %% multi-instance = each tenant has own instance of application (and (optionally) database) [Bezemer and Zaidman 2010]
 
+Krebs et al.\cite{krebs2012architecture} describe various layers of sharing:
+
+\begin{enumerate}
+\item Sharing a data center (very limited benefits)
+\item Virtualization, thus sharing a server (large overhead)
+\item Middleware sharing (difficult isolation and overhead)
+\item Multi-Tenant Application (MTA)
+\end{enumerate}
+
 %% multiple application deployment = multiple applications in one instance of the same runtime environment (is not multi-tenancy!) [Krebs et al. 2012]
+
+\subsection{Multi-tenancy vs. the cloud}
+
+Dillon et al.\cite{dillon2010cloud} comprehensively elaborate on various aspects of cloud services. They mention the following service models: 
+
+\begin{enumerate}
+\item Software as a Service (example: Google Mail/Docs)
+\item Platform as a Service (example: Google AppEngine)
+\item Infrastructure as a Service (example: Amazon EC2)
+\item Data as a Service (example: Google BigTable)
+\end{enumerate}
+
+Multi-tenancy falls within Software as a Service (SaaS), as mentioned by ... %resource?
+
+They also describe the several essential characteristics of cloud services, including resource pooling and rapid elasticity. These are both challenges for multi-tenant applications, as mentioned by ... %resource?
+
+\subsection{Challenges of multi-tenancy}
+
+The multi-tenancy model has created two new security issues\cite{dillon2010cloud}. Sharing resources on the same physical machine pose a danger to the data of the tenants. This falls within the isolation challenge. Another issue is reputation fate-sharing, since one might be sharing resources with possible criminal users, creating the possibility to (for example) get blacklisted.
+
+Another challenge is the charging model. The costs of developing multi-tenancy can be very substantial for SaaS providers, because they need to re-design or re-develop single-tenancy software, introduce new features for customization and enhance the security.
+
+This paper will highlight the following challenges more in depth: \ldots %% TODO TODO
