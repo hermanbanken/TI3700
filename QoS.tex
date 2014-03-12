@@ -12,8 +12,8 @@ Rouven Krebs\cite{krebs2013metrics} defines a system as fair when the following 
 \begin{enumerate}
 	\item Tenants who do not exceed their quota should not be affected by tenats who do.
 	\item Tenants who do exceed their quota should experience performance degradation. 
-		It is important to note here that even if the system is not low on resources they should still get degraded performance.
-		This is because otherwise they would be getting more than is agreed upon in their SLA, wich is usually more than they are paying for.
+		It is important to note here that even if the system is not low on resources a tenant should still get degraded performance for the system to be fair.
+		This is because otherwise the tenant would be getting more than is agreed upon in their SLA, wich is usually more than they are paying for and more than tenants under the same SLA who are not exceeding their quota.
 	\item Tenants with a higher quote should experience better performance compared to tenants with a lower quota.
 \end{enumerate}
 % SLA's, eerlijk gebruik resources.
@@ -22,6 +22,7 @@ Rouven Krebs\cite{krebs2013metrics} defines a system as fair when the following 
 %ZIE: QoS 5.: Krebs et.al.  QoS 2.: Kwok et.al.
 
 \subsubsection{Tenant Seperation Techniques}
+%TODO: Let op: in hoeverre verschillende architectuurkeuzes al behandeld in het algemene deel.
 % 1. VMs (tenants toekennen aan machines)
 % 2. Tenants toekennen aan specifieke resources (thread pools e.d.) 
 % 3. Alle tenants delen dezelfde resources (QoS via: request throttling / queueing.)
