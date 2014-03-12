@@ -32,12 +32,19 @@ After we will discuss two prototype tenant aware DBMSes.
 \subsubsection{Schema mapping techniques}
 \begin{description}
 	\item[Universal table(s)]
+		%Een tabel voor alles, met vast aantal custom fields (varchar oid) eraan
 	\item[Private tables]
+		%Schema per klant -> schaalt slecht want DB geheugenruimte.
 	\item[Sparse columns]
+		%Tabel per entiteit, met voor ieder aangemaakt custom field een extra kolom. (VEEL NULLS, slecht ondersteund door DB systemen).
 	\item[Extension field]
+		%Een XML veld (oid) aan het eind van iedere rij waar de tenant-specifieke uitbreidingen in staan. Grote overhead bij veel extra velden.
 	\item[Extension tables]
+		%For every tenant an extension table is added for customosation (Essentially a mix of private tables and extension columns)
 	\item[Chunk folding] %Includes chunk tables! 
+		%Like extension tables however customisations are stored in seperate chunk tables, wich can contain customisations for multiple tenants and even multiple tables.
 	\item[Pivot table]
+		%Grote tabel waarin elk entiteit-veld een eigen rij + bijbehorende identifiers heeft.
 \end{description}
 
 \subsubsection{Tenant aware DMBSes}
@@ -45,6 +52,7 @@ After we will discuss two prototype tenant aware DBMSes.
 
 \subsubsection{Resource allocation for new tenants}
 %Allocation of resources for new tenants, predicting & preventing conflicts / bottlenecks.
+% Espadas et.al en Thomas Kwok et.al.
 
 \subsubsection{Discussion of challenges \& future work}
 %Spreekt voor zich.
