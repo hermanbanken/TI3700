@@ -1,4 +1,4 @@
-Multi-tenancy is a vague term, since it has never had an exact and official definition. During the last years, also due to the uprising of cloud applications, multi-tenancy gets researched and used more and more. This section therefore gives some recent definitions, describes shortly the various types of multi-tenancy, the relationship with the cloud and the challenges of multi-tenancy.
+Multi-tenancy was a vague term until recently, since it never had an exact and official definition. In recent years however, probably due to the uprising of cloud applications, multi-tenancy is getting researched and used more and more. This section gives some recent definitions, describes shortly the various types of multi-tenancy, the relationship with the cloud and the challenges of multi-tenancy.
 
 \subsection{Definitions}
 
@@ -20,7 +20,7 @@ Krebs et al.\cite{krebs2012architecture} describe various layers of sharing, in 
 \item Multi-Tenant Application
 \end{enumerate}
 
-According to Bezemer and Zaidman\cite{bezemer2010multi}, there are also various ways of implementing multi-tenancy: A shared application with a separate database, a shared application with a shared database with a separate table and a shared application, with a shared table. The latter is considered pure multi-tenancy. Krebs et al.\cite{krebs2012architecture} divide this into affinity and persistency, with affinity describing which server(s) handle which tenant(s) and with persistency describing the way of usage of the database (shared or separated).
+According to Bezemer and Zaidman\cite{bezemer2010multi}, there are also various ways of implementing multi-tenancy: a shared application with a separate database, a shared application with a shared database with a separate table and a shared application, with a shared table. The latter is considered pure multi-tenancy. Krebs et al.\cite{krebs2012architecture} divide this into affinity and persistency, with affinity describing which server(s) handle which tenant(s) and with persistency describing the way of usage of the database (shared or separated).
 
 Chang Jie Guo et al.\cite{guo2007framework} suggest the implementation of a multi-tenancy enablement layer. This should create a separation between usage and resources, creating the required isolations and allowing customizations. This can be compared to the blueprint of Bezemer and Zaidman\cite{bezemer2010multi}, since both approaches should have little impact on the single-tenant code.
 
@@ -42,8 +42,6 @@ Dillon et al.\cite{dillon2010cloud} also describe the several essential characte
 
 The multi-tenancy model has created two new security issues\cite{dillon2010cloud}. Sharing resources on the same physical machine pose a danger to the data of the tenants. This falls within the isolation challenge. Another issue is reputation fate-sharing, since one might be sharing resources with possible criminal users, creating the possibility to (for example) get blacklisted.
 
-Another challenge is the charging model. The costs of developing multi-tenancy can be very substantial for SaaS providers, because they need to re-design or re-develop single-tenancy software, introduce new features for customization and enhance the security.
+Another challenge is the charging model. The costs of developing multi-tenancy can be very substantial for SaaS providers, because they need to re-design or re-develop single-tenant software, introduce new features for customization and enhance the security.
 
-Bezemer and Zaidman\cite{bezemer2010multi} also mention performance as a challenge, since multiple tenants are using the same hardware resources. Another challenges are scalability, zero-downtime and maintenance. The latter is caused by the added complexity due to multi-tenancy.
-
-This paper will discuss the challenges about security, scalability, Quality of Services (QoS) and variability more in depth in the following sections.
+Bezemer and Zaidman\cite{bezemer2010multi} also mention performance as a challenge, since multiple tenants are using the same hardware resources. Other challenges are scalability, zero-downtime and maintenance. The latter is caused by the added complexity due to multi-tenancy.
