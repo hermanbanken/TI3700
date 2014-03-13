@@ -82,29 +82,29 @@ Another view change is the \textbf{Module Dependent Menu}-pattern, to create men
 \textbf{Pre/Post Update Hooks} is a pattern to execute pieces of code before or after certain events happen in the application. 
 This allows for tenants to enable or disable modules that check data or automate certain tasks.
 
-Truyen et al. \cite{truyen2012context} introduce \textit{Context Oriented Programming (COP)} to implement what can be seen as controller changes. 
-In COP layers are added to the code that override certain behavior when this layer is activated for a specific tenant. 
-The overriding methods can still call the original method allowing them to modify the output or implement a filter. 
-Multiple layers can be active at once, doing their work in a predefined order. 
-% MAYBE-TODO: this paragraph could be more elaborate
+A common way to implement controller changes or system component changes is the variation technique \textbf{dependency injection (DI)} where one of the (possibly many) classes that implement the same interface are injected by a provider. 
+Walraven, Truyen and Joosen \cite{walraven2011middleware} created a middleware layer that uses a existing DI framework, compatible with Google App Engine, named Guice. An issue with Guice, that did not allow per-request switching of implementations was quickly solved by adding a small abstraction layer, making Guice usable in a multi-tenant environment.
+Side note: their case study also shows that GAE leverages the effort of separating tenant data a lot by providing the so-called Namespaces API. By linking each tenant to an unique namespace all data in that namespace is only accessible by a that specific tenant.
 
-Another common variation technique is \textit{dependency injection (DI)} \cite{walraven2011middleware} where one of the classes that implement an interface are injected by a provider. 
-Walraven et al. mention in their Related Work section that Aspect Oriented Programming (another name for COP) proves more flexible in that way. 
-In DI, no two 'modules' providing the same functionality can interact or extend each other, while in COP those implementations can work together. 
+One of the conclusions of Walraven et al. is that Aspect Oriented Software Development (AOSD) looks promising as an alternative to DI for more complex customizations, such as features that have to be combined.
+They go further on this lead in Truyen et al. \cite{truyen2012context} and introduce \textbf{Context Oriented Programming (COP)}, a form of AOSD to implement what can be seen as controller changes. 
+In COP layers are added to the code that override certain behavior when this layer is activated for a specific tenant. 
+In DI, for each variation point only one variation can be injected at a time, so no two 'modules' providing the same functionality can interact or extend each other, while in COP those implementations can work together, because the overriding methods can still call the original method allowing them to modify the output or implement a filter. 
+Multiple layers can be active at once, doing their work in a predefined order. 
 % MAYBE-TODO: this paragraph could be more elaborate
 
 \subsubsection{Future Work in Variability}
 % svahnberg2005taxonomy
-% sun2008software
-% mietzner2008defining
+% sun2008software: no interesting future work proposed
+
+% mietzner2008defining: automization, no further interesting future work proposed
+Mietzner et al. \cite{mietzner2008defining} want to make variability easier to manage for SaaS providers and created so called \textit{solutions} that define which variants should be bound. In the future it could be investigated how deployment scripts could be derived from those solutions.
 
 Mietzner et al. \cite{mietzner2009variability} describe a cost model for SaaS applications to compare the cost of multi tenant aware versus non-multitenant aware applications. They do not however relate this cost model to their variability model. This is interesting for future research as a SaaS provider can then determine the cost of creating, maintaining and managing a variant. The provider could then decide if it economically makes more sense to keep a variant or to remove it.
 
 % jansen2010customization nothing in this paper thats not in kabbedijk2011variability
 
 While Kabbedijk and Jansen \cite{kabbedijk2011variability} have determined some Variability Realization Techniques, but note that more VRTs could be identified and should be tested on effectiveness, maintainability, scalability and performance.
-
-% walraven2011middleware
 
 Truyen et al. \cite{truyen2012context} found that COP was useful as a VRT but ContextJ lacked support for asynchronous request because context is not shared to new threads. Research could be done to see if it is possible to bridge this gap to make COP more usable as more and more applications are using asynchronous functionality.
 
