@@ -9,7 +9,7 @@ It is required that a multi-tenant application is scalable to maintain this cost
 
 In the scalability section we will focus specifically on how the infrastructure, or specific parts thereof, of a multi-tenant application can deal with an increasing number of tenants.
 
-\subsubsection{Scaling multi-tenant applications}
+\subsection{Scaling multi-tenant applications}
 Scalability in the application layer is about dealing with an increasing amount of tenants on the existing infrastructure.
 Multi-tenant related research in this area focuses on estimating the resources required for new and existing tenants and how to use the multi-tenant characteristics of applications to improve these estimates. 
 
@@ -25,7 +25,7 @@ Performance tests with the new model lead to a statistically significant reducti
 
 %TODO: Paper thomas kwok.
 
-\subsubsection{Scalability in the data layer}
+\subsection{Scalability in the data layer}
 The schema of the data model presented in a multi-tenant application should be extensible by tenants.
 Extensibility is required because this allows tenants to modify their view of the application in such a way that a better fits their needs.
 
@@ -41,7 +41,7 @@ This is also reflected in the fact that most research on performance and scalabi
 How to efficiently map the extensible schema onto existing RDBMSes.\cite{aulbach2008multi, aulbach2009comparison} 
 Or, more recently, on creating multi-tenant aware RDBMSes.\cite{schiller2011native, aulbach2011extensibility} 
 
-\subsubsection{Schema mapping techniques}
+\subsection{Schema mapping techniques}
 Schema mapping techniques for multi-tenant applications can be separated into two groups. 
 One group in which the database 'owns' the schema  and the other group where the application 'owns' the schema and maps this into generic database structures.\cite{aulbach2009comparison}
 
@@ -100,7 +100,7 @@ For most layouts below this means that knowledge of column names and types are k
 		However reading from the extension field will introduce additional overhead.\cite{aulbach2009comparison}
 \end{description}
 
-\subsubsection{Tenant aware DMBSes}
+\subsection{Tenant aware DMBSes}
 Schiller et.al.\cite{schiller2011native} propose a database with native multi-tenancy support and support for schema extensibility.
 Using their approach a tenant object would exist within the database as a first-class object. 
 Based on these objects for each tenant a context can be maintained that allows the database to determine what data belongs to a specific tenant. 
@@ -117,7 +117,7 @@ However it is unclear whether their approach really meets the requirements of a 
 %Allocation of resources for new tenants, predicting & preventing conflicts / bottlenecks.
 % Espadas et.al en Thomas Kwok et.al.
 
-\subsubsection{Future work}
+\subsection{Future work}
 Both Kwok et.al. \cite{kwok2008resource} and Espadas et.al.\cite{espadas2013tenant} name identifying bottlenecks and validating existing and proposed methods as the primary challenge.
 In addition Espadas recommended finding new models and mechanisms for measuring machine statuses and metrics.
 

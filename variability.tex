@@ -2,13 +2,13 @@ In multi-tenancy \textit{variability} is a key concept. The term was first intro
 In research on software engineering the concept was defined as ``the ability of a software system or artefact to be efficiently extended, changed, customized or configured for use in a particular context'' \cite{svahnberg2005taxonomy}.
 Two keywords from this definition are customization and configuration. In a multi-tenant context configuration is preferred over customization \cite{sun2008software} as customization defines the process of reengineering an application, maintaining multiple branches and deploying these branches separately, while configuration can be done at run-time and does not require multiple instances or branches.
 
-\subsubsection{Why is variability needed}
+\subsection{Why is variability needed}
 There are several reasons why variability is needed. 
 First of all based on country, segment or branch different currencies, legislation and tax rules may apply. This is especially important in financial applications. 
 Secondly different customers can require different functionality properties, layout options and/or quality of service (such as privacy and performance).
 % MAYBE-TODO: this paragraph could be more elaborate
 
-\subsubsection{Levels of variability}
+\subsection{Levels of variability}
 Variability can be accomplished on different levels. 
 Dependent on the scale of the application different patterns become be relevant. Large applications often consist of \textit{components} offering a specific \textit{service} and variability can be accomplished by dynamically swapping these components for different tenants, or by activating or deactivating specific components \cite{mietzner2008defining}. 
 
@@ -23,7 +23,7 @@ Two types of variability can be distinguished, external and internal variability
 %reasons for variability [5]
 %different papers describe different categorizations
 
-\subsubsection{Variability Modeling}
+\subsection{Variability Modeling}
 For all stakeholders in a multi-tenant application it's important that a variability model exists. For the developer it's important to document all variation build in to the application to keep the application maintainable for both current and new developers. 
 For SaaS providers it's important to have a model of the application to build rules for automatically deploying new instances of the application that support (many) new tenants or migrating and reconfiguring instances. 
 A model can also be used to automatically create configuration wizards and bill tenants according to the used variants. 
@@ -59,10 +59,10 @@ Mietzner et al. \cite{mietzner2009variability} use OVM (Orthogonal Variability M
 
 In OVM, the \textit{variation points} are the key items. One variation point has multiple \textit{variants} that are either optional or mandatory. Relations between VP's exist that define whether some variant is mutual exclusive with some other variant or whether some variant requires an other variant. Relations are drawn as lines between VP's. An example can be seen in figure \ref{fig:ovm}.
 
-\subsubsection{Developing with variability in mind}
+\subsection{Developing with variability in mind}
 % Efficient customization of multi-tenant Software-as-a-Service applications with service lines% by Stefan Walravena, Dimitri Van Landuyta, Eddy Truyena, Koen Handekynb, Wouter Joosena
 
-\subsubsection{Variability Realization Techniques}
+\subsection{Variability Realization Techniques}
 Jansen et al. \cite{jansen2010customization} note that while lot of research has been done on variability modeling, there is lack of research on techniques needed to implement variability. They identify five realization techniques of two types of customization, being \textit{Model View Controller (MVC) customization} and \textit{system customization}:
 \begin{itemize}
 \item \textbf{Model changes} allow tenants to fit the application to their domain. Model changes include changing entity attributes, adding entities and entity-relationships. Some changes require a more abstract application and therefore need to be thought upon earlier in the design process than more simple changes which could easily be added later on.
@@ -93,7 +93,7 @@ In DI, for each variation point only one variation can be injected at a time, so
 Multiple layers can be active at once, doing their work in a predefined order. 
 % MAYBE-TODO: this paragraph could be more elaborate
 
-\subsubsection{Future Work in Variability}
+\subsection{Future Work in Variability}
 % svahnberg2005taxonomy
 % sun2008software: no interesting future work proposed
 
