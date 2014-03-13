@@ -1,52 +1,69 @@
 %INTRO: (section title is in main file.)
 %\subsection{scalability.tex}
-The scalability of a system, in general, describes how well a system can handle increasing workload, stored data and utilisation. 
-A system is considered scalable when it can be easily extended to support an increasing load. 
-For an unscalable system supporting increased load might be technically infeasable or prohibitively expensive.\cite{bondi2000scalability}
+The scalability of a system, in general, describes how well a system can handle increasing workload, stored data and utilisation.
+A system is considered scalable when it can be extended to support an increasing load with a wel manageable cost increase.
+On the contrary, for an unscalable system supporting increased load might be technically infeasable or prohibitively expensive.\cite{bondi2000scalability}
 
-In the scalability section we will focus specifically on how a multi-tenant application can deal with an increasing number of tenants, increasing amount of data and an increasing amount of data variability. 
-Seperation of tenants and maintaining performance during peak usage will be discussed in the QoS section.
+As one of the key advantages of multi-tenant applications is a higher utilisation of resources and the associated cost reduction per tenant.\cite{bezemer2010multi} 
+It is required that a multi-tenant application is scalable to maintain this cost reduction and to accomodate for the, hopefully, ever increasing number of tenants.
+
+In the scalability section we will focus specifically on how the infrastructure, or specific parts thereof, of a multi-tenant application can deal with an increasing number of tenants.
 
 %WERKTITELS!
 \subsubsection{Where and how Scalability Matters}
-As one of the key advantages of multi-tenant applications is a higher utilisation of resources and the associated cost reduction per tenant.\cite{bezemer2010multi} 
-It is required that a multi-tenant application is scalable to maintain this cost reduction and to accomodate for the, hopefully, ever increasing number of tenants.
-This also means that it is both undesirable to underprovision resources and to overprovision resources. The former causing performance degradation, the latter causing increased and unneeded costs.
 
 %TODO: 	Uitleg research richtingen, plaatsing van tenants, hoe/WANNEER moet ik opschalen als er meer tenants bij komen
 %	  	Uitleg DB onderzoeken. 
 
 \subsubsection{Scalability in the data layer}
-A database for a multi-tenant application should be extendable bij the tenants.
-This allows for tenant specific modifications to the schema.
+The schema of the datamodel presented in a multi-tenant application should be extensible by tenants.
+Extensibility is required because this allows tenants to modify their view of the application in such a way that a better fits their needs.
 %TODO: Kijken in hoeverre dit al onder het algemene deel behandeld is.
 
 Thus, scalability in the data layer is important in two different ways.
 First, as the number of tenants increases so will the amount of data and load on the database.
-Second, as the number of tenants increases so will the amount of customisations to the schema. 
-The database schema should be managing this as effici\"ently as possible.
+Second, as the number of tenants increases so will the amount of extensions on the the schema. 
+The database should manage both the increasing amount of data and the increasing complexity of the data in a scalable way.
 
-In the sections after this we will look at various schema mapping techniques and their pro's \ cons.
-After we will discuss two prototype tenant aware DBMSes.
+In the sections after this we will look at various schema mapping techniques and how these scale as datasets increase in size and complexity.
+In addition to that two tenant aware DBMS's will be discussed.
 
 \subsubsection{Schema mapping techniques}
+Schema mapping techniques for multi-tenant applications van be seperated seperated into two groups. 
+One group in wich the database 'owns' the schema and the other group where the application 'owns' the schema and maps this into generic database structures.\cite{aulbach2009comparison}
+
+First the mapping techniques where the database 'owns' will be discussed.
+In these layouts the types and names of the columns are know to the database.
+\begin{description}
+	\item[Basic layout] In the basic layout the database fully owns the schema and it cannot be extended. 
+		In this schema the tables are shared among tenants and the tables contain a 'tenantid' column to seperate the date of the various tenants.
+		In this case there is no room for extensions to the schema. 
+		This schema type is common in less complex applications where extensibility is less needed. \cite{aulbach2008multi}
+	\item[Private tables] Using a private tables layout every tenant has his own set of tables. 
+		Naturally this allows for tenants to extend the schema. 
+		One major drawback is that this layout will only scale up to a certain point. 
+		A large amount of tables will lead to performance degradation.
+		This would mean that at some point an application instance and associated database might get 'full' so then a new, seperate instance will have to be added. \cite{aulbach2008multi}%TODO: beter verwoorden.
+	\item[Extension tables]
+		This layout combines the the basic and the private tables layout.
+		In this schema there is a base table for every entity shared across tenants with a rowid and tenantid column.
+		When the schema is extended an extension table with the additional columns is created.
+		This table will also contain a rowid and tenantid column wich are used to reconstruct the data into its new, extended, form.
+		In the optimal case existing extensions can be used by other tenants as well, leading to a reduced number of tablesper tenant compared to the previous two layouts.\cite{aulbach2008multi}
+\end{description}
+
+In the mappings discussed below the database does not own the schema. 
+For most layouts below this means that knowledge of column names and types are kept in the application or middleware using the database.
 \begin{description}
 	\item[Universal table(s)]
 		%Een tabel voor alles, met vast aantal custom fields (varchar oid) eraan
-	\item[Private tables]
-		%Schema per klant -> schaalt slecht want DB geheugenruimte.
-	\item[Sparse columns]
-		%Tabel per entiteit, met voor ieder aangemaakt custom field een extra kolom. (VEEL NULLS, slecht ondersteund door DB systemen).
 	\item[Extension field]
 		%Een XML veld (oid) aan het eind van iedere rij waar de tenant-specifieke uitbreidingen in staan. Grote overhead bij veel extra velden.
-	\item[Extension tables]
-		%For every tenant an extension table is added for customosation (Essentially a mix of private tables and extension columns)
 	\item[Chunk folding] %Includes chunk tables! 
 		%Like extension tables however customisations are stored in seperate chunk tables, wich can contain customisations for multiple tenants and even multiple tables.
 	\item[Pivot table]
 		%Grote tabel waarin elk entiteit-veld een eigen rij + bijbehorende identifiers heeft.
 \end{description}
-
 \subsubsection{Tenant aware DMBSes}
 %FLEXSCHEME and the tenant aware RDBMS.
 
