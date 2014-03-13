@@ -1,7 +1,7 @@
 %INTRO: (section title is in main file.)
 %\subsection{scalability.tex}
 The scalability of a system, in general, describes how well a system can handle increasing workload, stored data and utilization.
-A system is considered scalable when it can be extended to support an increasing load with a wel manageable cost increase.
+A system is considered scalable when it can be extended to support an increasing load with a well manageable cost increase.
 On the contrary, for an unscalable system supporting increased load might be technically infeasible or prohibitively expensive.\cite{bondi2000scalability}
 
 As one of the key advantages of multi-tenant applications is a higher utilization of resources and the associated cost reduction per tenant.\cite{bezemer2010multi} 
@@ -10,7 +10,7 @@ It is required that a multi-tenant application is scalable to maintain this cost
 In the scalability section we will focus specifically on how the infrastructure, or specific parts thereof, of a multi-tenant application can deal with an increasing number of tenants.
 
 \subsubsection{Scaling multi-tenant applications}
-Scalability in the applicationn layer is about dealing with an increasing amount of tenants on the existing infrastructure.
+Scalability in the application layer is about dealing with an increasing amount of tenants on the existing infrastructure.
 Multi-tenant related research in this area focuses on estimating the resources required for new and existing tenants and how to use the multi-tenant characteristics of applications to improve these estimates. 
 
 For multi-tenant applications it is very important to avoid both under- and overutilisation of resources.
@@ -26,7 +26,7 @@ Performance tests with the new model lead to a statistically significant reducti
 %TODO: Paper thomas kwok.
 
 \subsubsection{Scalability in the data layer}
-The schema of the datamodel presented in a multi-tenant application should be extensible by tenants.
+The schema of the data model presented in a multi-tenant application should be extensible by tenants.
 Extensibility is required because this allows tenants to modify their view of the application in such a way that a better fits their needs.
 
 Scalability in the data layer is important in two different ways.
@@ -42,7 +42,7 @@ How to efficiently map the extensible schema onto existing RDBMSes.\cite{aulbach
 Or, more recently, on creating multi-tenant aware RDBMSes.\cite{schiller2011native, aulbach2011extensibility} 
 
 \subsubsection{Schema mapping techniques}
-Schema mapping techniques for multi-tenant applications can be seperated into two groups. 
+Schema mapping techniques for multi-tenant applications can be separated into two groups. 
 One group in which the database 'owns' the schema  and the other group where the application 'owns' the schema and maps this into generic database structures.\cite{aulbach2009comparison}
 
 The first group lies closest to traditional usage of an RDBMS. 
@@ -60,10 +60,10 @@ Below several schema layouts in this group will be discussed.
 		This layout extends the basic to allow for tenant specific extensions..
 		In this schema there is a base table for every entity shared across tenants with a rowid and tenantid column.
 		When the schema is extended an extension table with the additional columns is created.
-		This table will also contain a rowid and tenantid column wich are used to reconstruct the data into its extended form.
+		This table will also contain a rowid and tenantid column which are used to reconstruct the data into its extended form.
 		In the optimal case existing extensions can be used by other tenants as well.
 
-		This schema introduces some overhead when costomisations are used as reconstructing the logical, extended, entities will take one or more joins. 
+		This schema introduces some overhead when customizations are used as reconstructing the logical, extended, entities will take one or more joins. 
 		In addition to that the amount of tables in the database will increase with the amount of tenants, and extensions, increases. Tests by Aulbach et.al. have show that performance degrades with an increasing number of tables.\cite{aulbach2008multi}
 \end{description}
 
@@ -73,14 +73,14 @@ For most layouts below this means that knowledge of column names and types are k
 	\item[Universal table(s)]
 		The universal table is a schema layout where there exists one generic table with a tenant column, table column and a large number of generic data columns.
 		Onto this table several logical entities can be mapped.
-		In this mapping the n'th column of the logical entity will map to the n'th generic field of its row in the universal table.
+		In this mapping the nth column of the logical entity will map to the nth generic field of its row in the universal table.
 		The application or middleware will have to keep track of the mappings for the entities used in the application.
 
 		The advantage to this layout is that the different tenants are able to extend the same table in different ways. 
 		Another advantage is that all columns in a row are kept together. 
 		This makes it easy to reconstruct the original entity.
 		The disadvantage are that the table will have to be very wide and it will contain a lot of NULLS. 
-		Altough some DBMSes have mechanisms to handle this efficiently, such as the SQL Server Sparse Columns feature.\footnote{http://technet.microsoft.com/en-us/library/cc280604.aspx (March 2014)}.
+		Although some DBMSes have mechanisms to handle this efficiently, such as the SQL Server Sparse Columns feature.\footnote{http://technet.microsoft.com/en-us/library/cc280604.aspx (March 2014)}.
 		Another disadvantage is that it will be difficult to support custom indices, either all tenants get an index on a column or none do.\cite{aulbach2008multi}
 	\item[Pivot tables]
 		Pivot tables are a different implementation of the universal table.
@@ -107,11 +107,11 @@ Based on these objects for each tenant a context can be maintained that allows t
 These contexts also facilitate direct access to the database for applications without needing a query rewriter.
 
 Both Schiller \cite{schiller2011native} and Aulbach \cite{aulbach2011extensibility} propose a model where tenants can extend the schema in an object-oriented way.
-Allowing tenants to share the base table and transparantly applying the extensions depending on the tenant executing a query.
+Allowing tenants to share the base table and transparently applying the extensions depending on the tenant executing a query.
 
 Schiller also implemented a prototype tenant-aware RDBMS.
 This prototype specifically implemented support for the tenant context and extensibility.
-However it is unclear wether their approach really meets the requirements of a multi-tenant application.
+However it is unclear whether their approach really meets the requirements of a multi-tenant application.
 
 
 %Allocation of resources for new tenants, predicting & preventing conflicts / bottlenecks.
