@@ -13,15 +13,15 @@ In the scalability section we will focus specifically on how the infrastructure,
 Scalability in the application layer is about dealing with an increasing amount of tenants on the existing infrastructure.
 Multi-tenant related research in this area focuses on estimating the resources required for new and existing tenants and how to use the multi-tenant characteristics of applications to improve these estimates. 
 
-For multi-tenant applications it is very important to avoid both under- and overutilisation of resources.
-Underutilisation causes unneeded costs and overutilisation leads to degraded performance.
+For multi-tenant applications it is very important to avoid both under and over utilization of resources.
+Under utilization causes unneeded costs and over utilization leads to degraded performance.
 
 Espadas et.al. \cite{espadas2013tenant} propose a resource allocation model for scaling SaaS applications.
 Their proposed system uses a core SaaS application that handles incoming requests.
 This application maintains a tenant context that tracks the number of logged in users, services used by the tenants and the resource consumption of the tenant.
 Based on the data stored in the context the system determines the amount of resources currently required by the tenants and adjusts the amount of allocated resources if needed.
 
-Performance tests with the new model lead to a statistically significant reduction in underutilisation, but no statistically significant reduction in overutilisation.
+Performance tests with the new model lead to a statistically significant reduction in under utilization, but no statistically significant reduction in over utilization.
 
 %TODO: Paper thomas kwok.
 
@@ -35,7 +35,7 @@ Second, as the number of tenants increases so will the amount of extensions on t
 The database should manage both the increasing load and the increasing complexity of the data in a scalable way.
 
 Scaling a database under increasing load is not a multi-tenant specific problem and for most DBMSes solutions exist for this. 
-For instance, Postgresql has several available solutions for scaling and clustering\footnote{http://wiki.postgresql.org/wiki/Replication,\_Clustering,\_and\_Connection\_Pooling (March 2014)}, and so does MySQL.\footnote{https://www.mysql.com/products/cluster/scalability.html (March 2014)}
+For instance, PostgreSQL has several available solutions for scaling and clustering\footnote{http://wiki.postgresql.org/wiki/Replication,\_Clustering,\_and\_Connection\_Pooling (March 2014)}, and so does MySQL.\footnote{https://www.mysql.com/products/cluster/scalability.html (March 2014)}
 
 This is also reflected in the fact that most research on performance and scalability in the data layer for multi-tenant applications either focuses on the following two subjects.
 How to efficiently map the extensible schema onto existing RDBMSes.\cite{aulbach2008multi, aulbach2009comparison} 
@@ -58,9 +58,9 @@ Below several schema layouts in this group will be discussed.
 		It is however for this same reason that in many multi-tenant applications using this schema is not an option.
 	\item[Extension tables]
 		This layout extends the basic to allow for tenant specific extensions..
-		In this schema there is a base table for every entity shared across tenants with a rowid and tenantid column.
+		In this schema there is a base table for every entity shared across tenants with a rowId and tenantId column.
 		When the schema is extended an extension table with the additional columns is created.
-		This table will also contain a rowid and tenantid column which are used to reconstruct the data into its extended form.
+		This table will also contain a rowId and tenantId column which are used to reconstruct the data into its extended form.
 		In the optimal case existing extensions can be used by other tenants as well.
 
 		This schema introduces some overhead when customizations are used as reconstructing the logical, extended, entities will take one or more joins. 
@@ -79,13 +79,13 @@ For most layouts below this means that knowledge of column names and types are k
 		The advantage to this layout is that the different tenants are able to extend the same table in different ways. 
 		Another advantage is that all columns in a row are kept together. 
 		This makes it easy to reconstruct the original entity.
-		The disadvantage are that the table will have to be very wide and it will contain a lot of NULLS. 
+		The disadvantage are that the table will have to be very wide and it will contain a lot of NULLs. 
 		Although some DBMSes have mechanisms to handle this efficiently, such as the SQL Server Sparse Columns feature.\footnote{http://technet.microsoft.com/en-us/library/cc280604.aspx (March 2014)}.
 		Another disadvantage is that it will be difficult to support custom indices, either all tenants get an index on a column or none do.\cite{aulbach2008multi}
 	\item[Pivot tables]
 		Pivot tables are a different implementation of the universal table.
 		In a pivot table every column entry from a logical entity gets its own row. 
-		This leads to a layout that looks like "Tenantid, EntityId, RowId, ColumnId, Data".
+		This leads to a layout that looks like "TenantId, EntityId, RowId, ColumnId, Data".
 
 		The advantage over a Universal table is that NULLS are not stored.
 		The disadvantage is the overhead in the database. 
@@ -94,7 +94,7 @@ For most layouts below this means that knowledge of column names and types are k
 		In the extension field layout for every entity a table.
 		All tables of extensible entities contain an extra field that stores extensions in a structured format like XML or JSON.
 		Certain RDBMSes support accessing data within such a field. 
-		DB2 does this for XML trough PureXML\footnote{http://www-01.ibm.com/software/data/db2/linux-unix-windows/xml/index.html (march 2014)} and Postgres allows for reading values from json fields\footnote{http://www.postgresql.org/docs/9.3/static/functions-json.html (march 2014)}
+		DB2 does this for XML trough PureXML\footnote{http://www-01.ibm.com/software/data/db2/linux-unix-windows/xml/index.html (march 2014)} and Postgres allows for reading values from JSON fields\footnote{http://www.postgresql.org/docs/9.3/static/functions-json.html (March 2014)}
 
 		The advantage of this schema is that extensions are kept in a single field and that its a very basic extension of the basic layout.
 		However reading from the extension field will introduce additional overhead.\cite{aulbach2009comparison}
