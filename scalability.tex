@@ -21,19 +21,24 @@ Extensibility is required because this allows tenants to modify their view of th
 %TODO: Kijken in hoeverre dit al onder het algemene deel behandeld is.
 
 Thus, scalability in the data layer is important in two different ways.
-First, as the number of tenants increases so will the amount of data and load on the database.
+First, as the number of tenants increases so will database load.
 Second, as the number of tenants increases so will the amount of extensions on the the schema. 
-The database should manage both the increasing amount of data and the increasing complexity of the data in a scalable way.
+The database should manage both the increasing load and the increasing complexity of the data in a scalable way.
 
-In the sections after this we will look at various schema mapping techniques and how these scale as datasets increase in size and complexity.
-In addition to that two tenant aware DBMS's will be discussed.
+Scaling a database under increasing load is not a multi-tenant specific problem and for most DBMSes solutions exist for this. 
+For instance, Postgresql has several available solutions for scaling and clustering\footnote{http://wiki.postgresql.org/wiki/Replication,\_Clustering,\_and\_Connection\_Pooling (Checked march 2014)}, and so does MySQL.\footnote{https://www.mysql.com/products/cluster/scalability.html (Checked march 2014)}
+
+This is also reflected in the fact that most research on performance and scalability in the data layer for multi-tenant applications either focuses on the following two subjects.
+How to efficiently map the extensible schema onto existing RDBMSes.\cite{aulbach2008multi, aulbach2009comparison} 
+Or, more recently, on creating multi-tenant aware RDBMSes.\cite{schiller2011native, aulbach2011extensibility} 
 
 \subsubsection{Schema mapping techniques}
 Schema mapping techniques for multi-tenant applications van be seperated seperated into two groups. 
-One group in wich the database 'owns' the schema and the other group where the application 'owns' the schema and maps this into generic database structures.\cite{aulbach2009comparison}
+One group in wich the database 'owns' the schema  and the other group where the application 'owns' the schema and maps this into generic database structures.\cite{aulbach2009comparison}
 
-First the mapping techniques where the database 'owns' will be discussed.
-In these layouts the types and names of the columns are know to the database.
+The first group lies closest to traditional usage of an RDBMS. 
+The various entities in the schema generally have their own tables in the database.
+Below several schema layouts in this group will be discussed.
 \begin{description}
 	\item[Basic layout] In the basic layout the database fully owns the schema and it cannot be extended. 
 		In this schema the tables are shared among tenants and the tables contain a 'tenantid' column to seperate the date of the various tenants.
@@ -42,20 +47,20 @@ In these layouts the types and names of the columns are know to the database.
 	\item[Private tables] Using a private tables layout every tenant has his own set of tables. 
 		Naturally this allows for tenants to extend the schema. 
 		One major drawback is that this layout will only scale up to a certain point. 
-		A large amount of tables will lead to performance degradation.
-		This would mean that at some point an application instance and associated database might get 'full' so then a new, seperate instance will have to be added. \cite{aulbach2008multi}%TODO: beter verwoorden.
+		A large amount of tables will lead to performance degradation.\cite{aulbach2008multi}%TODO: beter verwoorden.
 	\item[Extension tables]
 		This layout combines the the basic and the private tables layout.
 		In this schema there is a base table for every entity shared across tenants with a rowid and tenantid column.
 		When the schema is extended an extension table with the additional columns is created.
-		This table will also contain a rowid and tenantid column wich are used to reconstruct the data into its new, extended, form.
-		In the optimal case existing extensions can be used by other tenants as well, leading to a reduced number of tablesper tenant compared to the previous two layouts.\cite{aulbach2008multi}
+		This table will also contain a rowid and tenantid column wich are used to reconstruct the data into its extended form.
+		In the optimal case existing extensions can be used by other tenants as well, leading to a reduced number of tables per tenant compared to the previous private layout.\cite{aulbach2008multi}
 \end{description}
 
 In the mappings discussed below the database does not own the schema. 
-For most layouts below this means that knowledge of column names and types are kept in the application or middleware using the database.
+For most layouts below this means that knowledge of column names and types are kept in the application or middleware that is using the database for storage. 
 \begin{description}
 	\item[Universal table(s)]
+
 		%Een tabel voor alles, met vast aantal custom fields (varchar oid) eraan
 	\item[Extension field]
 		%Een XML veld (oid) aan het eind van iedere rij waar de tenant-specifieke uitbreidingen in staan. Grote overhead bij veel extra velden.
