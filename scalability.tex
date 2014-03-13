@@ -1,11 +1,11 @@
 %INTRO: (section title is in main file.)
 %\subsection{scalability.tex}
-The scalability of a system, in general, describes how well a system can handle increasing workload, stored data and utilisation.
+The scalability of a system, in general, describes how well a system can handle increasing workload, stored data and utilization.
 A system is considered scalable when it can be extended to support an increasing load with a wel manageable cost increase.
-On the contrary, for an unscalable system supporting increased load might be technically infeasable or prohibitively expensive.\cite{bondi2000scalability}
+On the contrary, for an unscalable system supporting increased load might be technically infeasible or prohibitively expensive.\cite{bondi2000scalability}
 
-As one of the key advantages of multi-tenant applications is a higher utilisation of resources and the associated cost reduction per tenant.\cite{bezemer2010multi} 
-It is required that a multi-tenant application is scalable to maintain this cost reduction and to accomodate for the, hopefully, ever increasing number of tenants.
+As one of the key advantages of multi-tenant applications is a higher utilization of resources and the associated cost reduction per tenant.\cite{bezemer2010multi} 
+It is required that a multi-tenant application is scalable to maintain this cost reduction and to accommodate for the, hopefully, ever increasing number of tenants.
 
 In the scalability section we will focus specifically on how the infrastructure, or specific parts thereof, of a multi-tenant application can deal with an increasing number of tenants.
 
@@ -26,15 +26,15 @@ Second, as the number of tenants increases so will the amount of extensions on t
 The database should manage both the increasing load and the increasing complexity of the data in a scalable way.
 
 Scaling a database under increasing load is not a multi-tenant specific problem and for most DBMSes solutions exist for this. 
-For instance, Postgresql has several available solutions for scaling and clustering\footnote{http://wiki.postgresql.org/wiki/Replication,\_Clustering,\_and\_Connection\_Pooling (Checked march 2014)}, and so does MySQL.\footnote{https://www.mysql.com/products/cluster/scalability.html (Checked march 2014)}
+For instance, PostgreSQL has several available solutions for scaling and clustering\footnote{http://wiki.postgresql.org/wiki/Replication,\_Clustering,\_and\_Connection\_Pooling (Checked march 2014)}, and so does MySQL.\footnote{https://www.mysql.com/products/cluster/scalability.html (Checked march 2014)}
 
 This is also reflected in the fact that most research on performance and scalability in the data layer for multi-tenant applications either focuses on the following two subjects.
 How to efficiently map the extensible schema onto existing RDBMSes.\cite{aulbach2008multi, aulbach2009comparison} 
 Or, more recently, on creating multi-tenant aware RDBMSes.\cite{schiller2011native, aulbach2011extensibility} 
 
 \subsubsection{Schema mapping techniques}
-Schema mapping techniques for multi-tenant applications van be seperated seperated into two groups. 
-One group in wich the database 'owns' the schema  and the other group where the application 'owns' the schema and maps this into generic database structures.\cite{aulbach2009comparison}
+Schema mapping techniques for multi-tenant applications can be seperated into two groups. 
+One group in which the database 'owns' the schema  and the other group where the application 'owns' the schema and maps this into generic database structures.\cite{aulbach2009comparison}
 
 The first group lies closest to traditional usage of an RDBMS. 
 The various entities in the schema generally have their own tables in the database.
@@ -42,7 +42,7 @@ Below several schema layouts in this group will be discussed.
 %TODO: Performance characteristics per schema.
 \begin{description}
 	\item[Basic layout] In the basic layout the database fully owns the schema and it cannot be extended. 
-		In this schema the tables are shared among tenants and the tables contain a 'tenantid' column to seperate the date of the various tenants.
+		In this schema the tables are shared among tenants and the tables contain a 'tenantId' column to separate the date of the various tenants.
 		In this case there is no room for extensions to the schema. 
 		This schema type is common in less complex applications where extensibility is less needed. \cite{aulbach2008multi}
 	\item[Private tables] Using a private tables layout every tenant has his own set of tables. 
@@ -51,9 +51,9 @@ Below several schema layouts in this group will be discussed.
 		A large amount of tables will lead to performance degradation.\cite{aulbach2008multi}
 	\item[Extension tables]
 		This layout combines the the basic and the private tables layout.
-		In this schema there is a base table for every entity shared across tenants with a rowid and tenantid column.
+		In this schema there is a base table for every entity shared across tenants with a rowId and tenantId column.
 		When the schema is extended an extension table with the additional columns is created.
-		This table will also contain a rowid and tenantid column wich are used to reconstruct the data into its extended form.
+		This table will also contain a rowId and tenantId column which are used to reconstruct the data into its extended form.
 		In the optimal case existing extensions can be used by other tenants as well, leading to a reduced number of tables per tenant compared to the previous private layout.\cite{aulbach2008multi}
 \end{description}
 
