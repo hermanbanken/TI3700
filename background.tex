@@ -13,6 +13,7 @@ Krebs et al. also mention tenant space, which means that customers rent predifin
 \subsection{Different layers of multi-tenancy}
 
 %% ...
+Chang Jie Guo et al. suggest the implementation of a multi-tenancy enablement layer. This should create a separation between usage and resources. %% elaborate!
 
 %% multi-instance = each tenant has own instance of application (and (optionally) database) [Bezemer and Zaidman 2010]
 
@@ -24,6 +25,8 @@ Krebs et al.\cite{krebs2012architecture} describe various layers of sharing:
 \item Middleware sharing (difficult isolation and overhead)
 \item Multi-Tenant Application (MTA)
 \end{enumerate}
+
+According to Bezemer and Zaidman, there are also various ways of implementing multi-tenancy: A shared application with a separate database, a shared application with a shared database with a separate table and a shared application, with a shared table. The latter is considered pure multi-tenancy. Krebs et al. divide this into affinity and persistency, with affinity describing which server(s) handle which tenant(s) and with persistency describing the way of usage of the database (shared or separated).
 
 %% multiple application deployment = multiple applications in one instance of the same runtime environment (is not multi-tenancy!) [Krebs et al. 2012]
 
@@ -38,9 +41,9 @@ Dillon et al.\cite{dillon2010cloud} comprehensively elaborate on various aspects
 \item Data as a Service (example: Google BigTable)
 \end{enumerate}
 
-Multi-tenancy falls within Software as a Service (SaaS), as mentioned by ... %resource?
+Multi-tenancy falls within Software as a Service (SaaS), as mentioned by Bezemer and Zaidman.
 
-They also describe the several essential characteristics of cloud services, including resource pooling and rapid elasticity. These are both challenges for multi-tenant applications, as mentioned by ... %resource?
+Dillon et al. also describe the several essential characteristics of cloud services, including resource pooling and rapid elasticity. These are both challenges for multi-tenant applications, as also mentioned by Krebs et al.\cite{krebs2012architecture} and Bezemer and Zaidman\cite{bezemer2010multi}.
 
 \subsection{Challenges of multi-tenancy}
 
@@ -48,4 +51,6 @@ The multi-tenancy model has created two new security issues\cite{dillon2010cloud
 
 Another challenge is the charging model. The costs of developing multi-tenancy can be very substantial for SaaS providers, because they need to re-design or re-develop single-tenancy software, introduce new features for customization and enhance the security.
 
-This paper will highlight the following challenges more in depth: \ldots %% TODO TODO
+Bezemer and Zaidman\cite{bezemer2010multi} also mention performance as a challenge, since multiple tenants are using the same hardware resources. Another challenges are scalability, zero-downtime and maintenance. The latter is caused by the added complexity due to multi-tenancy.
+
+This paper will discuss the challenges about security, scalability, Quality of Services (QoS) and variability more in depth in the following sections.
