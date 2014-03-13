@@ -1,4 +1,4 @@
-%% Introduction here
+Multi-tenancy is a vague term, since it has never had an exact and official definition. During the last years, also due to the uprising of cloud applications, multi-tenancy gets researched and used more and more. This section therefore gives some recent definitions, describes shortly the various types of multi-tenancy, the relationship with the cloud and the challenges of multi-tenancy.
 
 \subsection{Definitions}
 
@@ -6,34 +6,27 @@ Bezemer and Zaidman\cite{bezemer2010multi} describe a tenant as an organizationa
 
 Based on these definitions, both more or less agree on the defintion of a multi-tenant application: hardware resource sharing by offering one shared application and database instance to multiple tenants.
 
-The difference between multi-tenancy and multi-user is also made clear by Bezemer and Zaidman. They state that in a multi-user application all users use the same application with limited configuration options. %% elaborate!
+The difference between multi-tenancy and multi-user is also made clear by Bezemer and Zaidman\cite{bezemer2010multi}. They state that in a multi-user application all users use the same application with limited configuration options, whereas a multi-tenancy application has more configuration options. All users use however the same application, in both multi-user and multi-tenancy applications.
 
-Krebs et al. also mention tenant space, which means that customers rent predifined space of resources (example: IaaS).
+Krebs et al.\cite{krebs2012architecture} also mention tenant space, which means that customers rent predifined space of resources (an example of this is Infrastructure as a Service). Comparing this to the definitions of Bezemer and Zaidman\cite{bezemer2010multi} this has however little to do with multi-tenancy. The same goes for multiple application deployment, which means running multiple applications in one instance of the same runtime environment.
 
-\subsection{Different layers of multi-tenancy}
+\subsection{Different types of multi-tenancy}
 
-%% ...
-Chang Jie Guo et al. suggest the implementation of a multi-tenancy enablement layer. This should create a separation between usage and resources. %% elaborate!
-
-%% multi-instance = each tenant has own instance of application (and (optionally) database) [Bezemer and Zaidman 2010]
-
-Krebs et al.\cite{krebs2012architecture} describe various layers of sharing:
-
+Krebs et al.\cite{krebs2012architecture} describe various layers of sharing, in order of increasing benefits:
 \begin{enumerate}
 \item Sharing a data center (very limited benefits)
 \item Virtualization, thus sharing a server (large overhead)
 \item Middleware sharing (difficult isolation and overhead)
-\item Multi-Tenant Application (MTA)
+\item Multi-Tenant Application
 \end{enumerate}
 
-According to Bezemer and Zaidman, there are also various ways of implementing multi-tenancy: A shared application with a separate database, a shared application with a shared database with a separate table and a shared application, with a shared table. The latter is considered pure multi-tenancy. Krebs et al. divide this into affinity and persistency, with affinity describing which server(s) handle which tenant(s) and with persistency describing the way of usage of the database (shared or separated).
+According to Bezemer and Zaidman\cite{bezemer2010multi}, there are also various ways of implementing multi-tenancy: A shared application with a separate database, a shared application with a shared database with a separate table and a shared application, with a shared table. The latter is considered pure multi-tenancy. Krebs et al.\cite{krebs2012architecture} divide this into affinity and persistency, with affinity describing which server(s) handle which tenant(s) and with persistency describing the way of usage of the database (shared or separated).
 
-%% multiple application deployment = multiple applications in one instance of the same runtime environment (is not multi-tenancy!) [Krebs et al. 2012]
+Chang Jie Guo et al.\cite{guo2007framework} suggest the implementation of a multi-tenancy enablement layer. This should create a separation between usage and resources, creating the required isolations and allowing customizations. This can be compared to the blueprint of Bezemer and Zaidman\cite{bezemer2010multi}, since both approaches should have little impact on the single-tenant code.
 
 \subsection{Multi-tenancy vs. the cloud}
 
 Dillon et al.\cite{dillon2010cloud} comprehensively elaborate on various aspects of cloud services. They mention the following service models: 
-
 \begin{enumerate}
 \item Software as a Service (example: Google Mail/Docs)
 \item Platform as a Service (example: Google AppEngine)
@@ -41,9 +34,9 @@ Dillon et al.\cite{dillon2010cloud} comprehensively elaborate on various aspects
 \item Data as a Service (example: Google BigTable)
 \end{enumerate}
 
-Multi-tenancy falls within Software as a Service (SaaS), as mentioned by Bezemer and Zaidman.
+Multi-tenancy falls mostly within the Software as a Service (SaaS) domain, as mentioned by Bezemer and Zaidman\cite{bezemer2010multi}. Multi-tenancy gains the most benefits within this model.
 
-Dillon et al. also describe the several essential characteristics of cloud services, including resource pooling and rapid elasticity. These are both challenges for multi-tenant applications, as also mentioned by Krebs et al.\cite{krebs2012architecture} and Bezemer and Zaidman\cite{bezemer2010multi}.
+Dillon et al.\cite{dillon2010cloud} also describe the several essential characteristics of cloud services, including resource pooling and rapid elasticity. These are both challenges for multi-tenant applications, as also mentioned by Krebs et al.\cite{krebs2012architecture} and Bezemer and Zaidman\cite{bezemer2010multi}.
 
 \subsection{Challenges of multi-tenancy}
 
