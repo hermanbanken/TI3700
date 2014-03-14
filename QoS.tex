@@ -16,15 +16,28 @@ Krebs\cite{krebs2013metrics} defines a system as fair when the following criteri
 		This is because otherwise the tenant would be getting more than is agreed upon in their SLA, which is usually more than they are paying for and more than tenants under the same SLA who are not exceeding their quota.
 	\item Tenants with a higher quote should experience better performance compared to tenants with a lower quota.
 \end{enumerate}
-% SLA's, eerlijk gebruik resources.
-
-\subsection{Metrics for Tenant Load}
-%ZIE: QoS 5.: Krebs et.al.  QoS 2.: Kwok et.al.
 
 \subsection{Tenant Seperation Techniques}
-%TODO: Let op: in hoeverre verschillende architectuurkeuzes al behandeld in het algemene deel.
-% 1. VMs (tenants toekennen aan machines)
-% 2. Tenants toekennen aan specifieke resources (thread pools e.d.) 
-% 3. Alle tenants delen dezelfde resources (QoS via: request throttling / queueing.)
+In true multi-tenant applications the primary technique proposed for maintaining QoS for multiple tenants is by limiting the amount of requests a tenant can execute. Walraven \cite{walraven2012towards}, Krebs \cite{krebs2013metrics} and Lin \cite{lin2009feedback} all propose methods that include request limiting in some form.
 
-\subsection{Current Challenges in QoS Research}
+The method proposed by Walraven uses a pluggable middleware framework for performance isolation.
+In this middleware reside a tenant aware profiler, a tenant categorizer and a scheduler. 
+The profiler gathers monitoring data from the rest of the system and the scheduler.
+The data from the profiler and data concering the SLAs of the tenants is used by the categorizer to put the tenants in one of three groups: passive, normal, or agressive.
+Finally the scheduler is responsible for the actual performance isolation.
+The scheduler contains multiple request queues and requests are assigned to queues based on their category.
+The system of queues allows, for instance, to process requests from agressive tenants less frequently.
+Walravens prototype was effective in isolating a single agressive tenant from his normal co-tenants.
+
+Krebs evaluates several tenant seperation methods and finds that a two-queue system with a quota monitor provides very good tenant isolation.
+In this system request from tenants that exceed their SLA get placed in a blacklist queue and other requests in a whitelist queue. 
+Only when the whitelist is empty will blacklisted requests be serviced.
+The concept of using multiple queues to categorize and prioritize tenant requests is very simular to the method proposed by Walraven.
+
+Lin proposes a system that not only limits request per tenant but also dynamically assigns resources to tenants based on the admission rate.
+What sets his method apart is that it it uses a PI\footnote{Proportional Integral} controller to reassign resources and increase or decrease the admission rates to correct for errors in the initial estimations.
+
+\subsection{Future work in QoS Research}
+Both Walraven, Krebs and Lin call for the evaluation of more different algorithms for tenant isolation.
+
+In addition to that Lins approach must still be implemented on a cluster, instead of the single servers used. Lin also wants to look at other resources that can be used for dynamically reassigning resources, as his current approach only focused on threads.
