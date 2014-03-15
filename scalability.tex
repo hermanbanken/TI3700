@@ -2,9 +2,9 @@
 %\subsection{scalability.tex}
 The scalability of a system, in general, describes how well a system can handle increasing workload, stored data and utilization.
 A system is considered scalable when it can be extended to support an increasing load with a well manageable cost increase.
-On the contrary, for an unscalable system supporting increased load might be technically infeasible or prohibitively expensive.\cite{bondi2000scalability}
+On the contrary, for an unscalable system supporting increased load might be technically infeasible or prohibitively expensive.~\cite{bondi2000scalability}
 
-As one of the key advantages of multi-tenant applications is a higher utilization of resources and the associated cost reduction per tenant.\cite{bezemer2010multi} 
+As one of the key advantages of multi-tenant applications is a higher utilization of resources and the associated cost reduction per tenant.~\cite{bezemer2010multi} 
 It is required that a multi-tenant application is scalable to maintain this cost reduction and to accommodate for the, hopefully, ever increasing number of tenants.
 
 In the scalability section we will focus specifically on how the infrastructure, or specific parts thereof, of a multi-tenant application can deal with an increasing number of tenants.
@@ -16,7 +16,7 @@ Multi-tenant related research in this area focuses on estimating the resources r
 For multi-tenant applications it is very important to avoid both under and over utilization of resources.
 Under utilization causes unneeded costs and over utilization leads to degraded performance.
 
-Espadas et.al. \cite{espadas2013tenant} propose a resource allocation model for scaling SaaS applications.
+Espadas et.al.~\cite{espadas2013tenant} propose a resource allocation model for scaling SaaS applications.
 Their proposed system uses a core SaaS application that handles incoming requests.
 This application maintains a tenant context that tracks the number of logged in users, services used by the tenants and the resource consumption of the tenant.
 Based on the data stored in the context the system determines the amount of resources currently required by the tenants and adjusts the amount of allocated resources if needed.
@@ -38,12 +38,12 @@ Scaling a database under increasing load is not a multi-tenant specific problem 
 For instance, PostgreSQL has several available solutions for scaling and clustering\footnote{http://wiki.postgresql.org/wiki/Replication,\_Clustering,\_and\_Connection\_Pooling (March 2014)}, and so does MySQL.\footnote{https://www.mysql.com/products/cluster/scalability.html (March 2014)}
 
 This is also reflected in the fact that most research on performance and scalability in the data layer for multi-tenant applications either focuses on the following two subjects.
-How to efficiently map the extensible schema onto existing RDBMSes.\cite{aulbach2008multi, aulbach2009comparison} 
-Or, more recently, on creating multi-tenant aware RDBMSes.\cite{schiller2011native, aulbach2011extensibility} 
+How to efficiently map the extensible schema onto existing RDBMSes.~\cite{aulbach2008multi, aulbach2009comparison} 
+Or, more recently, on creating multi-tenant aware RDBMSes.~\cite{schiller2011native, aulbach2011extensibility} 
 
 \subsection{Schema mapping techniques}
 Schema mapping techniques for multi-tenant applications can be separated into two groups. 
-One group in which the database 'owns' the schema  and the other group where the application 'owns' the schema and maps this into generic database structures.\cite{aulbach2009comparison}
+One group in which the database 'owns' the schema  and the other group where the application 'owns' the schema and maps this into generic database structures.~\cite{aulbach2009comparison}
 
 The first group lies closest to traditional usage of an RDBMS. 
 The various entities in the schema generally have their own tables in the database.
@@ -52,7 +52,7 @@ Below several schema layouts in this group will be discussed.
 	\item[Basic layout] In the basic layout the database fully owns the schema and it cannot be extended. 
 		In this schema the tables are shared among tenants and the tables contain a 'tenantId' column to separate the date of the various tenants.
 		In this case there is no room for extensions to the schema. 
-		This schema type is common in less complex applications where extensibility is less needed. \cite{aulbach2008multi}
+		This schema type is common in less complex applications where extensibility is less needed.~\cite{aulbach2008multi}
 		
 		The major advantage from a scalability point of view is that in this schema extensibility does not exist so only increasing load is something that has to be dealt with.
 		It is however for this same reason that in many multi-tenant applications using this schema is not an option.
@@ -64,7 +64,7 @@ Below several schema layouts in this group will be discussed.
 		In the optimal case existing extensions can be used by other tenants as well.
 
 		This schema introduces some overhead when customizations are used as reconstructing the logical, extended, entities will take one or more joins. 
-		In addition to that the amount of tables in the database will increase with the amount of tenants, and extensions, increases. Tests by Aulbach et.al. have show that performance degrades with an increasing number of tables.\cite{aulbach2008multi}
+		In addition to that the amount of tables in the database will increase with the amount of tenants, and extensions, increases. Tests by Aulbach et.al. have show that performance degrades with an increasing number of tables.~\cite{aulbach2008multi}
 \end{description}
 
 In the mappings discussed below the database does not own the schema. 
@@ -81,7 +81,7 @@ For most layouts below this means that knowledge of column names and types are k
 		This makes it easy to reconstruct the original entity.
 		The disadvantage are that the table will have to be very wide and it will contain a lot of NULLs. 
 		Although some DBMSes have mechanisms to handle this efficiently, such as the SQL Server Sparse Columns feature.\footnote{http://technet.microsoft.com/en-us/library/cc280604.aspx (March 2014)}.
-		Another disadvantage is that it will be difficult to support custom indices, either all tenants get an index on a column or none do.\cite{aulbach2008multi}
+		Another disadvantage is that it will be difficult to support custom indices, either all tenants get an index on a column or none do.~\cite{aulbach2008multi}
 	\item[Pivot tables]
 		Pivot tables are a different implementation of the universal table.
 		In a pivot table every column entry from a logical entity gets its own row. 
@@ -89,7 +89,7 @@ For most layouts below this means that knowledge of column names and types are k
 
 		The advantage over a Universal table is that NULLS are not stored.
 		The disadvantage is the overhead in the database. 
-		This schema contains more metadata columns than data columns, and for a logical entity with $n$ columns $(n-1)$ joins on the pivot table are needed to reconstruct it.\cite{aulbach2008multi}
+		This schema contains more metadata columns than data columns, and for a logical entity with $n$ columns $(n-1)$ joins on the pivot table are needed to reconstruct it.~\cite{aulbach2008multi}
 	\item[Extension fields]
 		In the extension field layout for every entity a table.
 		All tables of extensible entities contain an extra field that stores extensions in a structured format like XML or JSON.
@@ -97,16 +97,16 @@ For most layouts below this means that knowledge of column names and types are k
 		DB2 does this for XML trough PureXML\footnote{http://www-01.ibm.com/software/data/db2/linux-unix-windows/xml/index.html (march 2014)} and Postgres allows for reading values from JSON fields\footnote{http://www.postgresql.org/docs/9.3/static/functions-json.html (March 2014)}
 
 		The advantage of this schema is that extensions are kept in a single field and that its a very basic extension of the basic layout.
-		However reading from the extension field will introduce additional overhead.\cite{aulbach2009comparison}
+		However reading from the extension field will introduce additional overhead.~\cite{aulbach2009comparison}
 \end{description}
 
 \subsection{Tenant aware DMBSes}
-Schiller et.al.\cite{schiller2011native} propose a database with native multi-tenancy support and support for schema extensibility.
+Schiller et.al.~\cite{schiller2011native} propose a database with native multi-tenancy support and support for schema extensibility.
 Using their approach a tenant object would exist within the database as a first-class object. 
 Based on these objects for each tenant a context can be maintained that allows the database to determine what data belongs to a specific tenant. 
 These contexts also facilitate direct access to the database for applications without needing a query rewriter.
 
-Both Schiller \cite{schiller2011native} and Aulbach \cite{aulbach2011extensibility} propose a model where tenants can extend the schema in an object-oriented way.
+Both Schiller~\cite{schiller2011native} and Aulbach~\cite{aulbach2011extensibility} propose a model where tenants can extend the schema in an object-oriented way.
 Allowing tenants to share the base table and transparently applying the extensions depending on the tenant executing a query.
 
 Schiller also implemented a prototype tenant-aware RDBMS.
@@ -117,9 +117,9 @@ However it is unclear whether their approach really meets the requirements of a 
 %Allocation of resources for new tenants, predicting & preventing conflicts / bottlenecks.
 % Espadas et.al en Thomas Kwok et.al.
 
-\subsection{Future work}
-Both Kwok et.al. \cite{kwok2008resource} and Espadas et.al.\cite{espadas2013tenant} name identifying bottlenecks and validating existing and proposed methods as the primary challenge.
+\subsection{Research Agenda for Scalability}
+Both Kwok et.al.~\cite{kwok2008resource} and Espadas et.al.~\cite{espadas2013tenant} name identifying bottlenecks and validating existing and proposed methods as the primary challenge.
 In addition Espadas recommended finding new models and mechanisms for measuring machine statuses and metrics.
 
-For the storage layer Aulbach et.al. \cite{aulbach2009comparison, aulbach2008multi} and Schiller et.al. \cite{schiller2011native} want further research into tenant-databases. The current prototypes are still incomplete and are seen as a basis for further research and development.
+For the storage layer Aulbach et.al.~\cite{aulbach2009comparison, aulbach2008multi} and Schiller et.al.~\cite{schiller2011native} want further research into tenant-databases. The current prototypes are still incomplete and are seen as a basis for further research and development.
 

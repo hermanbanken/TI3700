@@ -1,6 +1,6 @@
-In multi-tenancy \textit{variability} is a key concept. The term was first introduced in the car industry, where customers could choose certain \textit{variants} of chassis, engine and color \cite[p. 153]{kabbedijk2011variability}. 
-In research on software engineering the concept was defined as ``the ability of a software system or artefact to be efficiently extended, changed, customized or configured for use in a particular context'' \cite{svahnberg2005taxonomy}.
-Two keywords from this definition are customization and configuration. In a multi-tenant context configuration is preferred over customization \cite{sun2008software} as customization defines the process of reengineering an application, maintaining multiple branches and deploying these branches separately, while configuration can be done at run-time and does not require multiple instances or branches.
+In multi-tenancy \textit{variability} is a key concept. The term was first introduced in the car industry, where customers could choose certain \textit{variants} of chassis, engine and color~\cite[p. 153]{kabbedijk2011variability}. 
+In research on software engineering the concept was defined as ``the ability of a software system or artefact to be efficiently extended, changed, customized or configured for use in a particular context''~\cite{svahnberg2005taxonomy}.
+Two keywords from this definition are customization and configuration. In a multi-tenant context configuration is preferred over customization~\cite{sun2008software} as customization defines the process of reengineering an application, maintaining multiple branches and deploying these branches separately, while configuration can be done at run-time and does not require multiple instances or branches.
 
 \subsection{Why is variability needed}
 There are several reasons why variability is needed. 
@@ -10,11 +10,11 @@ Secondly different customers can require different functionality properties, lay
 
 \subsection{Levels of variability}
 Variability can be accomplished on different levels. 
-Dependent on the scale of the application different patterns become be relevant. Large applications often consist of \textit{components} offering a specific \textit{service} and variability can be accomplished by dynamically swapping these components for different tenants, or by activating or deactivating specific components \cite{mietzner2008defining}. 
+Dependent on the scale of the application different patterns become be relevant. Large applications often consist of \textit{components} offering a specific \textit{service} and variability can be accomplished by dynamically swapping these components for different tenants, or by activating or deactivating specific components~\cite{mietzner2008defining}. 
 
-In smaller applications and within components different patterns become relevant. For example, one can customize an application by using dependency injection \cite{walraven2011middleware} or context oriented programming \cite{truyen2012context}.
+In smaller applications and within components different patterns become relevant. For example, one can customize an application by using dependency injection~\cite{walraven2011middleware} or context oriented programming~\cite{truyen2012context}.
 
-Two types of variability can be distinguished, external and internal variability \cite{mietzner2009variability}:
+Two types of variability can be distinguished, external and internal variability~\cite{mietzner2009variability}:
  \begin{itemize}
 \item \textbf{External variability} is this variability that is communicated to the customers and most of the times this variability is \textbf{Customer-driven} and is implemented because customers asked for it or because the developers thought the customers would ask for it. 
 \item In contrast  \textbf{internal variability} exists because of implementation details. For example some - external - variants may depend on some internal variation.
@@ -29,16 +29,16 @@ For SaaS providers it's important to have a model of the application to build ru
 A model can also be used to automatically create configuration wizards and bill tenants according to the used variants. 
 For tenants it's important that they can use the best tailored variant of the application for their needs and thus it's also in their interest that the SaaS provider has a good overview of it's own application and to have a good configuration tool.
 
-To support negotiation about variability in functionality Schroeter et al. \cite{schroeter2012towards} found some well established models: feature modeling, decision modeling and orthogonal variability modeling.
+To support negotiation about variability in functionality Schroeter et al.~\cite{schroeter2012towards} found some well established models: feature modeling, decision modeling and orthogonal variability modeling.
 
-Feature modeling or a ``feature based component model" is applied by Walraven et al. \cite{walraven2011middleware} in their paper on a multi tenant middleware layer. A variation is
+Feature modeling or a ``feature based component model" is applied by Walraven et al.~\cite{walraven2011middleware} in their paper on a multi tenant middleware layer. A variation is
 expressed in terms of a feature, a distinctive functionality, service, quality or characteristic of an 
 application. Features can have multiple implementations that can then be composed into the 
 base application as ideally they are modular pieces of software. By splitting the application in 
 these kind of features it is easier to keep functionality together, to make each feature 
 customizable and to add implementations in a later stage.
 
-Decision modeling, as described by Schmid et al. \cite{schmid2004customizable}, is used in 
+Decision modeling, as described by Schmid et al.~\cite{schmid2004customizable}, is used in 
 Software Line Engineering to manage the variability of an application that is not specifically 
 multi instance or even multi tenant aware. However the concepts can be similarly applied to 
 multi tenancy. In the decision model variables are defined that are used throughout the 
@@ -48,7 +48,7 @@ constraints apply and when the variable is to be bound. The problem with decisio
 that the configuration points and the application code can quickly become incomprehensible 
 when lots of variables exist that might be used thorough different features and components.
 
-Mietzner et al. \cite{mietzner2009variability} use OVM (Orthogonal Variability Model) as their variability model. OVM differs from other approaches in that it does provide a separate view on variability. This reduces the size of the model and makes it easier to understand the models as commonalities are left out and only the variability is modeled. This allows for understanding the model without understanding the application's design model.
+Mietzner et al.~\cite{mietzner2009variability} use OVM (Orthogonal Variability Model) as their variability model. OVM differs from other approaches in that it does provide a separate view on variability. This reduces the size of the model and makes it easier to understand the models as commonalities are left out and only the variability is modeled. This allows for understanding the model without understanding the application's design model.
 
 \begin{figure}[htr]
     \centering
@@ -60,10 +60,11 @@ Mietzner et al. \cite{mietzner2009variability} use OVM (Orthogonal Variability M
 In OVM, the \textit{variation points} are the key items. One variation point has multiple \textit{variants} that are either optional or mandatory. Relations between VP's exist that define whether some variant is mutual exclusive with some other variant or whether some variant requires an other variant. Relations are drawn as lines between VP's. An example can be seen in figure \ref{fig:ovm}.
 
 % \subsection{Developing with variability in mind}
-% Efficient customization of multi-tenant Software-as-a-Service applications with service lines% by Stefan Walravena, Dimitri Van Landuyta, Eddy Truyena, Koen Handekynb, Wouter Joosena
+% Efficient customization of multi-tenant Software-as-a-Service applications with service lines
+% by Stefan Walravena, Dimitri Van Landuyta, Eddy Truyena, Koen Handekynb, Wouter Joosena
 
 \subsection{Variability Realization Techniques}
-Jansen et al. \cite{jansen2010customization} note that while lot of research has been done on variability modeling, there is lack of research on techniques needed to implement variability. They identify five realization techniques of two types of customization, being \textit{Model View Controller (MVC) customization} and \textit{system customization}:
+Jansen et al.~\cite{jansen2010customization} note that while lot of research has been done on variability modeling, there is lack of research on techniques needed to implement variability. They identify five realization techniques of two types of customization, being \textit{Model View Controller (MVC) customization} and \textit{system customization}:
 \begin{itemize}
 \item \textbf{Model changes} allow tenants to fit the application to their domain. Model changes include changing entity attributes, adding entities and entity-relationships. Some changes require a more abstract application and therefore need to be thought upon earlier in the design process than more simple changes which could easily be added later on.
 \item Some of the simpler customizations include \textbf{view changes} as in MVC patterns views don't interact with other components, but instead are the receiving part.
@@ -75,7 +76,7 @@ Large systems build of components delivering services can create variations of a
 \item With \textbf{system component changes} multiple components deliver the same service and are selected based on configuration.
 \end{itemize}
 
-Kabbedijk and Jansen \cite{kabbedijk2011variability} describe three variability realization techniques they observed in case studies. 
+Kabbedijk and Jansen~\cite{kabbedijk2011variability} describe three variability realization techniques they observed in case studies. 
 \textbf{Customizable Data Views} are a pattern to store tenant specific representation settings, eg. how tenants want to filter or sort their data. 
 Although this technique also requires some table storing data and needs a small controller, it can be seen as mainly a view change as described by Jansen et al. 
 Another view change is the \textbf{Module Dependent Menu}-pattern, to create menus that are dependent on the modules associated to a tenant. The last technique they observe is more a controller change. 
@@ -83,30 +84,30 @@ Another view change is the \textbf{Module Dependent Menu}-pattern, to create men
 This allows for tenants to enable or disable modules that check data or automate certain tasks.
 
 A common way to implement controller changes or system component changes is the variation technique \textbf{dependency injection (DI)} where one of the (possibly many) classes that implement the same interface are injected by a provider. 
-Walraven, Truyen and Joosen \cite{walraven2011middleware} created a middleware layer that uses a existing DI framework, compatible with Google App Engine, named Guice. An issue with Guice, that did not allow per-request switching of implementations was quickly solved by adding a small abstraction layer, making Guice usable in a multi-tenant environment.
+Walraven, Truyen and Joosen~\cite{walraven2011middleware} created a middleware layer that uses a existing DI framework, compatible with Google App Engine, named Guice. An issue with Guice, that did not allow per-request switching of implementations was quickly solved by adding a small abstraction layer, making Guice usable in a multi-tenant environment.
 Side note: their case study also shows that GAE leverages the effort of separating tenant data a lot by providing the so-called Namespaces API. By linking each tenant to an unique namespace all data in that namespace is only accessible by a that specific tenant.
 
 One of the conclusions of Walraven et al. is that Aspect Oriented Software Development (AOSD) looks promising as an alternative to DI for more complex customizations, such as features that have to be combined.
-They go further on this lead in Truyen et al. \cite{truyen2012context} and introduce \textbf{Context Oriented Programming (COP)}, a form of AOSD to implement what can be seen as controller changes. 
+They go further on this lead in Truyen et al.~\cite{truyen2012context} and introduce \textbf{Context Oriented Programming (COP)}, a form of AOSD to implement what can be seen as controller changes. 
 In COP layers are added to the code that override certain behavior when this layer is activated for a specific tenant. 
 In DI, for each variation point only one variation can be injected at a time, so no two 'modules' providing the same functionality can interact or extend each other, while in COP those implementations can work together, because the overriding methods can still call the original method allowing them to modify the output or implement a filter. 
 Multiple layers can be active at once, doing their work in a predefined order. 
 % MAYBE-TODO: this paragraph could be more elaborate
 
-\subsection{Future Work in Variability}
+\subsection{Research Agenda for Variability}
 % svahnberg2005taxonomy
 % sun2008software: no interesting future work proposed
 
 % mietzner2008defining: automization, no further interesting future work proposed
-Mietzner et al. \cite{mietzner2008defining} want to make variability easier to manage for SaaS providers and created so called \textit{solutions} that define which variants should be bound. In the future it could be investigated how deployment scripts could be derived from those solutions.
+Mietzner et al.~\cite{mietzner2008defining} want to make variability easier to manage for SaaS providers and created so called \textit{solutions} that define which variants should be bound. In the future it could be investigated how deployment scripts could be derived from those solutions.
 
-Mietzner et al. \cite{mietzner2009variability} describe a cost model for SaaS applications to compare the cost of multi tenant aware versus non-multi-tenant aware applications. They do not however relate this cost model to their variability model. This is interesting for future research as a SaaS provider can then determine the cost of creating, maintaining and managing a variant. The provider could then decide if it economically makes more sense to keep a variant or to remove it.
+Mietzner et al.~\cite{mietzner2009variability} describe a cost model for SaaS applications to compare the cost of multi tenant aware versus non-multi-tenant aware applications. They do not however relate this cost model to their variability model. This is interesting for future research as a SaaS provider can then determine the cost of creating, maintaining and managing a variant. The provider could then decide if it economically makes more sense to keep a variant or to remove it.
 
 % jansen2010customization nothing in this paper thats not in kabbedijk2011variability
 
-While Kabbedijk and Jansen \cite{kabbedijk2011variability} have determined some Variability Realization Techniques, but note that more VRTs could be identified and should be tested on effectiveness, maintainability, scalability and performance.
+While Kabbedijk and Jansen~\cite{kabbedijk2011variability} have determined some Variability Realization Techniques, but note that more VRTs could be identified and should be tested on effectiveness, maintainability, scalability and performance.
 
-Truyen et al. \cite{truyen2012context} found that COP was useful as a VRT but ContextJ lacked support for asynchronous request because context is not shared to new threads. Research could be done to see if it is possible to bridge this gap to make COP more usable as more and more applications are using asynchronous functionality.
+Truyen et al.~\cite{truyen2012context} found that COP was useful as a VRT but ContextJ lacked support for asynchronous request because context is not shared to new threads. Research could be done to see if it is possible to bridge this gap to make COP more usable as more and more applications are using asynchronous functionality.
 
 Furthermore they found that Google App Engine scales well automatically, but does not support any kind of performance isolation or can guarantee performance to any specific tenant more than an other tenant. More research can be done on this subject and maybe Google and other PaaS providers will then implement this functionality and enable SaaS providers using their platform to sell Quality of Service guarantees.
 
