@@ -39,7 +39,7 @@ One of the most important characteristics of a good multi-tenant system is that 
 %[Kan nog wat over data redundancy cancellation and backup)
 
 To ensure the secure data storing, the paper~\cite{Takahashi2012Security} suggests the use of encrypted data manipulation using crypto-graphical techniques. 
-One such technique is called progressive elliptic curve encryption (PECE), which allows a user to encrypt a file with multiple keys, while decrypting it with a single key. 
+One such technique is called \acf{PECE}, which allows a user to encrypt a file with multiple keys, while decrypting it with a single key. 
 Next to that, they also propose Homomorphic encryption. 
 This crypto-graphical technique enables the users to perform operations on encrypted files without decrypting the value.
 
@@ -70,11 +70,11 @@ The report about data breaches on the Verizon Business platform, reports the fol
 \end{enumerate}
 
 The statistics are quite clear about it; nowadays hackers and other malicious users tend to attack the higher layers, like the application-layer. 
-The Open Web Application Security Project (OWASP)\footnote{http://owasptop10.googlecode.com/files/OWASP\%20Top\%2010\%20-\%202013.pdf} has identified the 10 greatest security risks faced by web applications, including SQL injections and cross-server scripting.
+The \ac{OWASP}\footnote{http://owasptop10.googlecode.com/files/OWASP\%20Top\%2010\%20-\%202013.pdf} has identified the 10 greatest security risks faced by web applications, including SQL injections and cross-server scripting.
 
 In Takahashi et al~\cite{Takahashi2012Security} the authors describe a couple of ways to detect vulnerabilities in the server-side and client-side of the web application. 
 Endpoint risk detection techniques detect client-side vulnerabilities at the endpoint (the user). 
-There are a good number of implementations, such as FLAX and Zozzle that target JavaScript issues. 
+There are a good number of implementations, such as FLAX~\cite{saxena10kudzu} and Zozzle~\cite{curtsinger2011zozzle} that target JavaScript issues. 
 Another form of detection is called the middle-box risk detection. 
 This kind of detection requires no adjustments of the code, as the detection is performed in between the server and client-side, using custom HTTP requests. 
 Projects implementing this kind detection, such as SpyProxy, BrowserShield and WebShield, are still in early development stages, but they already look very promising.
