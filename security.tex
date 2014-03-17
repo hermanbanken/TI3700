@@ -101,23 +101,23 @@ Another reason for taking into account related security issues, is the fact that
 The model depends on a bundle of underlying technologies, such as the hardware infrastructure, operating systems and server software. 
 Each of these technologies has its own share of security issues, impacting the level of security of the multi-tenancy system on top. 
 
-\subsubsection{Virtual Machine Security}
+\subsubsection{\acf{VM} Security}
 When taking virtual machines into account in multi-tenancy. 
 Introspection of virtual machines pose major challenges to the cloud provider. 
-A tenant has the ability to migrate his custom VMs to other VMMs. 
-However, when a VM is placed in a server with an untrusted VMM it would allow VMM to track to the data flows inside the guest VM~\cite{Takahashi2012Security}.
+A tenant has the ability to migrate his custom \acp{VM} to other \acp{VMM}. 
+However, when a \ac{VM} is placed in a server with an untrusted \ac{VMM} it would allow \ac{VMM} to track to the data flows inside the guest VM~\cite{Takahashi2012Security}.
 
 Another current issue is the adaptation of VM-based Root-kits. 
-These root-kits, unlike traditional root-kits, do not stop at OS level, but continue to attempt to infect the supervising VMM. 
-According to Takahashi~\cite{Takahashi2012Security}, several proof-of-concept VM-based root-kits, such as Blue Pill, were able to successfully identify and infect the VM, followed by the VMM.
+These root-kits, unlike traditional root-kits, do not stop at OS level, but continue to attempt to infect the supervising \ac{VMM}. 
+According to Takahashi~\cite{Takahashi2012Security}, several proof-of-concept VM-based root-kits, such as Blue Pill, were able to successfully identify and infect the VM, followed by the \ac{VMM}.
 
 \subsubsection{Virtual Machine Monitor Security}
-The Virtual Machine Monitor (VMM), often referred to as the hypervisor, has the essential role of isolating and controlling the virtual machines. 
-However, an investigation was conducted by Ormandy et al~\cite{Ormandy2007Security}of six major VMMs and emulators, using source code auditing and fuzzing techniques. All six systems had major flaws, leading to unexpected aborts and possible exploits.
+The \acl{VMM}, often referred to as the hypervisor, has the essential role of isolating and controlling the virtual machines. 
+However, an investigation was conducted by Ormandy et al~\cite{Ormandy2007Security}of six major \acp{VMM} and emulators, using source code auditing and fuzzing techniques. All six systems had major flaws, leading to unexpected aborts and possible exploits.
 
-Additionally there is the problem of the detectability of the VMM’s. Ideally, the VMM is completely transparent; the tenant has no notion what kind of VMM is running the virtual machines. 
-However, as argued in the paper by Takahashi~\cite{Takahashi2012Security}, that the idea of VMM transparency is unrealistic, due to a significant number of implicit clues, such as time sources and overhead, given by the system. 
-The detectability of the VMM creates the opportunity for malicious users to target specific VMM systems and versions.
+Additionally there is the problem of the detectability of the \ac{VMM}’s. Ideally, the \ac{VMM} is completely transparent; the tenant has no notion what kind of \ac{VMM} is running the virtual machines. 
+However, as argued in the paper by Takahashi~\cite{Takahashi2012Security}, that the idea of \ac{VMM} transparency is unrealistic, due to a significant number of implicit clues, such as time sources and overhead, given by the system. 
+The detectability of the \ac{VMM} creates the opportunity for malicious users to target specific \ac{VMM} systems and versions.
 
 \subsubsection{Platform Security}
 Major platforms, such as the Java platform, also contain certain limitations that hinder the construction of secure multi-tenant systems. 

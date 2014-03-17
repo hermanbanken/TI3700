@@ -2,42 +2,42 @@ In this section various methods for maintaining a good quality of service level 
 The main challenges here are the metrics to use for measuring the current resource usage per tenant and how to separate tenants in such a way that the behaviour of one tenant will not affect the other tenants.~\cite{krebs2013metrics}
 
 %WERKTITELS
-\subsection{Why QoS Matters}
-Most tenants in a multi-tenant application will have some form of Service Level Agreement (SLA) with the provider of the application.
-In many cases these SLAs contain certain Quality of Service constraints the provider will have to meet, such as response time or minimum uptime. 
+\subsection{Why \ac{QoS} Matters}
+Most tenants in a multi-tenant application will have some form of \ac{SLA} with the provider of the application.
+In many cases these \acp{SLA} contain certain \acl{QoS} constraints the provider will have to meet, such as response time or minimum uptime. 
 The tenant on the other hand will also have certain limits and/or quotas, instead of unlimited access to the application.
 
-Based on these SLAs the available resources should be fairly distributed among tenants.
+Based on these \acp{SLA} the available resources should be fairly distributed among tenants.
 Krebs~\cite{krebs2013metrics} defines a system as fair when the following criteria are met:
 \begin{enumerate}
 	\item Tenants who do not exceed their quota should not be affected by tenants who do.
 	\item Tenants who do exceed their quota should experience performance degradation. 
 		It is important to note here that even if the system is not low on resources a tenant should still get degraded performance for the system to be fair.
-		This is because otherwise the tenant would be getting more than is agreed upon in their SLA, which is usually more than they are paying for and more than tenants under the same SLA who are not exceeding their quota.
+		This is because otherwise the tenant would be getting more than is agreed upon in their \ac{SLA}, which is usually more than they are paying for and more than tenants under the same \ac{SLA} who are not exceeding their quota.
 	\item Tenants with a higher quote should experience better performance compared to tenants with a lower quota.
 \end{enumerate}
 
 \subsection{Tenant Separation Techniques}
-In true multi-tenant applications the primary technique proposed for maintaining QoS for multiple tenants is by limiting the amount of requests a tenant can execute. Walraven~\cite{walraven2012towards}, Krebs~\cite{krebs2013metrics} and Lin~\cite{lin2009feedback} all propose methods that include request limiting in some form.
+In true multi-tenant applications the primary technique proposed for maintaining \ac{QoS} for multiple tenants is by limiting the amount of requests a tenant can execute. Walraven~\cite{walraven2012towards}, Krebs~\cite{krebs2013metrics} and Lin~\cite{lin2009feedback} all propose methods that include request limiting in some form.
 
 The method proposed by Walraven uses a pluggable middleware framework for performance isolation.
 In this middleware reside a tenant aware profiler, a tenant categorizer and a scheduler. 
 The profiler gathers monitoring data from the rest of the system and the scheduler.
-The data from the profiler and data concerning the SLAs of the tenants is used by the categorizer to put the tenants in one of three groups: passive, normal, or aggressive.
+The data from the profiler and data concerning the \acp{SLA} of the tenants is used by the categorizer to put the tenants in one of three groups: passive, normal, or aggressive.
 Finally the scheduler is responsible for the actual performance isolation.
 The scheduler contains multiple request queues and requests are assigned to queues based on their category.
 The system of queues allows, for instance, to process requests from aggressive tenants less frequently.
 Walravens prototype was effective in isolating a single aggressive tenant from his normal co-tenants.
 
 Krebs evaluates several tenant separation methods and finds that a two-queue system with a quota monitor provides very good tenant isolation.
-In this system request from tenants that exceed their SLA get placed in a blacklist queue and other requests in a whitelist queue. 
+In this system request from tenants that exceed their \ac{SLA} get placed in a blacklist queue and other requests in a whitelist queue. 
 Only when the whitelist is empty will blacklisted requests be serviced.
 The concept of using multiple queues to categorize and prioritize tenant requests is very similar to the method proposed by Walraven.
 
 Lin proposes a system that not only limits request per tenant but also dynamically assigns resources to tenants based on the admission rate.
 What sets his method apart is that it it uses a PI\footnote{Proportional Integral} controller to reassign resources and increase or decrease the admission rates to correct for errors in the initial estimations.
 
-\subsection{Research Agenda for QoS}
+\subsection{Research Agenda for \ac{QoS}}
 Both Walraven, Krebs and Lin call for the evaluation of more different algorithms for tenant isolation.
 
 In addition to that Lins approach must still be implemented on a cluster, instead of the single servers used. Lin also wants to look at other resources that can be used for dynamically reassigning resources, as his current approach only focused on threads.
