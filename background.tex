@@ -4,7 +4,7 @@ Multi-tenancy is a vague term, since it has never had an exact and official defi
 
 In multi-tenant research, there are three important concepts: tenants, multi-tenancy, multi-user. In this section we show the variety of definitions of these concepts.
 
-Bezemer and Zaidman~\cite{bezemer2010multi} define a tenant as an organizational entity which rents a multi-tenant SaaS solution (usually grouping a number of users). Krebs et al.~\cite{krebs2012architecture} have a more loose definition of a tenant; they define it as a group of users sharing the same view.
+Bezemer and Zaidman~\cite{bezemer2010multi} define a tenant as an organizational entity which rents a multi-tenant \ac{SaaS} solution (usually grouping a number of users). Krebs et al.~\cite{krebs2012architecture} have a more loose definition of a tenant; they define it as a group of users sharing the same view.
 
 Based on these definitions, both more or less agree on the definition of a multi-tenant application: hardware resource sharing by offering one shared application and database instance to multiple tenants.
 
@@ -28,13 +28,13 @@ Chang Jie Guo et al.~\cite{guo2007framework} suggest the implementation of a mul
 
 Dillon et al.~\cite{dillon2010cloud} comprehensively elaborate on various aspects of cloud services. They mention the following service models: 
 \begin{enumerate}
-\item Software as a Service (example: Google Mail/Docs)
-\item Platform as a Service (example: Google AppEngine)
-\item Infrastructure as a Service (example: Amazon EC2)
-\item Data as a Service (example: Google BigTable)
+\item \ac{SaaS} (example: Google Mail/Docs)
+\item \ac{PaaS} (example: Google AppEngine)
+\item \ac{IaaS} (example: Amazon EC2)
+\item \ac{DaaS} (example: Google BigTable)
 \end{enumerate}
 
-Multi-tenancy falls mostly within the Software as a Service (SaaS) domain, as mentioned by Tsai et al.~\cite{tsai2010towards}. Multi-tenancy gains the most benefits within this model.
+Multi-tenancy falls mostly within the \ac{SaaS} domain, as mentioned by Tsai et al.~\cite{tsai2010towards}. Multi-tenancy gains the most benefits within this model.
 
 Dillon et al.~\cite{dillon2010cloud} also describe the several essential characteristics of cloud services, including resource pooling ('pooling' computing resources together in an effort to serve multiple consumers) and rapid elasticity (the consumption of resources can rapidly increase and the usage is not predictable upfront). These are both challenges for multi-tenant applications, as also mentioned by Krebs et al.~\cite{krebs2012architecture} and Bezemer and Zaidman~\cite{bezemer2010multi}.
 
@@ -42,6 +42,6 @@ Dillon et al.~\cite{dillon2010cloud} also describe the several essential charact
 
 The multi-tenancy model has created two new security issues~\cite{dillon2010cloud}. Sharing resources on the same physical machine pose a danger to the data of the tenants. This falls within the isolation challenge. Another issue is reputation fate-sharing, since one might be sharing resources with possible criminal users, creating the possibility to (for example) get blacklisted.
 
-Another challenge is the charging model. The costs of developing multi-tenancy can be very substantial for SaaS providers, because they need to re-design or re-develop single-tenant software, introduce new features for customization and enhance the security.
+Another challenge is the charging model. The costs of developing multi-tenancy can be very substantial for \ac{SaaS} providers, because they need to re-design or re-develop single-tenant software, introduce new features for customization and enhance the security.
 
 Bezemer and Zaidman~\cite{bezemer2010multi} also mention performance as a challenge, since multiple tenants are using the same hardware resources. Other challenges are scalability (usage of resources can suddenly increase), zero-downtime (the user expects the system to be online when he needs it) and maintenance (added complexity due to multi-tenancy could make code harder to maintain).
