@@ -7,13 +7,13 @@ In a multi-tenant context, configuration is preferred over customization~\cite{s
 %reasons for variability [5]
 There are several reasons why variability is needed. 
 First of all based on country, segment or branch different currencies, legislation and tax rules may apply. This is especially important in financial applications. 
-Secondly different customers can require different functionality properties, layout options and/or quality of service (such as privacy and performance).
+Secondly, different customers can require different functionality properties, layout options and/or quality of service (such as privacy and performance).
 % MAYBE-TODO: this paragraph could be more elaborate
 
 \subsection{Levels of variability}
 %different papers describe different categorizations
 Variability can be accomplished on various levels. 
-Dependent on the scale of the application different patterns become be relevant. Large applications often consist of \textit{components} offering a specific \textit{service}. Variability can be accomplished by dynamically swapping, activating or deactivating  these components for different tenants in such applications~\cite{mietzner2008defining}. 
+Dependent on the scale of the application, different patterns become relevant. Large applications often consist of \textit{components} offering a specific \textit{service}. Variability can be accomplished by dynamically swapping, activating or deactivating  these components for different tenants in such applications~\cite{mietzner2008defining}. 
 
 In smaller applications and within components, different patterns become relevant. For example, one can customize an application by using dependency injection~\cite{walraven2011middleware} or context oriented programming~\cite{truyen2012context}. We will discus these techniques in more detail in Section~\ref{sec:vrt}.
 
@@ -43,58 +43,65 @@ customizable and to add implementations in a later stage.
 \item \textbf{Decision modeling}, as described by Schmid et al.~\cite{schmid2004customizable}, is used in 
 Software Product Line Engineering to manage the variability of an application that is not specifically 
 multi instance or even multi tenant aware. However the concepts can be similarly applied to 
-multi tenancy. In the decision model variables are defined that are used throughout the 
+multi tenancy. In the decision model, variables are defined that are used throughout the 
 application. For each variable it is defined when the variable is relevant (e.g., dependencies), 
 what the range of possible values is, what the cardinality is (a set of values is possible), what 
 constraints apply and when the variable is to be bound. The problem with decision variables is 
 that the configuration points and the application code can quickly become incomprehensible 
 when lots of variables exist that might be used thorough different features and components.
 
+\item \textbf{\acf{OVM}} is used by Mietzner et al.~\cite{mietzner2009variability} as their variability model. \ac{OVM} differs from other approaches in that it does provide a separate view on variability. This reduces the size of the model and makes it easier to understand the models as commonalities are left out and only the variability is modeled. This allows for understanding the model without understanding the application's design model. 
+
 \begin{figure}[htr]
     \centering
     \includegraphics[width=0.48\textwidth]{assets/OVM}
-    \caption{Example of a Variability Model in OVM notation~\cite{mietzner2009variability}}
+    \caption{Example of a Variability Model in \acs{OVM} notation~\cite{mietzner2009variability}}
     \label{fig:ovm}
 \end{figure}
 
-\item \textbf{Orthogonal Variability Model (OVM)} is used by Mietzner et al.~\cite{mietzner2009variability} as their variability model. OVM differs from other approaches in that it does provide a separate view on variability. This reduces the size of the model and makes it easier to understand the models as commonalities are left out and only the variability is modeled. This allows for understanding the model without understanding the application's design model. 
-
-In OVM, the \textit{variation points} (VP's) are the key items. One variation point has multiple \textit{variants} that are either optional or mandatory. Relations between VP's exist that define whether some variant is mutually exclusive with some other variant or whether some variant requires an other variant. Relations are drawn as lines between VP's. External and internal variability are separated by a dashed line to show which variability customers can choose and which is internally bound. An example can be seen in Figure \ref{fig:ovm}.
+In \ac{OVM}, the \textit{\acp{VP}} are the key items. One variation point has multiple \textit{variants} that are either optional or mandatory. Relations between \acp{VP} exist that define whether some variant is mutually exclusive with some other variant or whether some variant requires an other variant. Relations are drawn as lines between \acp{VP}. External and internal variability are separated by a dashed line to show which variability customers can choose and which is internally bound. An example can be seen in Figure \ref{fig:ovm}.
 \end{itemize}
 
 % \subsection{Developing with variability in mind}
 % Efficient customization of multi-tenant Software-as-a-Service applications with service lines
 % by Stefan Walravena, Dimitri Van Landuyta, Eddy Truyena, Koen Handekynb, Wouter Joosena
 
-\subsection{Variability Realization Techniques}
+\subsection{\aclp{VRT}}
 \label{sec:vrt}
-Jansen et al.~\cite{jansen2010customization} note that while lot of research has been done on variability modeling, there is lack of research on techniques needed to implement variability. They identify five realization techniques of two types of customization, being \textit{Model View Controller (MVC) customization} and \textit{system customization}:
+Jansen et al.~\cite{jansen2010customization} note that while lot of research has been done on variability modeling, there is lack of research on techniques needed to implement variability. They divide \acp{VRT} in two categories, with further subdivisions:
+\begin{itemize}
+\item \textit{\ac{MVC} Customization}
 \begin{itemize}
 \item \textbf{Model changes} allow tenants to fit the application to their domain. Model changes include changing entity attributes, adding entities and entity-relationships. Some changes require a more abstract application and therefore need to be thought upon earlier in the design process than more simple changes which could easily be added later on.
-\item Some of the simpler customizations include \textbf{view changes} as in MVC patterns views don't interact with other components, but instead are the receiving part.
-\item There is much freedom in \textbf{controller changes}, ranging from restricting data to one tenant only till fully customized workflows.
+\item \textbf{View Changes} is one of the simpler types of customization, because in the \ac{MVC}-pattern, views do not interact with other components, but instead receive the data to be displayed.
+\item \textbf{Controller Changes} allow the most freedom, ranging from restricting data to one tenant only, till fully customized workflows.
 \end{itemize}
-Large systems build of components delivering services can create variations of a different magnitude, on system level:
+\item \textit{System Customization} \\ Within large systems, built of components delivering services, variations of a different magnitude can be created, on system level.
 \begin{itemize}
-\item \textbf{System connector changes} occur when connections to remote services are made variable. Examples include having multiple connectors for printing photos or multiple physical mail delivery providers.
-\item With \textbf{system component changes} multiple components deliver the same service and are selected based on configuration.
+\item \textbf{System Connector Changes} occur when connections to remote services are made variable. Examples include having multiple connectors for printing photos or multiple physical mail delivery providers.
+\item \textbf{System Component Changes} require that multiple components deliver the same service. Based on the configuration, one of the components for a service is selected. For example tenants might select different authentication components for either SAML\footnote{\url{http://en.wikipedia.org/wiki/Security_Assertion_Markup_Language}}, OAuth\footnote{\url{http://en.wikipedia.org/wiki/OAuth}} or password-based login.
+\end{itemize}
 \end{itemize}
 
-Kabbedijk and Jansen~\cite{kabbedijk2011variability} describe three variability realization techniques they observed in case studies. 
-\textbf{Customizable Data Views} are a pattern to store tenant specific representation settings, eg. how tenants want to filter or sort their data. 
-Although this technique also requires some table storing data and needs a small controller, it can be seen as mainly a view change as described by Jansen et al. 
-Another view change is the \textbf{Module Dependent Menu}-pattern, to create menus that are dependent on the modules associated to a tenant. The last technique they observe is more a controller change. 
-\textbf{Pre/Post Update Hooks} is a pattern to execute pieces of code before or after certain events happen in the application. 
+Kabbedijk and Jansen~\cite{kabbedijk2011variability} describe three \acp{VRT} they observed in case studies. These \acp{VRT}  fit into the categories above.
+\begin{itemize} 
+\item \textbf{Customizable Data Views}: a pattern to store tenant specific representation settings, e.g. how tenants want to filter or sort their data. 
+Although this technique also requires some table storing data and needs a small controller, it can be seen as mainly a View Change.
+\item \textbf{Module Dependent Menu}: modules can add items to the menu. Depending on which modules are associated with a tenant, the menu is thus customized. This is another View Change pattern. 
+\item \textbf{Pre/Post Update Hooks}: execute pieces of code before or after certain events happen in the application. This is a Controller Change. 
 This allows for tenants to enable or disable modules that check data or automate certain tasks.
+\end{itemize}
 
-A common way to implement controller changes or system component changes is the variation technique \textbf{dependency injection (DI)} where one of the (possibly many) classes that implement the same interface are injected by a provider. 
-Walraven, Truyen and Joosen~\cite{walraven2011middleware} created a middleware layer that uses a existing DI framework, compatible with Google App Engine, named Guice. An issue with Guice, that did not allow per-request switching of implementations was quickly solved by adding a small abstraction layer, making Guice usable in a multi-tenant environment.
-Side note: their case study also shows that GAE leverages the effort of separating tenant data a lot by providing the so-called Namespaces API. By linking each tenant to an unique namespace all data in that namespace is only accessible by a that specific tenant.
+Two ways to implement Controller Changes or System Component Changes are \acl{DI} and \acl{COP}.
 
-One of the conclusions of Walraven et al. is that Aspect Oriented Software Development (AOSD) looks promising as an alternative to DI for more complex customizations, such as features that have to be combined.
-They go further on this lead in Truyen et al.~\cite{truyen2012context} and introduce \textbf{Context Oriented Programming (COP)}, a form of AOSD to implement what can be seen as controller changes. 
-In COP layers are added to the code that override certain behavior when this layer is activated for a specific tenant. 
-In DI, for each variation point only one variation can be injected at a time, so no two 'modules' providing the same functionality can interact or extend each other, while in COP those implementations can work together, because the overriding methods can still call the original method allowing them to modify the output or implement a filter. 
+\textbf{\acf{DI}} is a common variation technique, where one of the (possibly many) classes that implement the same interface are injected by a provider. 
+Walraven et al.~\cite{walraven2011middleware} created a middleware layer that uses a existing \ac{DI} framework, compatible with \ac{GAE}, named Guice. An issue with Guice, that did not allow per-request switching of implementations was quickly solved by adding a small abstraction layer, making Guice usable in a multi-tenant environment.
+Side note: their case study also shows that \ac{GAE} leverages the effort of separating tenant data a lot by providing the so-called Namespaces API. By linking each tenant to an unique namespace all data in that namespace is only accessible by a that specific tenant.
+
+One of the conclusions of Walraven et al.~\cite{walraven2011middleware} is that \ac{AOSD} looks promising as an alternative to \ac{DI} for more complex customizations, such as features that have to be combined.
+They go further on this lead in Truyen et al.~\cite{truyen2012context} and introduce \textbf{\ac{COP}}, a form of \ac{AOSD} to implement what can be seen as controller changes. 
+In \ac{COP}, layers are added to the code that override certain behavior when this layer is activated for a specific tenant. 
+In \ac{DI}, for each variation point only one variation can be injected at a time, so no two 'modules' providing the same functionality can interact or extend each other, while in \ac{COP} those implementations can work together, because the overriding methods can still call the original method allowing them to modify the output or implement a filter. 
 Multiple layers can be active at once, doing their work in a predefined order. 
 % MAYBE-TODO: this paragraph could be more elaborate
 
@@ -103,18 +110,18 @@ Multiple layers can be active at once, doing their work in a predefined order.
 % sun2008software: no interesting future work proposed
 
 % mietzner2008defining: automization, no further interesting future work proposed
-Mietzner et al.~\cite{mietzner2008defining} want to make variability easier to manage for SaaS providers and created so called \textit{solutions} that define which variants should be bound. In the future it could be investigated how deployment scripts could be derived from those solutions.
+Mietzner et al.~\cite{mietzner2008defining} want to make variability easier to manage for \ac{SaaS} providers and created so called \textit{solutions} that define which variants should be bound. In the future it could be investigated how deployment scripts could be derived from those solutions.
 
-Mietzner et al.~\cite{mietzner2009variability} describe a cost model for SaaS applications to compare the cost of multi tenant aware versus non-multi-tenant aware applications. They do not however relate this cost model to their variability model. This is interesting for future research as a SaaS provider can then determine the cost of creating, maintaining and managing a variant. The provider could then decide if it economically makes more sense to keep a variant or to remove it.
+Mietzner et al.~\cite{mietzner2009variability} describe a cost model for \ac{SaaS} applications to compare the cost of multi tenant aware versus non-multi-tenant aware applications. They do not however relate this cost model to their variability model. This is interesting for future research as a \ac{SaaS} provider can then determine the cost of creating, maintaining and managing a variant. The provider could then decide if it economically makes more sense to keep a variant or to remove it.
 
 % jansen2010customization nothing in this paper thats not in kabbedijk2011variability
 
-While Kabbedijk and Jansen~\cite{kabbedijk2011variability} have determined some Variability Realization Techniques, but note that more VRTs could be identified and should be tested on effectiveness, maintainability, scalability and performance.
+Kabbedijk and Jansen~\cite{kabbedijk2011variability} have determined some \acp{VRT}, but note that more \acp{VRT} could be identified and should be tested on effectiveness, maintainability, scalability and performance.
 
-Truyen et al.~\cite{truyen2012context} found that COP was useful as a VRT but ContextJ lacked support for asynchronous request because context is not shared to new threads. Research could be done to see if it is possible to bridge this gap to make COP more usable as more and more applications are using asynchronous functionality.
+Truyen et al.~\cite{truyen2012context} found that \ac{COP} was useful as a \ac{VRT} but ContextJ lacked support for asynchronous request because context is not shared to new threads. Research could be done to see if it is possible to bridge this gap to make \ac{COP} more usable as more and more applications are using asynchronous functionality.
 
-Furthermore they found that Google App Engine scales well automatically, but does not support any kind of performance isolation or can guarantee performance to any specific tenant more than an other tenant. More research can be done on this subject and maybe Google and other PaaS providers will then implement this functionality and enable SaaS providers using their platform to sell Quality of Service guarantees.
+Furthermore they found that \ac{GAE} scales well automatically, but does not support any kind of performance isolation or can guarantee performance to any specific tenant more than an other tenant. More research can be done on this subject and maybe Google and other \ac{PaaS} providers will then implement this functionality and enable \ac{SaaS} providers using their platform to sell Quality of Service guarantees.
 
-Another open issue that Truyen et al. identify is maintaining global state consistency when doing updates. The tenants that don't use any of the updated functionality should not experience any interruptions. When SLAs are sold this consistency and uninterrupted service should be provable.
+Another open issue that Truyen et al. identify is maintaining global state consistency when doing updates. The tenants that don't use any of the updated functionality should not experience any interruptions. When \acp{SLA} are sold this consistency and uninterrupted service should be provable.
 
 % schroeter2012towards
