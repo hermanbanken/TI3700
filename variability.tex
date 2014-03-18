@@ -27,8 +27,8 @@ In Section \ref{sec:vrt}, Figure~\ref{fig:ovm} displays this distinction too.
 \subsection{Variability Modeling}
 For all stakeholders in a multi-tenant application it is important that a variability model exists~\cite{schroeter2012towards}. For the developer, it is important to document all variation built into the application to keep the application maintainable for both current and new developers. 
 For SaaS providers, it is important to have a model of the application to build rules for automatically deploying new instances of the application that support (many) new tenants or migrating and reconfiguring instances. 
-A model can also be used to automatically create configuration wizards and bill tenants according to the used variants. \highlight{citation needed} %todo
-For tenants, it is important that they can use the best tailored variant of the application for their needs and thus it is also in their interest that the SaaS provider has a good overview of its own application and to have a good configuration tool.
+Additionally, a model can be used to automatically create configuration wizards and bill tenants according to the used variants. \highlight{citation needed} %todo
+For tenants, it is important that they can use the best tailored variant of the application for their needs and thus it is in their interest too that the SaaS provider has a good overview of its own application and to have a good configuration tool.
 
 To support negotiation about variability in functionality Schroeter et al.~\cite{schroeter2012towards} found some ``well established models": feature modeling~\cite{benavides2010automated,kang1990feature}, decision modeling~\cite{schmid2004customizable,schmid2011comparison} and orthogonal variability modeling~\cite{lauenroth2005software}.
 
@@ -86,7 +86,7 @@ Jansen et al.~\cite{jansen2010customization} note that while lot of research has
 Kabbedijk and Jansen~\cite{kabbedijk2011variability} describe three \acp{VRT} they observed in case studies. These \acp{VRT}  fit into the categories above.
 \begin{itemize} 
 \item \textbf{Customizable Data Views}: a pattern to store tenant specific representation settings, e.g. how tenants want to filter or sort their data. 
-Although this technique also requires some table storing data and needs a small controller, it can be seen as mainly a View Change.
+Although this technique requires some table storing data and needs a small controller, it can be seen as mainly a View Change.
 \item \textbf{Module Dependent Menu}: modules can add items to the menu. Depending on which modules are associated with a tenant, the menu is thus customized. This is another View Change pattern. 
 \item \textbf{Pre/Post Update Hooks}: execute pieces of code before or after certain events happen in the application. This is a Controller Change. 
 This allows for tenants to enable or disable modules that check data or automate certain tasks.
@@ -96,7 +96,7 @@ Two ways to implement Controller Changes or System Component Changes are \acl{DI
 
 \textbf{\acf{DI}} is a variation technique, where one of the (possibly many) classes that implement the same interface are injected by a provider. Tools such as Spring Framework~\cite{walls2005spring} and Google Guice~\cite{vanbrabant2008google} provide a framework for \ac{DI}. The main use case of \ac{DI} is mocking components while testing an application, however it proves useful in multi tenant applications as well:
 Walraven et al.~\cite{walraven2011middleware} created a multi tenancy middleware layer that uses Guice, which is compatible with \ac{GAE}. An issue with Guice, that did not allow per-request switching of implementations, was quickly solved by adding a small abstraction layer, making Guice usable in a multi-tenant environment\footnote{
-Their case study also shows that \ac{GAE} leverages the effort of separating tenant data a lot by providing the so-called Namespaces API. By linking each tenant to an unique namespace all data in that namespace is only accessible by a that specific tenant.}.
+Additionally, their case study shows that \ac{GAE} leverages the effort of separating tenant data a lot by providing the so-called Namespaces API. By linking each tenant to an unique namespace all data in that namespace is only accessible by a that specific tenant.}.
 
 One of the conclusions of Walraven et al.~\cite{walraven2011middleware} is that \ac{AOSD} looks promising as an alternative to \ac{DI} for more complex customizations, such as when features have to be combined.
 They go further on this lead in Truyen et al.~\cite{truyen2012context} and introduce \textbf{\ac{COP}}, a form of \ac{AOSD} to implement what can be seen as controller changes. 
