@@ -20,17 +20,17 @@ In smaller applications and within components, different patterns become relevan
 When looking to realized variability, two types of variability can be distinguished: external and internal variability~\cite{mietzner2009variability}:
 \begin{itemize}
 \item \textbf{External variability} is the variability that is communicated to the customers. Most of the time, this variability is \textbf{Customer-driven} and is implemented because customers asked for it or because the developers thought the customers would ask for it. The possibility to upload a custom logo, to select data-separation-requirements (such as guaranteed data isolation) or to define custom workflows are examples of external variability.
-\item \textbf{Internal variability} exists because of implementation details and is mostly \textbf{Realization-driven}. For example some - external - variant may depend on some internal variation, that guarantees a certain property. When one tenant requires its data to be stored separately, the internal variability consists of the possibility to launch either a single or multiple instances of the database server. It might be more economic to use the same internal variant for all tenants on the same instance to accomplish different external variations, even if this internal variant alone is more expensive.
+\item \textbf{Internal variability} exists because of implementation details, is visible only to the developer or provider and is mostly \textbf{Realization-driven}. For example some - external - variant may depend on some internal variation, that guarantees a certain property. When one tenant requires its data to be stored separately, the internal variability consists of the possibility to launch either a single or multiple instances of the database server. It might be more economic to use the same internal variant for all tenants on the same instance to accomplish different external variations, even if this internal variant alone is more expensive.
 \end{itemize}
 In Section \ref{sec:vrt}, Figure~\ref{fig:ovm} displays this distinction too.  
 
 \subsection{Variability Modeling}
 For all stakeholders in a multi-tenant application it is important that a variability model exists~\cite{schroeter2012towards}. For the developer, it is important to document all variation built into the application to keep the application maintainable for both current and new developers. 
 For SaaS providers, it is important to have a model of the application to build rules for automatically deploying new instances of the application that support (many) new tenants or migrating and reconfiguring instances. 
-Additionally, a model can be used to automatically create configuration wizards and bill tenants according to the used variants. \highlight{citation needed} %todo
+Additionally, a model can be used to automatically create configuration wizards~\cite{mietzner2008generation} and bill tenants according to the used variants.
 For tenants, it is important that they can use the best tailored variant of the application for their needs and thus it is in their interest too that the SaaS provider has a good overview of its own application and to have a good configuration tool.
 
-To support negotiation about variability in functionality Schroeter et al.~\cite{schroeter2012towards} found some ``well established models": feature modeling~\cite{benavides2010automated,kang1990feature}, decision modeling~\cite{schmid2004customizable,schmid2011comparison} and orthogonal variability modeling~\cite{lauenroth2005software}.
+To support negotiation about variability in functionality Schroeter et al.~\cite{schroeter2012towards} identified three appropriate models: feature modeling~\cite{benavides2010automated,kang1990feature}, decision modeling~\cite{schmid2004customizable,schmid2011comparison} and orthogonal variability modeling~\cite{lauenroth2005software,metzger2007disambiguating}.
 
 \begin{itemize}
 \item \textbf{Feature modeling} or a ``feature based component model" is applied by Walraven et al.~\cite{walraven2011middleware} in their paper on a multi tenant middleware layer. A variation is
@@ -106,22 +106,23 @@ Multiple layers can be active at once, doing their work in a predefined order.
 % MAYBE-TODO: this paragraph could be more elaborate
 
 \subsection{Research Agenda for Variability}
-\subsubsection{Automation}
-For variability to become manageable, tools must exist for \ac{SaaS} providers to manage the configuration of tenants and to deploy new tenants. Mietzner et al.~\cite{mietzner2008defining} try to make variability easier to manage by creating so called \textit{solutions}, that define which variants should be bound. It could be investigated how deployment scripts could be derived from these solutions, to automatically deploy tenants.
+While there has been done a lot of research, much remains to be covered:
+\begin{itemize}
 
-\subsubsection{Cost model}
+\item \textbf{Automation}.
+For variability to become manageable, tools must exist for \ac{SaaS} providers to manage the configuration of tenants and to deploy new tenants. Mietzner et al. try to make variability easier to manage by creating so called \textit{customization processes}~\cite{mietzner2008generation} to guide the customer through the customization, and \textit{solutions}~\cite{mietzner2008defining}, that define which variants should be bound. It could be investigated how deployment scripts could be derived from these solutions, to automatically deploy tenants.
+
+\item \textbf{Cost Models}.
 While it is researched how the costs of multi tenant aware applications compare to non-multi-tenant aware applications~\cite{mietzner2009variability}, no research is done to relate a cost model to a variability model. Future research could be done to determine the cost of creating, maintaining and managing variants. The providers can then decide whether or not it makes more sense, economically, to keep a variant or to remove it.
 
-\subsubsection{More \acp{VRT}}
+\item \textbf{Identify more \aclp{VRT}}. 
 Kabbedijk and Jansen~\cite{kabbedijk2011variability} have determined some \acp{VRT}, but note that more \acp{VRT} could be identified and should be tested on effectiveness, maintainability, scalability and performance.
 
-\subsubsection{Maintaining context in \ac{COP}}
+\item \textbf{Maintaining Context in \ac{COP}}. 
 Truyen et al.~\cite{truyen2012context} found that \ac{COP} was useful as a \ac{VRT} but ContextJ lacked support for asynchronous request because context is not shared to new threads. Research could be done to see if it is possible to bridge this gap to make \ac{COP} more usable as more and more applications are using asynchronous functionality.
 
-\subsubsection{Performance isolation}% performance isolation => scalability
-Furthermore they found that \ac{GAE} scales well automatically, but does not support any kind of performance isolation or can guarantee performance to any specific tenant more than an other tenant. More research can be done on this subject and maybe Google and other \ac{PaaS} providers will then implement this functionality and enable \ac{SaaS} providers using their platform to sell Quality of Service guarantees.
+\item \textbf{Maintaining State Consistency while doing Updates}.
+Another open issue is maintaining global state consistency when doing (partial) updates of components that potentially service a lot of tenants~\cite{truyen2012context,dumitracs2009upgrades}. The tenants that do not use any of the updated functionality should not experience any interruptions. This is especially difficult if multiple versions of components must coexist, since each component may depend on other components. When \acp{SLA} are sold this consistency and uninterrupted service should be provable.
 
-\subsubsection{Maintaining State Consistency while doing Updates}
-Another open issue that Truyen et al. identify is maintaining global state consistency when doing updates. The tenants that do not use any of the updated functionality should not experience any interruptions. When \acp{SLA} are sold this consistency and uninterrupted service should be provable.
-
+\end{itemize}
 % schroeter2012towards
