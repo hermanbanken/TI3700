@@ -20,7 +20,7 @@ Krebs et al.~\cite{krebs2012architecture} describe various layers of sharing, in
 \item Multi-Tenant Application
 \end{enumerate}
 
-According to Bezemer and Zaidman~\cite{bezemer2010multi}, there are also various ways of implementing multi-tenancy: a shared application with a separate database, a shared application with a shared database with a separate table and a shared application, with a shared table. They considere the latter as pure multi-tenancy. Krebs et al.~\cite{krebs2012architecture} divide this into affinity and persistency, with affinity describing which server(s) handle which tenant(s) and with persistency describing the way of usage of the database (shared or separated).
+According to Bezemer and Zaidman~\cite{bezemer2010multi}, there are also various ways of implementing multi-tenancy: a shared application with a separate database, a shared application with a shared database with a separate table and a shared application, with a shared table. They consider the latter as pure multi-tenancy. Krebs et al.~\cite{krebs2012architecture} divide this into affinity and persistency, with affinity describing which server(s) handle which tenant(s) and with persistency describing the way of usage of the database (shared or separated).
 
 Chang Jie Guo et al.~\cite{guo2007framework} suggest the implementation of a multi-tenancy enablement layer. This should create a separation between usage and resources, creating the required isolations and allowing customizations. This can be compared to the blueprint of Bezemer and Zaidman~\cite{bezemer2010multi}, since both approaches should have little impact on the single-tenant code.
 
