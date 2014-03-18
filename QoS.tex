@@ -14,7 +14,7 @@ In the list 'exceeding their quota' can mean exceeding an explicitly defined usa
 	\item Tenants with a higher quota should experience better performance compared to tenants with a lower quota.
 \end{enumerate}
 
-The primary mechanism for ensuring a these fairness criteria are met is finding methods for seperating the performance of different tenants.
+The primary mechanism for ensuring a these fairness criteria are met is finding methods for separating the performance of different tenants.
 Several techniques for achieving this will be discussed in the next section.
 
 %TODO: Elaborate on metrics.
@@ -32,15 +32,25 @@ The system of queues allows, for instance, to process requests from aggressive t
 Walravens prototype was effective in isolating a single aggressive tenant from his normal co-tenants.
 
 Krebs evaluates several tenant separation methods and finds that a two-queue system with a quota monitor provides very good tenant isolation.
+In this evaluations the system first experiences normal load, in a second run a single disruptive tenant is added to test tenant isolation.
 In this system request from tenants that exceed their \ac{SLA} get placed in a blacklist queue and other requests in a whitelist queue. 
 Only when the whitelist is empty will blacklisted requests be serviced.
 The concept of using multiple queues to categorize and prioritize tenant requests is very similar to the method proposed by Walraven.
 
 Lin proposes a system that not only limits request per tenant but also dynamically assigns resources to tenants based on the admission rate.
 What sets his method apart is that it it uses a feedback loop to reassign resources and increase or decrease the admission rates to correct for errors in the initial estimations.
+This controller is tested using three tenants that have different \acp{SLA}. 
+The controller manages to maintain the \ac{QoS} levels defined in the tenant specific \acp{SLA} under various load conditions.
 
 \subsection{Research Agenda for \ac{QoS}}
-In Quality of service research the main open questions are 
-Both Walraven, Krebs and Lin call for the evaluation of more different algorithms for tenant isolation.
+In this section several approaches for separating tenants and maintaining good \ac{QoS} have been discussed.
+The approaches proposed by Walraven and Krebs both showed promising results in experiments using a single disruptive tenant.
+Lins method was effective at maintaining the different \ac{QoS} levels per tenant.
 
-In addition to that Lins approach must still be implemented on a cluster, instead of the single servers used. Lin also wants to look at other resources that can be used for dynamically reassigning resources, as his current approach only focused on threads.
+Important topics for future research will be:
+%TODO: Elaborate on metrics..
+\begin{itemize}
+	\item Tenant separation techniques that can manage multiple disruptive tenants.
+	\item Finding additional metrics that are useful for measuring tenant resource usage.
+\end{itemize}
+
