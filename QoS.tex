@@ -1,20 +1,23 @@
-In this section various methods for maintaining a good quality of service level per tenants will be discussed.
+In this section various methods for maintaining a good \ac{QoS} level per tenant will be discussed.
 The main challenges here are the metrics to use for measuring the current resource usage per tenant and how to separate tenants in such a way that the behaviour of one tenant will not affect the other tenants.~\cite{krebs2013metrics}
 
 In many cases tenants in a multi-tenant application will have some form of \ac{SLA} with the provider of the application.
-Often these SLAs contain certain Quality of Service constraints the provider will have to meet, such as response time or minimum uptime. 
-The tenant on the other hand will also have certain quotas or a \ac{FUP}.
+Often these SLAs contain certain \ac{QoS} constraints the provider will have to meet, such as response time or minimum uptime. 
+The tenant on the other hand will have to adhere to a \ac{FUP} or have certain fixed quotas for resource usage.
 
-Based on these \acp{SLA} the available resources should be fairly distributed among tenants.
+In a \ac{MTA} the available resources should be fairly distributed among tenants.
 Krebs~\cite{krebs2013metrics} defines a system as fair when the following criteria are met:
-In the list 'exceeding their quota' can mean exceeding an explicitly defined limit based on the SLA or, in the case of a fair use policy, unfair use of the system.
+In the list 'exceeding their quota' can mean exceeding an explicitly defined usage limit or, in the case of a fair use policy, unfair use of the system.
 \begin{enumerate}
 	\item Tenants who do not exceed their quota should not be affected by tenants who do.
 	\item Tenants who do exceed their quota should experience performance degradation. 
 	\item Tenants with a higher quota should experience better performance compared to tenants with a lower quota.
 \end{enumerate}
 
+The primary mechanism for ensuring a these fairness criteria are met is finding methods for seperating the performance of different tenants.
+Several techniques for achieving this will be discussed in the next section.
 
+%TODO: Elaborate on metrics.
 
 \subsection{Tenant Separation Techniques}
 In true multi-tenant applications the primary technique proposed for maintaining \ac{QoS} for multiple tenants is by limiting the amount of requests a tenant can execute. Walraven~\cite{walraven2012towards}, Krebs~\cite{krebs2013metrics} and Lin~\cite{lin2009feedback} all propose methods that include request limiting in some form.
@@ -37,6 +40,7 @@ Lin proposes a system that not only limits request per tenant but also dynamical
 What sets his method apart is that it it uses a feedback loop to reassign resources and increase or decrease the admission rates to correct for errors in the initial estimations.
 
 \subsection{Research Agenda for \ac{QoS}}
+In Quality of service research the main open questions are 
 Both Walraven, Krebs and Lin call for the evaluation of more different algorithms for tenant isolation.
 
 In addition to that Lins approach must still be implemented on a cluster, instead of the single servers used. Lin also wants to look at other resources that can be used for dynamically reassigning resources, as his current approach only focused on threads.
