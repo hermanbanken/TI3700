@@ -85,14 +85,14 @@ For most layouts below this means that knowledge of column names and types are k
 	\item[Pivot tables]
 		Pivot tables are a different implementation of the universal table.
 		In a pivot table every column entry from a logical entity gets its own row. 
-		This leads to a layout that looks like "TenantId, EntityId, RowId, ColumnId, Data".
+		This leads to a layout that looks like ``TenantId, EntityId, RowId, ColumnId, Data".
 
 		The advantage over a Universal table is that NULLS are not stored.
 		The disadvantage is the overhead in the database. 
 		This schema contains more metadata columns than data columns, and for a logical entity with $n$ columns $(n-1)$ joins on the pivot table are needed to reconstruct it.~\cite{aulbach2008multi}
 	\item[Extension fields]
 		In the extension field layout for every entity a table.
-		All tables of extensible entities contain an extra field that stores extensions in a structured format like XML or JSON.
+		All tables of extensible entities contain an extra field that stores extensions in a structured format such as XML or JSON.
 		Certain \acp{RDBMS} support accessing data within such a field. 
 		DB2 does this for XML trough PureXML\footnote{http://www-01.ibm.com/software/data/db2/linux-unix-windows/xml/index.html (march 2014)} and Postgres allows for reading values from JSON fields\footnote{http://www.postgresql.org/docs/9.3/static/functions-json.html (March 2014)}
 
