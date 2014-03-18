@@ -29,78 +29,79 @@ Performance tests with the new model lead to a statistically significant reducti
 The schema of the data model presented in a multi-tenant application should be extensible by tenants.
 Extensibility is required because this allows tenants to modify their view of the application in such a way that a better fits their needs.
 
-Scalability in the data layer is important in two different ways.
+Within a \ac{MTA} the data layer will have to deal with two things when it comes to scalability.
 First, as the number of tenants increases so will database load.
-Second, as the number of tenants increases so will the amount of extensions on the the schema. 
-The database should manage both the increasing load and the increasing complexity of the data in a scalable way.
+Second, as the number of tenants increases so will the amount of extensions on the the schema.
+The database should  manage simultaniously increasing load and schena complexity in a scalable way.
 
-Scaling a database under increasing load is not a multi-tenant specific problem and for most \acp{DBMS} solutions exist for this. 
+Scaling a database under just increasing load is not a multi-tenant specific problem and for most \acp{RDBMS} solutions exist for this. 
 For instance, PostgreSQL has several available solutions for scaling and clustering\footnote{http://wiki.postgresql.org/wiki/Replication,\_Clustering,\_and\_Connection\_Pooling (March 2014)}, and so does MySQL.\footnote{https://www.mysql.com/products/cluster/scalability.html (March 2014)}
 
-This is also reflected in the fact that most research on performance and scalability in the data layer for multi-tenant applications either focuses on the following two subjects.
-How to efficiently map the extensible schema onto existing \acp{RDBMS}.~\cite{aulbach2008multi, aulbach2009comparison} 
+Thus the multi-tenant specific problem in the data layer of \acp{MTA} is finding a method that remains scalable with increasing schema complexity and load.
+Research on this subject focuses on two methods to achieve this.
+First, how to efficiently map the extensible schema onto existing \acp{RDBMS}.~\cite{aulbach2008multi, aulbach2009comparison} 
 Or, more recently, on creating multi-tenant aware \acp{RDBMS}.~\cite{schiller2011native, aulbach2011extensibility} 
 
-\subsection{Schema mapping techniques}
+\subsubsection{Schema mapping techniques}
+Schema mapping techniques are techniques for mapping an extensible schema into a traditional \ac{RDBMS}.
+This mapping is usually managed in an application layer that performs various operations. 
+Typically this layer rewrites queries from tenants into a generic query that can be executed on a database shared among tenants.
+
 Schema mapping techniques for multi-tenant applications can be separated into two groups. 
-One group in which the database 'owns' the schema  and the other group where the application 'owns' the schema and maps this into generic database structures.~\cite{aulbach2009comparison}
+One group in which the database 'owns' the schema and the other group where the application 'owns' the schema and maps this into generic database structures.~\cite{aulbach2009comparison}
 
-The first group lies closest to traditional usage of an \ac{RDBMS}. 
-The various entities in the schema generally have their own tables in the database.
-Below several schema layouts in this group will be discussed.
 \begin{description}
-	\item[Basic layout] In the basic layout the database fully owns the schema and it cannot be extended. 
-		In this schema the tables are shared among tenants and the tables contain a 'tenantId' column to separate the date of the various tenants.
-		In this case there is no room for extensions to the schema. 
-		This schema type is common in less complex applications where extensibility is less needed.~\cite{aulbach2008multi}
-		
-		The major advantage from a scalability point of view is that in this schema extensibility does not exist so only increasing load is something that has to be dealt with.
-		It is however for this same reason that in many multi-tenant applications using this schema is not an option.
-	\item[Extension tables]
-		This layout extends the basic to allow for tenant specific extensions..
-		In this schema there is a base table for every entity shared across tenants with a rowId and tenantId column.
-		When the schema is extended an extension table with the additional columns is created.
-		This table will also contain a rowId and tenantId column which are used to reconstruct the data into its extended form.
-		In the optimal case existing extensions can be used by other tenants as well.
+	\item[Database owned schema: ] The most basic case for database owned schema is an unextensible schema.
+		In this case the entities in the application are mapped to their own tables.
+		Each table is augmented with a 'tenantId' column that binds specific rows to specific tenants.~\cite{aulbach2008multi}
 
-		This schema introduces some overhead when customizations are used as reconstructing the logical, extended, entities will take one or more joins. 
-		In addition to that the amount of tables in the database will increase with the amount of tenants, and extensions, increases. Tests by Aulbach et.al. have show that performance degrades with an increasing number of tables.~\cite{aulbach2008multi}
+		In the case of a shared database and schema extension tables can be used to allow for tenant specific extensions.
+		This is a method that finds its roots in de decomposed storage model.~\cite{copeland1985decomposition}
+		These are tables that contain the additional columns added by tenants. 
+		Based on a stored 'tenantid' and 'rowid' the extension tables are joined with the base table when data is fetched from the database.~\cite{aulbach2008multi}
+
+		In the case of a private schema, where each tenant has his own set of tables, or a private database per tenant the base database schema can be extended in the traditional way by adding columns.~\cite{aulbach2009comparison}
+		Each tenant has his own set of tables in these cases so the extensions will always remain private. 
+	
+		A major scalability issue in these cases is that, assuming the schema must be extensible, the number of tables increases with the number of tenants, as every new tenant might add additional extensions.
+		A very large amount of tables in a database can result in reduced performance.~\cite{aulbach2008multi}
+	\item[Application owned schema: ] In the cases where the application owns the schema there generally is a clear seperation between the logical schema, the entities and their relations as seen and used in the application and the database schema.
 \end{description}
 
-In the mappings discussed below the database does not own the schema. 
-For most layouts below this means that knowledge of column names and types are kept in the application or middleware that is using the database for storage. 
-\begin{description}
-	\item[Universal table(s)]
-		The universal table is a schema layout where there exists one generic table with a tenant column, table column and a large number of generic data columns.
-		Onto this table several logical entities can be mapped.
-		In this mapping the nth column of the logical entity will map to the nth generic field of its row in the universal table.
-		The application or middleware will have to keep track of the mappings for the entities used in the application.
+%In the mappings discussed below the database does not own the schema. 
+%For most layouts below this means that knowledge of column names and types are kept in the application or middleware that is using the database for storage. 
+%\begin{description}
+%	\item[Universal table(s)]
+%		The universal table is a schema layout where there exists one generic table with a tenant column, table column and a large number of generic data columns.
+%		Onto this table several logical entities can be mapped.
+%		In this mapping the nth column of the logical entity will map to the nth generic field of its row in the universal table.
+%		The application or middleware will have to keep track of the mappings for the entities used in the application.
+%
+%		The advantage to this layout is that the different tenants are able to extend the same table in different ways. 
+%		Another advantage is that all columns in a row are kept together. 
+%		This makes it easy to reconstruct the original entity.
+%		The disadvantage are that the table will have to be very wide and it will contain a lot of NULLs. 
+%		Although some \acp{DBMS} have mechanisms to handle this efficiently, such as the SQL Server Sparse Columns feature.\footnote{http://technet.microsoft.com/en-us/library/cc280604.aspx (March 2014)}.
+%		Another disadvantage is that it will be difficult to support custom indices, either all tenants get an index on a column or none do.~\cite{aulbach2008multi}
+%	\item[Pivot tables]
+%		Pivot tables are a different implementation of the universal table.
+%		In a pivot table every column entry from a logical entity gets its own row. 
+%		This leads to a layout that looks like "TenantId, EntityId, RowId, ColumnId, Data".
+%
+%		The advantage over a Universal table is that NULLS are not stored.
+%		The disadvantage is the overhead in the database. 
+%		This schema contains more metadata columns than data columns, and for a logical entity with $n$ columns $(n-1)$ joins on the pivot table are needed to reconstruct it.~\cite{aulbach2008multi}
+%	\item[Extension fields]
+%		In the extension field layout for every entity a table.
+%		All tables of extensible entities contain an extra field that stores extensions in a structured format like XML or JSON.
+%		Certain \acp{RDBMS} support accessing data within such a field. 
+%		DB2 does this for XML trough PureXML\footnote{http://www-01.ibm.com/software/data/db2/linux-unix-windows/xml/index.html (march 2014)} and Postgres allows for reading values from JSON fields\footnote{http://www.postgresql.org/docs/9.3/static/functions-json.html (March 2014)}
 
-		The advantage to this layout is that the different tenants are able to extend the same table in different ways. 
-		Another advantage is that all columns in a row are kept together. 
-		This makes it easy to reconstruct the original entity.
-		The disadvantage are that the table will have to be very wide and it will contain a lot of NULLs. 
-		Although some \acp{DBMS} have mechanisms to handle this efficiently, such as the SQL Server Sparse Columns feature.\footnote{http://technet.microsoft.com/en-us/library/cc280604.aspx (March 2014)}.
-		Another disadvantage is that it will be difficult to support custom indices, either all tenants get an index on a column or none do.~\cite{aulbach2008multi}
-	\item[Pivot tables]
-		Pivot tables are a different implementation of the universal table.
-		In a pivot table every column entry from a logical entity gets its own row. 
-		This leads to a layout that looks like ``TenantId, EntityId, RowId, ColumnId, Data".
+%		The advantage of this schema is that extensions are kept in a single field and that its a very basic extension of the basic layout.
+%		However reading from the extension field will introduce additional overhead.~\cite{aulbach2009comparison}
+%\end{description}
 
-		The advantage over a Universal table is that NULLS are not stored.
-		The disadvantage is the overhead in the database. 
-		This schema contains more metadata columns than data columns, and for a logical entity with $n$ columns $(n-1)$ joins on the pivot table are needed to reconstruct it.~\cite{aulbach2008multi}
-	\item[Extension fields]
-		In the extension field layout for every entity a table.
-		All tables of extensible entities contain an extra field that stores extensions in a structured format such as XML or JSON.
-		Certain \acp{RDBMS} support accessing data within such a field. 
-		DB2 does this for XML trough PureXML\footnote{http://www-01.ibm.com/software/data/db2/linux-unix-windows/xml/index.html (march 2014)} and Postgres allows for reading values from JSON fields\footnote{http://www.postgresql.org/docs/9.3/static/functions-json.html (March 2014)}
-
-		The advantage of this schema is that extensions are kept in a single field and that its a very basic extension of the basic layout.
-		However reading from the extension field will introduce additional overhead.~\cite{aulbach2009comparison}
-\end{description}
-
-\subsection{Tenant aware \acp{DBMS}}
+\subsubsection{Tenant aware \acp{DBMS}}
 Schiller et.al.~\cite{schiller2011native} propose a database with native multi-tenancy support and support for schema extensibility.
 Using their approach a tenant object would exist within the database as a first-class object. 
 Based on these objects for each tenant a context can be maintained that allows the database to determine what data belongs to a specific tenant. 
