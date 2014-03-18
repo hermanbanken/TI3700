@@ -94,34 +94,34 @@ This allows for tenants to enable or disable modules that check data or automate
 
 Two ways to implement Controller Changes or System Component Changes are \acl{DI} and \acl{COP}.
 
-\textbf{\acf{DI}} is a common variation technique, where one of the (possibly many) classes that implement the same interface are injected by a provider. 
-Walraven et al.~\cite{walraven2011middleware} created a middleware layer that uses a existing \ac{DI} framework, compatible with \ac{GAE}, named Guice. An issue with Guice, that did not allow per-request switching of implementations was quickly solved by adding a small abstraction layer, making Guice usable in a multi-tenant environment.
-Side note: their case study also shows that \ac{GAE} leverages the effort of separating tenant data a lot by providing the so-called Namespaces API. By linking each tenant to an unique namespace all data in that namespace is only accessible by a that specific tenant.
+\textbf{\acf{DI}} is a variation technique, where one of the (possibly many) classes that implement the same interface are injected by a provider. Tools such as Spring Framework~\cite{walls2005spring} and Google Guice~\cite{vanbrabant2008google} provide a framework for \ac{DI}. The main use case of \ac{DI} is mocking components while testing an application, however it proves useful in multi tenant applications as well:
+Walraven et al.~\cite{walraven2011middleware} created a multi tenancy middleware layer that uses Guice, which is compatible with \ac{GAE}. An issue with Guice, that did not allow per-request switching of implementations, was quickly solved by adding a small abstraction layer, making Guice usable in a multi-tenant environment\footnote{
+Their case study also shows that \ac{GAE} leverages the effort of separating tenant data a lot by providing the so-called Namespaces API. By linking each tenant to an unique namespace all data in that namespace is only accessible by a that specific tenant.}.
 
-One of the conclusions of Walraven et al.~\cite{walraven2011middleware} is that \ac{AOSD} looks promising as an alternative to \ac{DI} for more complex customizations, such as features that have to be combined.
+One of the conclusions of Walraven et al.~\cite{walraven2011middleware} is that \ac{AOSD} looks promising as an alternative to \ac{DI} for more complex customizations, such as when features have to be combined.
 They go further on this lead in Truyen et al.~\cite{truyen2012context} and introduce \textbf{\ac{COP}}, a form of \ac{AOSD} to implement what can be seen as controller changes. 
 In \ac{COP}, layers are added to the code that override certain behavior when this layer is activated for a specific tenant. 
-In \ac{DI}, for each variation point only one variation can be injected at a time, so no two 'modules' providing the same functionality can interact or extend each other, while in \ac{COP} those implementations can work together, because the overriding methods can still call the original method allowing them to modify the output or implement a filter. 
-Multiple layers can be active at once, doing their work in a predefined order. 
+In \ac{DI}, for each variation point only one variation can be injected at a time, so no two `modules' providing the same functionality can interact or extend each other, while in \ac{COP} those implementations can work together, because the overriding methods can still call the original method allowing them to modify the output or implement a filter. 
+Multiple layers can be active at once, doing their work in a predefined order.
 % MAYBE-TODO: this paragraph could be more elaborate
 
 \subsection{Research Agenda for Variability}
-% svahnberg2005taxonomy
-% sun2008software: no interesting future work proposed
+\subsubsection{Automation}
+For variability to become manageable, tools must exist for \ac{SaaS} providers to manage the configuration of tenants and to deploy new tenants. Mietzner et al.~\cite{mietzner2008defining} try to make variability easier to manage by creating so called \textit{solutions}, that define which variants should be bound. It could be investigated how deployment scripts could be derived from these solutions, to automatically deploy tenants.
 
-% mietzner2008defining: automization, no further interesting future work proposed
-Mietzner et al.~\cite{mietzner2008defining} want to make variability easier to manage for \ac{SaaS} providers and created so called \textit{solutions} that define which variants should be bound. In the future it could be investigated how deployment scripts could be derived from those solutions.
+\subsubsection{Cost model}
+While it is researched how the costs of multi tenant aware applications compare to non-multi-tenant aware applications~\cite{mietzner2009variability}, no research is done to relate a cost model to a variability model. Future research could be done to determine the cost of creating, maintaining and managing variants. The providers can then decide whether or not it makes more sense, economically, to keep a variant or to remove it.
 
-Mietzner et al.~\cite{mietzner2009variability} describe a cost model for \ac{SaaS} applications to compare the cost of multi tenant aware versus non-multi-tenant aware applications. They do not however relate this cost model to their variability model. This is interesting for future research as a \ac{SaaS} provider can then determine the cost of creating, maintaining and managing a variant. The provider could then decide if it economically makes more sense to keep a variant or to remove it.
-
-% jansen2010customization nothing in this paper thats not in kabbedijk2011variability
-
+\subsubsection{More \acp{VRT}}
 Kabbedijk and Jansen~\cite{kabbedijk2011variability} have determined some \acp{VRT}, but note that more \acp{VRT} could be identified and should be tested on effectiveness, maintainability, scalability and performance.
 
+\subsubsection{Maintaining context in \ac{COP}}
 Truyen et al.~\cite{truyen2012context} found that \ac{COP} was useful as a \ac{VRT} but ContextJ lacked support for asynchronous request because context is not shared to new threads. Research could be done to see if it is possible to bridge this gap to make \ac{COP} more usable as more and more applications are using asynchronous functionality.
 
+\subsubsection{Performance isolation}% performance isolation => scalability
 Furthermore they found that \ac{GAE} scales well automatically, but does not support any kind of performance isolation or can guarantee performance to any specific tenant more than an other tenant. More research can be done on this subject and maybe Google and other \ac{PaaS} providers will then implement this functionality and enable \ac{SaaS} providers using their platform to sell Quality of Service guarantees.
 
+\subsubsection{Maintaining State Consistency while doing Updates}
 Another open issue that Truyen et al. identify is maintaining global state consistency when doing updates. The tenants that don't use any of the updated functionality should not experience any interruptions. When \acp{SLA} are sold this consistency and uninterrupted service should be provable.
 
 % schroeter2012towards
