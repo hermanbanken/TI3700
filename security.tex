@@ -6,7 +6,7 @@ Thus, to advance the development and deployment of multi-tenancy, security issue
 
 As mentioned in the previous sections, a single definition for multi-tenancy has yet to be established. 
 These different definitions of the concept of multi-tenancy concern different systems and therefore different security concerns.
-For example, the paper by Bezemer~\cite{bezemer2010multi} indicates that a multi-tenant system could be defined as having a single database of all tenants, or as having seperate databases for each of tenants. 
+For example, the paper by Bezemer~\cite{bezemer2010multi} indicates that a multi-tenant system could be defined as having a single database of all tenants, or as having separate databases for each of tenants. 
 Naturally, these systems will have a different number of security concerns to deal with. In this paper we mainly address issues related to true multi-tenancy as defined by Bezemer~\cite{bezemer2010multi}.
 
 In this paper we will specifically discuss the issues caused by or enlarged specifically by the use of multi-tenancy. 
@@ -47,7 +47,7 @@ The boundary must be ensured not only at physical level but additionally at the 
 
 To ensure the secure data storing, the paper of Takahashi et al~\cite{Takahashi2012Security} suggests the use of encrypted data manipulation using crypto-graphical techniques. 
 One such technique is called \acf{PECE}, which allows a user to encrypt a file in multiple layers, while being able to decrypt with a single key.
-This techinque would allow the tenant, the multi-tenant provider and any middleware providers to encrypt the data seperately, while only allowing the tenant to hold the key for decryption.
+This technique would allow the tenant, the multi-tenant provider and any middleware providers to encrypt the data separately, while only allowing the tenant to hold the key for decryption.
 Next to that, the authors propose the use of homomorphic encryption. 
 This crypto-graphical technique enables the users to perform operations on encrypted files without the need to decrypt the files.
 In a multi-tenant environment, this technique would increase the security for the tenants, because encrypted data would be decrypted and prone to leakage.
@@ -61,7 +61,7 @@ Multi-user authentication provides enhanced access control capabilities.
 However, this form of authentication lacks multi-tenancy-specific capabilities, while the user authorization is confined to each individual tenant. 
 The multi-user authorization concept provides no capabilities to grant users privileges over multiple tenants, as noted by Calero et al~\cite{Calero2010Auth}
 This would not allow, for example, two companies or tenants to share certain data with each other, by granting each other specific privileges as a form of collaboration.
-These systems often lack the functionality and complexity to express more advanced forms of authorization, neccessary for multi-tenant systems.
+These systems often lack the functionality and complexity to express more advanced forms of authorization, necessary for multi-tenant systems.
 Thus, the problem lies with designing more advanced schemes of authentication, where users can be granted more detailed custom privileges.\\
 
 Noteworthy progress can be noted in Bernabe~\cite{Bernabe2012Auth}, which proposes an access control model system suitable for multi-tenancy and grants high expressiveness in terms of permissions. 
@@ -85,7 +85,7 @@ Each of these technologies has a particular share of security issues, impacting 
 When taking virtual machines into account in multi-tenancy, introspection of virtual machines poses major challenges to the multi-tenant system. 
 These systems implement the concept of a \acp{VMM}, which is tasked to manage and control the various \acp{VM}s needed by the tenants.
 In these systems, a tenant generally has the ability to migrate his custom \acp{VM} to another \acp{VMM}. 
-However, when a \ac{VM} is placed in a server with an untrusted \ac{VMM} it would allow \ac{VMM} to track the data flows inside the guest VM, as noted by takahashi~\cite{Takahashi2012Security}.
+However, when a \ac{VM} is placed in a server with an untrusted \ac{VMM} it would allow \ac{VMM} to track the data flows inside the guest VM, as noted by Takahashi~\cite{Takahashi2012Security}.
 
 Another current issue is the adaptation of VM-based Root-kits. 
 These root-kits, in contrast to traditional root-kits, do not stop at OS level, but continue to attempt to infect the supervising \ac{VMM}. 
@@ -121,7 +121,7 @@ At the protocol level, HTTP does not offer any support for transaction or guaran
 Thus, to ensure transactions are indeed delivered one needs to implement this functionality into the multi-tenancy system.\\
 
 Currently there are some standards available trying to fix this security issue, namely WS-Transaction\footnote{http://msdn.microsoft.com/en-us/library/ms951262.aspx} and WS-Reliability.
-However, as noted by Subashini et al.~\cite{Subashini2011Security} and confirmed by our web-baed survey based upon these techniques, these standards haven’t reached technical maturity yet and have therefore yet to experience full adoption by the majority of the multi-tenancy providers.
+However, as noted by Subashini et al.~\cite{Subashini2011Security} and confirmed by our web-based survey based upon these techniques, these standards haven’t reached technical maturity yet and have therefore yet to experience full adoption by the majority of the multi-tenancy providers.
 Since the publishing of the paper by Subashini.~\cite{Subashini2011Security}, WS-reliability has since been superseded by ReliableMessaging\footnote{http://docs.oasis-open.org/ws-rx/wsrm/200702/wsrm-1.1-spec-os-01.pdf}.
 
 \subsection{Research Agenda for Security}
