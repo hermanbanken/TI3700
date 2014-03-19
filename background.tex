@@ -2,16 +2,31 @@ Multi-tenancy is a vague term, since it has never had an exact and official defi
 
 \subsection{Definitions}
 
-In multi-tenant research, there are three important concepts: tenants, multi-tenancy, multi-user. In this section we show the variety of definitions of these concepts.
+In multi-tenant research, there are three important concepts: tenants, multi-tenancy and multi-user. In this section we show the variety of definitions of these concepts.
 
-Bezemer and Zaidman~\cite{bezemer2010multi} define a tenant as an organizational entity which rents a multi-tenant \ac{SaaS} solution (usually grouping a number of users). Krebs et al.~\cite{krebs2012architecture} have a more loose definition of a tenant; they define it as a group of users sharing the same view.
+Bezemer and Zaidman~\cite{bezemer2010multi} define a tenant as an organizational entity which rents a multi-tenant \ac{SaaS} solution (where the organization usually groups a number of users). Wang et al.~\cite{wang2008study} have a more loose definition, stating tenants are just different organizations and companies. This definition is also being used by Aulbach et al.~\cite{aulbach2008multi} and Walraven et al.~\cite{walraven2012towards}. Krebs et al.~\cite{krebs2012architecture} have a slightly different definition of a tenant: they define it as a group of users sharing the same view. They are thus not mentioning whether these users are part of a company or organization.
 
-Based on these definitions, both more or less agree on the definition of a multi-tenant application: hardware resource sharing by offering one shared application and database instance to multiple tenants.
+Using these variety of definitions, we can move on to the definitions of multi-tenancy. Wang et al.~\cite{wang2008study} describe multi-tenancy as multiple tenants being ``served concurrently by one or more hosted application instances and databases based on a scalable, shared hardware and software infrastructure''. According to Aulbach et al.~\cite{aulbach2008multi} a multi-tenant architecture is an architecture where multiple tenants are using the same operational system. Walraven et al.~\cite{walraven2012towards} use the definition of Guo et al.~\cite{guo2007framework}, describing it as serving end users from different tenants simultaneously by a single application instance on a shared hardware and software infrastructure. However, Walraven et al. narrow that definition a bit, stating it is an architectural style for especially \ac{SaaS} providers. Krebs et al.~\cite{krebs2012architecture} and Bezemer and Zaidman~\cite{bezemer2010multi} both define a multi-tenant application as hardware resource sharing by offering one shared application and database instance to multiple tenants.
 
-The difference between multi-tenancy and multi-user is also made clear by Bezemer and Zaidman~\cite{bezemer2010multi}. They state that in a multi-user application all users use the same application with limited configuration options, whereas a multi-tenancy application has more configuration options. However, all users use the same application, in both multi-user and multi-tenancy applications.
+The difference between multi-tenancy and multi-user is made clear by Bezemer and Zaidman~\cite{bezemer2010multi}. They state that in a multi-user application all users use the same application with limited configuration options, whereas a multi-tenancy application has more configuration options. However, all users use the same application, in both multi-user and multi-tenancy applications. % Extra citaties??
+
+From the variety of definitions above it can be concluded that there still is not an exact definition of multi-tenancy. The reoccuring elements in almost all these definitions are that tenants are organizations or companies, and that multi-tenancy means that multiple tenants are using the same system. In the following section we will elaborate on the different types of multi-tenancy. 
 
 \subsection{Different types of multi-tenancy}
 
+There are two general options for the architectural design of applications shared by multiple tenants: multiple instances and native multi-tenancy [4]. The former supports separated application instance for each tenant over a shared hosting environment whereas the latter use a single shared application instance to serve all tenants. The two approaches are different in terms of supportable tenant density, management cost, security isolation, and performance assurance. Following a native multi-tenant architecture generally means higher tenant density and lower management cost, but it also implies more work on security and performance isolation due to extensive resource sharing among tenants.~\cite{lin2009feedback}
+
+
+% Schakelzinnen
+% Meer papers over niveaus
+
+% aantal niveaus, en welke papers welke niveaus
+Multi-tenancy invariably occurs at the database layer of a service;~\cite{aulbach2008multi}
+compleet delen~\cite{aulbach2009comparison}
+
+% helikopter overview, algemene niveaus
+
+% Onderstaande "mappen" op applicatie delen, applicatie en database delen en compleet delen
 Krebs et al.~\cite{krebs2012architecture} describe various layers of sharing, in order of increasing benefits:
 \begin{enumerate}
 \item Sharing a data center (very limited benefits)
@@ -26,6 +41,8 @@ Chang Jie Guo et al.~\cite{guo2007framework} suggest the implementation of a mul
 
 \subsection{Multi-tenancy vs. the cloud}
 
+% waarom zit dit in deze survey? het is niet gelijk aan elkaar en het is niet afhankelijk van elkaar
+
 Dillon et al.~\cite{dillon2010cloud} comprehensively elaborate on various aspects of cloud services. They mention the following service models: 
 \begin{enumerate}
 \item \acf{SaaS} (example: Google Mail/Docs)
@@ -36,12 +53,12 @@ Dillon et al.~\cite{dillon2010cloud} comprehensively elaborate on various aspect
 
 Multi-tenancy falls mostly within the \ac{SaaS} domain, as mentioned by Tsai et al.~\cite{tsai2010towards}. Multi-tenancy gains the most benefits within this model.
 
-Dillon et al.~\cite{dillon2010cloud} also describe the several essential characteristics of cloud services, including resource pooling ('pooling' computing resources together in an effort to serve multiple consumers) and rapid elasticity (the consumption of resources can rapidly increase and the usage is not predictable upfront). These are both challenges for multi-tenant applications, as also mentioned by Krebs et al.~\cite{krebs2012architecture} and Bezemer and Zaidman~\cite{bezemer2010multi}.
+Dillon et al.~\cite{dillon2010cloud} also describe the several essential characteristics of cloud services, including resource pooling (`pooling' computing resources together in an effort to serve multiple consumers) and rapid elasticity (the consumption of resources can rapidly increase and the usage is not predictable upfront). These are both challenges for multi-tenant applications, as also mentioned by Krebs et al.~\cite{krebs2012architecture} and Bezemer and Zaidman~\cite{bezemer2010multi}.
 
-\subsection{Challenges of multi-tenancy}
+\subsection{Challenges of multi-tenancy} % -> research agenda?
 
 The multi-tenancy model has created two new security issues~\cite{dillon2010cloud}. Sharing resources on the same physical machine pose a danger to the data of the tenants. This falls within the isolation challenge. Another issue is reputation fate-sharing, since one might be sharing resources with possible criminal users, creating the possibility to (for example) get blacklisted.
 
-Another challenge is the charging model. The costs of developing multi-tenancy can be very substantial for \ac{SaaS} providers, because they need to re-design or re-develop single-tenant software, introduce new features for customization and enhance the security.
+Another challenge is the charging model. The costs of developing multi-tenancy can be very substantial for \ac{SaaS} providers, because they need to re-design or re-develop single-tenant software, introduce new features for customization and enhance the security. % voordeel noemen; citaties!
 
 Bezemer and Zaidman~\cite{bezemer2010multi} also mention performance as a challenge, since multiple tenants are using the same hardware resources. Other challenges are scalability (usage of resources can suddenly increase), zero-downtime (the user expects the system to be online when he needs it) and maintenance (added complexity due to multi-tenancy could make code harder to maintain).
