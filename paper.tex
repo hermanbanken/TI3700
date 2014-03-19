@@ -107,7 +107,20 @@ In this paper we surveyed the current state of multi-tenancy research.
 We have identified several topics for further research on the subjects of security, scalability, quality of service and variability.
 
 \highlight{Korte samenvatting hele paper}\\
+
 \highlight{Belangrijkste research agenda punten}
+\begin{itemize}
+
+\item \textbf{Automation}. 
+To exploit economies of scale, providers of multi-tenant applications want to attract as many tenants and users as possible. 
+However managing all these tenants and their configuration, takes a lot of time without the proper tools. 
+Research has been done on creating wizards for tenants~\cite{mietzner2008generation,mietzner2008defining}, but this field is not completely covered yet and additionally, automatic deployment of the outcome of these wizards can be researched. 
+\item \textbf{Guarantees}. 
+In all aspects of multi-tenancy new problems arise. 
+The solutions proposed for these problems need to be provable, for multi-tenancy to be usable in high availability or business critical applications. 
+Open research opportunities lie in state consistency while updating the platform (Section ~\ref{sec:var_agenda}), proving data isolation between tenants (Section \highlight{hebben we dit ergens?}), providing performance isolation and minimal performance (Section \highlight{hebben we dit ergens?}).
+
+\end{itemize}
 
 \bibliographystyle{plain}
 \bibliography{ref}
