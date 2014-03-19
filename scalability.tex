@@ -129,8 +129,23 @@ However it is unclear whether their approach really meets the requirements of a 
 
 
 \subsection{Research Agenda for Scalability}
-Both Kwok et.al.~\cite{kwok2008resource} and Espadas et.al.~\cite{espadas2013tenant} name identifying bottlenecks and validating existing and proposed methods as the primary challenge.
-In addition Espadas recommended finding new models and mechanisms for measuring machine statuses and metrics.
+In this section some promising research has been discussed, however many problems remain unsolved.
+Below we give a short overview of interesting topics for further research we identified.
 
-For the storage layer Aulbach et.al.~\cite{aulbach2009comparison, aulbach2008multi} and Schiller et.al.~\cite{schiller2011native} want further research into tenant-databases. The current prototypes are still incomplete and are seen as a basis for further research and development.
+\begin{itemize}
+	\item \textbf{Tenant aware \acp{DBMS}}.
+		A tenant aware \ac{DBMS} is an important step forward in finding a scalable database solution for multi tenant applications.
+		Schiller et.al.~\cite{schiller2011native} have implemented a promising prototype. However tenant aware database administration tools are still nonexistant.
+		In addition to that we agree with their assessment that more research storage model for the \ac{DBMS} is needed to tailor it to tenant aware data management.
+	\item \textbf{Performance metrics}.
+		Kwok~\cite{kwok2008resource} uses memory and cpu usage for his metrics and so does Espadas~\cite{espadas2013tenant}. 
+		However depending on the characteristics of the application it may be worthwhile to measure other resources as well, such as bandwith, transferred data, used storage or database queries executed. 
+	\item \textbf{Resource allocation}.
+		The methods proposed by Kwok~\cite{kwok2008resource} and Espadas~\cite{espadas2013tenant} have only been tested on a single platform each.
+		To properly evaluate their usefulness these methods need to be validated to work on different platforms, additional case studies are required.
+\end{itemize}
+%Both Kwok et.al.~\cite{kwok2008resource} and Espadas et.al.~\cite{espadas2013tenant} name identifying bottlenecks and validating existing and proposed methods as the primary challenge.
+%In addition Espadas recommended finding new models and mechanisms for measuring machine statuses and metrics.
+
+%For the storage layer Aulbach et.al.~\cite{aulbach2009comparison, aulbach2008multi} and Schiller et.al.~\cite{schiller2011native} want further research into tenant-databases. The current prototypes are still incomplete and are seen as a basis for further research and development.
 
