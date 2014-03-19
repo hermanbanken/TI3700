@@ -73,39 +73,13 @@ This authorization system is able to support collaboration agreements, often ref
 \subsection{Related Security Issues}
 Taking a wider scope on the subject, the surveyed papers indicate a lot of security issues closely linked to multi-tenancy. 
 These security issues should be taken into account due to the following two reasons.
-
 First off, as mentioned earlier, the definition of multi-tenancy is still quite ambiguous. 
 It is often used to indicate all sorts of cloud services, including IaaS and PaaS models, as seen by Jasti et al~\cite{Jasti2010Security}. 
 The scope of multi-tenancy is often larger than our definition of multi-tenancy. Due to the increased scope, more security issues can be considered to belong to multi-tenancy.
-
 Another reason for taking into account related security issues, is the fact that multi-tenancy is a high-level model. 
 The model depends on a bundle of underlying technologies, such as the hardware infrastructure, operating systems and server software. 
-Each of these technologies has a particular share of security issues, impacting the level of security of the multi-tenancy system on top. 
+Each of these technologies has a particular share of security issues, impacting the level of security of the multi-tenancy system on top. \\
 
-
-\subsubsection{Web-dependent Application Security}
-The web is often seen as an aspect of the multi-tenancy model. 
-It ensures the accessibility of the data. 
-The importance of good security practices in the application-layer is be illustrated by Wade et al~\cite{Wade2008Security}.
-The report about data breaches on the Verizon Business platform, reports that 39\% of the data breaches occur in the service/application layer, which comprises the multi-tenant section. The \ac{OWASP}\footnote{http://owasptop10.googlecode.com/files/OWASP\%20Top\%2010\%20-\%202013.pdf} has identified the 10 greatest security risks faced by network-dependent applications.\\
-
-In Takahashi et al~\cite{Takahashi2012Security} the authors describe a couple of ways to detect vulnerabilities in the server-side and client-side of the web application. 
-Endpoint risk detection techniques detect client-side vulnerabilities at the endpoint (the user). 
-There are a good number of implementations, such as FLAX~\cite{saxena10kudzu} and Zozzle~\cite{curtsinger2011zozzle} that target JavaScript issues. 
-Another form of detection is called the middle-box risk detection. 
-This kind of detection requires no adjustments of the code, as the detection is performed in between the server and client-side, using custom HTTP requests. 
-Projects implementing this kind detection, such as SpyProxy\footnote{\url{http://homes.cs.washington.edu/~gribble/papers/spyproxy.pdf}}, BrowserShield\footnote{\url{http://research.microsoft.com/en-us/news/features/browsershield.aspx}} and WebShield\footnote{\url{http://www.isoc.org/isoc/conferences/ndss/11/pdf/6_2.pdf}}, are still in early development stages, but these projects already look very promising.
-
-\subsubsection{Data Integrity and Network Security}
-With the dependence on extensive usage of networks, the multi-tenancy model is highly dependent on good network security.  
-Multi-tenant systems have an extended emphasis on data integrity, because data transmissions of one tenant also need to be secure on the internal level of the multi-tenant system to prevent other tenants from accessing the potentially classified data.
-According to Subashini~\cite{Subashini2011Security}, one of the biggest challenges with multi-tenant services is transaction management. 
-At the protocol level, HTTP does not offer any support for transaction or guaranteed delivery of packets. 
-Thus, to ensure transactions are indeed delivered one needs to implement this functionality into the multi-tenancy system.\\
-
-Currently there are some standards available trying to fix this security issue, namely WS-Transaction\footnote{http://msdn.microsoft.com/en-us/library/ms951262.aspx} and WS-Reliability.
-However, as noted by Subashini et al.~\cite{Subashini2011Security} and confirmed by our web-baed survey based upon these techniques, these standards haven’t reached technical maturity yet and have therefore yet to experience full adoption by the majority of the multi-tenancy providers.
-Since the publishing of the paper by Subashini.~\cite{Subashini2011Security}, WS-reliability has since been superseded by ReliableMessaging\footnote{http://docs.oasis-open.org/ws-rx/wsrm/200702/wsrm-1.1-spec-os-01.pdf}.
 
 \subsubsection{\acf{VM} Security}
 When taking virtual machines into account in multi-tenancy, introspection of virtual machines poses major challenges to the multi-tenant system. 
@@ -118,13 +92,37 @@ These root-kits, in contrast to traditional root-kits, do not stop at OS level, 
 According to Takahashi~\cite{Takahashi2012Security}, several proof-of-concept VM-based root-kits, such as Blue Pill, were able to successfully identify and infect the VM, followed by the \ac{VMM}.
 
 \subsubsection{Virtual Machine Monitor Security}
-The \acl{VMM} has the essential role of isolating and controlling the virtual machines. 
+The \acl{VMM} has the essential role of isolating and controlling the virtual machines, which in multi-tenancy are managed by the tenants.
 However, an investigation was conducted by Ormandy et al~\cite{Ormandy2007Security}of six major \acp{VMM} and emulators, using source code auditing techniques. All six systems had major flaws, leading to unexpected aborts and possible exploits.
 
 Additionally there is the problem of the detectability of the \ac{VMM}’s. Ideally, the \ac{VMM} is completely transparent; the tenant has no notion what kind of \ac{VMM} is running the virtual machines. 
 However, as argued in the paper by Takahashi~\cite{Takahashi2012Security}, the idea of complete \ac{VMM} transparency is unrealistic. 
-It is unrealistic due to clues provided by the \ac{VMM}, such as time sources and overhead, which can be used to identify the type of \ac{VMM}
+Clues provided by the \ac{VMM}, such as time sources and overhead, which can be used to identify the type of \ac{VMM}
 The detectability of the \ac{VMM} creates the opportunity for malicious users to target specific \ac{VMM} systems and versions.
+
+\subsubsection{Web-dependent Application Security}
+The web is often seen as an aspect of the multi-tenancy model. 
+It ensures the accessibility of the data. 
+The importance of good security practices in the application-layer is be illustrated by Wade et al~\cite{Wade2008Security}.
+The report about data breaches on the Verizon Business platform, reports that 39\% of the data breaches occur in the service/application layer, which comprises the multi-tenant section. The \ac{OWASP}\footnote{http://owasptop10.googlecode.com/files/OWASP\%20Top\%2010\%20-\%202013.pdf} has identified the 10 greatest security risks faced by network-dependent applications.\\
+
+In Takahashi et al~\cite{Takahashi2012Security} the authors describe a couple of ways to detect vulnerabilities in the server-side and client-side of the web application. 
+Endpoint risk detection techniques detect client-side vulnerabilities at the endpoint (the user). 
+There are a good number of implementations, such as FLAX~\cite{saxena10kudzu} and Zozzle~\cite{curtsinger2011zozzle} that target JavaScript issues. 
+Another form of detection is called the middle-box risk detection. 
+This kind of detection requires no adjustments of the code, as the detection is performed in between the server and client-side, using custom HTTP requests. 
+Projects implementing this kind detection, such as SpyProxy\footnote{http://homes.cs.washington.edu/~gribble/papers/spyproxy.pdf}, BrowserShield\footnote{http://research.microsoft.com/en-us/news/features/browsershield.aspx} and WebShield\footnote{http://www.isoc.org/isoc/conferences/ndss/11/pdf/6_2.pdf}, are still in early development stages, but these projects already look very promising.
+
+\subsubsection{Data Integrity and Network Security}
+With the dependence on extensive usage of networks, the multi-tenancy model is highly dependent on good network security.  
+Multi-tenant systems have an extended emphasis on data integrity, because data transmissions of one tenant also need to be secure on the internal level of the multi-tenant system to prevent other tenants from accessing the potentially classified data.
+According to Subashini~\cite{Subashini2011Security}, one of the biggest challenges with multi-tenant services is transaction management. 
+At the protocol level, HTTP does not offer any support for transaction or guaranteed delivery of packets. 
+Thus, to ensure transactions are indeed delivered one needs to implement this functionality into the multi-tenancy system.\\
+
+Currently there are some standards available trying to fix this security issue, namely WS-Transaction\footnote{http://msdn.microsoft.com/en-us/library/ms951262.aspx} and WS-Reliability.
+However, as noted by Subashini et al.~\cite{Subashini2011Security} and confirmed by our web-baed survey based upon these techniques, these standards haven’t reached technical maturity yet and have therefore yet to experience full adoption by the majority of the multi-tenancy providers.
+Since the publishing of the paper by Subashini.~\cite{Subashini2011Security}, WS-reliability has since been superseded by ReliableMessaging\footnote{http://docs.oasis-open.org/ws-rx/wsrm/200702/wsrm-1.1-spec-os-01.pdf}.
 
 \subsection{Research Agenda for Security}
 As mentioned in previous sections the security aspect of multi-tenancy is relatively new.
