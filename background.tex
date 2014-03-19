@@ -43,11 +43,3 @@ There are various service models for cloud services, as discussed by Dillon et a
 Multi-tenancy has the biggest relationshop with the \ac{SaaS} domain, as mentioned by Tsai et al.~\cite{tsai2010towards}, because multi-tenancy gains the most benefits within this model.
 
 Dillon et al.~\cite{dillon2010cloud} also describe the several essential characteristics of cloud services, including resource pooling (`pooling' computing resources together in an effort to serve multiple consumers) and rapid elasticity (the consumption of resources can rapidly increase and the usage is not predictable upfront). These are both challenges for multi-tenant applications, as also mentioned by Krebs et al.~\cite{krebs2012architecture} and Bezemer and Zaidman~\cite{bezemer2010multi}.
-
-\subsection{Challenges of multi-tenancy} % -> research agenda?
-
-The multi-tenancy model has created two new security issues~\cite{dillon2010cloud}. Sharing resources on the same physical machine pose a danger to the data of the tenants. This falls within the isolation challenge. Another issue is reputation fate-sharing, since one might be sharing resources with possible criminal users, creating the possibility to (for example) get blacklisted.
-
-Another challenge is the charging model. The costs of developing multi-tenancy can be very substantial for \ac{SaaS} providers, because they need to re-design or re-develop single-tenant software, introduce new features for customization and enhance the security. % voordeel noemen (Guo 2007); citaties!
-
-Bezemer and Zaidman~\cite{bezemer2010multi} also mention performance as a challenge, since multiple tenants are using the same hardware resources. Other challenges are scalability (usage of resources can suddenly increase), zero-downtime (the user expects the system to be online when he needs it) and maintenance (added complexity due to multi-tenancy could make code harder to maintain).
