@@ -1,19 +1,19 @@
-%INTRO: (section title is in main file.)
-%\subsection{scalability.tex}
-The scalability of a system, in general, describes how well a system can handle increasing workload, stored data and utilization.
+The scalability of a system is a measure for how well a system can handle increasing workload, stored data and utilization.
 A system is considered scalable when it can be extended to support an increasing load with a well manageable cost increase.
 On the contrary, for an unscalable system supporting increased load might be technically infeasible or prohibitively expensive.~\cite{bondi2000scalability}
 
 As one of the key advantages of multi-tenant applications is a higher utilization of resources and the associated cost reduction per tenant.~\cite{bezemer2010multi} 
-It is required that a multi-tenant application is scalable to maintain this cost reduction and to accommodate for the, hopefully, ever increasing number of tenants.
+It is required that a multi-tenant application is scalable to maintain this cost reduction and to accommodate for an increasing number of tenants.
 
 In the scalability section we will focus specifically on how the infrastructure, or specific parts thereof, of a multi-tenant application can deal with an increasing number of tenants.
+
+First methods for placing new tenants and calculating the resources needed per tenant are discussed. After that scalability in the  storage layer will be discussed. Finally a research agenda for scalability research will be presented.
 
 \subsection{Scaling a multi tenant application}
 Scalability in the application layer is about dealing with an increasing amount of tenants on the existing infrastructure.
 Research in this area focuses on estimating the resources required for new and existing tenants and how to optimally distribute the workload of existing and new tenants across the infrastructure. 
-For multi tenant applications it is very important to avoid both under and over utilization of resources.
-Over utilization will result in degraded performance for tenants and under utilization may result in unneeded expenses for the provider.
+For multi tenant applications it is very important to avoid both under- and overutilization of resources.
+Overutilization will result in degraded performance for tenants and underutilization may result in unneeded expenses for the provider.
 
 In this subsection methods for estimating the resource consumption per tenant and methods for optimally placing new tenants on an existing infrastructure are discussed.
 
@@ -31,14 +31,14 @@ Therefore their method is most suitable for applications running on a cloud plat
 Their proposed system uses a core SaaS application that handles incoming requests and maintains a tenant specific context that tracks the number of logged in users, services used, and resource consumption.
 Based on the data stored in these context the system determines the amount of resources currently required by the tenants and adjusts the amount of allocated resources if needed.
 
-Performance tests with the new model show that without reducing the performance the tenants experience their system leads to a statistically significant reduction in under utilization, but no statistically significant reduction in over utilization. 
+Performance tests with the new model show that without performance loss for tenants their system leads to a statistically significant reduction in underutilization, but no statistically significant reduction in overutilization. 
 
 
 \subsection{Scaling a multi tenant data layer}
 The schema of the data model presented in a multi-tenant application should be extensible by tenants.
 Extensibility is required because this allows tenants to modify their view of the application in such a way that a better fits their needs.
 
-Within a \ac{MTA} the data layer will have to deal with two things when it comes to scalability.
+Within a multi-tenant application the data layer will have to deal with two things when it comes to scalability.
 First, as the number of tenants increases so will database load.
 Second, as the number of tenants increases so will the amount of extensions on the the schema.
 The database should  manage simultaneously increasing load and schema complexity in a scalable way.
@@ -46,10 +46,10 @@ The database should  manage simultaneously increasing load and schema complexity
 Scaling a database under just increasing load is not a multi-tenant specific problem and for most \acp{RDBMS} solutions exist for this. 
 For instance, PostgreSQL has several available solutions for scaling and clustering\footnote{http://wiki.postgresql.org/wiki/Replication,\_Clustering,\_and\_Connection\_Pooling (March 2014)}, and so does MySQL.\footnote{https://www.mysql.com/products/cluster/scalability.html (March 2014)}
 
-Thus the multi-tenant specific problem in the data layer of \acp{MTA} is finding a method that remains scalable with increasing schema complexity and load.
+The multi-tenant specific problem in the data layer of multi-tenant applications is finding a method that remains scalable with both increasing schema complexity and increasing load.
 Research on this subject focuses on two methods to achieve this.
-First, how to efficiently map the extensible schema onto existing \acp{RDBMS}.~\cite{aulbach2008multi, aulbach2009comparison} 
-Or, more recently, on creating multi-tenant aware \acp{RDBMS}.~\cite{schiller2011native, aulbach2011extensibility} 
+How to efficiently map the extensible schema onto existing \acp{DBMS}.~\cite{aulbach2008multi, aulbach2009comparison} 
+Or, more recently, on creating multi-tenant aware \acp{DBMS}.~\cite{schiller2011native, aulbach2011extensibility} 
 
 \subsubsection{Schema mapping techniques}
 Schema mapping techniques are techniques for mapping an extensible schema into a traditional \ac{RDBMS}.
@@ -57,7 +57,7 @@ This mapping is usually managed in an application layer that performs various op
 Typically this layer rewrites queries from tenants into a generic query that can be executed on a database shared among tenants.
 
 Schema mapping techniques for multi-tenant applications can be separated into three groups. 
-One group in which the database 'owns' the schema, group where the application 'owns' the schema and maps this into generic database structures, and a group that uses a hybrid model where the database partially owns the schema.~\cite{aulbach2009comparison}
+One group in which the database owns the schema, a group where the application owns the schema and maps this into generic database structures, and a group that uses a hybrid model where the database partially owns the schema.~\cite{aulbach2009comparison}
 
 \begin{description}
 	\item[Database owned schema: ] The most basic case for database owned schema is an inextensible schema.
