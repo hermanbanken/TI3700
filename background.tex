@@ -29,10 +29,9 @@ Guo et al.~\cite{guo2007framework} suggest the implementation of a multi-tenancy
 
 \subsection{Multi-tenancy vs. the cloud}
 
-% waarom zit dit in deze survey? het is niet gelijk aan elkaar en het is niet afhankelijk van elkaar
-Multi-tenancy has a relationship with the cloud, but that does not implicate they are the same. For example, a multi-tenant application does not have to run in the cloud and a cloud application does not have to be multi-tenant.
+Multi-tenancy has a relationship with the cloud, but that does not implicate they are the same. For example, a multi-tenant application does not have to run in the cloud and a cloud application does not have to be multi-tenant. In this section we explain this relationship.
 
-There are various service models for cloud services, as discussed by Dillon et al.~\cite{dillon2010cloud}:
+Firstly, there are various service models for cloud services, as discussed by Dillon et al.~\cite{dillon2010cloud}:
 \begin{enumerate}
 \item \acf{SaaS} (example: Google Mail/Docs)
 \item \acf{PaaS} (example: Google AppEngine)
@@ -40,8 +39,8 @@ There are various service models for cloud services, as discussed by Dillon et a
 \item \acf{DaaS} (example: Google BigTable)
 \end{enumerate}
 
-Multi-tenancy has the biggest relationship with the \ac{SaaS} domain, as mentioned by Tsai et al.~\cite{tsai2010towards}, because multi-tenancy gains the most benefits within this model.
+According to them, multi-tenancy has a close relationship with the \ac{SaaS} domain, because multi-tenancy gains the most benefits within this model. Tsai et al.~\cite{tsai2010towards} go even further, stating \ac{SaaS} ``is characterized by its multi-tenancy architecture''. 
 
-Dillon et al.~\cite{dillon2010cloud} also describe the several essential characteristics of cloud services, including resource pooling (`pooling' computing resources together in an effort to serve multiple consumers) and rapid elasticity (the consumption of resources can rapidly increase and the usage is not predictable upfront). These are both challenges for multi-tenant applications, as also mentioned by Krebs et al.~\cite{krebs2012architecture} and Bezemer and Zaidman~\cite{bezemer2010multi}.
+Dillon et al.~\cite{dillon2010cloud} also describe the several essential characteristics of cloud services, including resource pooling (`pooling' computing resources together in an effort to serve multiple consumers) and rapid elasticity (the consumption of resources can rapidly increase and the usage is not predictable upfront). These are both challenges that also exist for multi-tenant applications, as mentioned by Krebs et al.~\cite{krebs2012architecture} and Bezemer and Zaidman~\cite{bezemer2010multi}.
 
 In the following sections we discuss the current state of research on multi-tenancy. We do so by discussing the main topics in multi-tenancy, namely Security, Scalability, \ac{QoS} and Variability. For each subject we describe what it means and how it can be achieved in the context of multi-tenancy. We also address the points of interest for future research.
