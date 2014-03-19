@@ -1,18 +1,17 @@
-As multi-tenancy is a relatively new concept, the security aspect of multi-tenancy has not received much attention. 
-As discussed in other sections, the model offers several significant advantages in comparison to other software models. 
-While multi-tenancy offers advantages, until some of the risks are better understood, many of the major players will be tempted to hold back. 
-To advance the development and deployment of multi-tenancy, security issues and approaches for the techniques range and cross various technical domains including cryptography, virtualization and programming~\cite{Takahashi2012Security}. \\
-
-The importance of security is particularly apparent in the adoption process of the multi-tenant model. 
+As multi-tenancy is a relatively new concept, the security aspect of multi-tenancy has not received much attention. The importance of security is particularly apparent in the adoption process of the multi-tenant model. 
 Many potential businesses which would be interested in multi-tenancy are still reluctant to adopt it due to security to security and privacy concerns, according to Bernabe et al~\cite{Bernabe2012Auth}. 
-The concept of multi-tenancy consists of having tenants share IT infrastructure and the sharing of resources. 
 Though multi-tenancy is targeted to provide better utilization of resources using virtualization techniques and to take up much of the work load from the client, it is fraught with security risks, following Seccombe et al~\cite{Seccombe2009Security}. 
 According to Takahashi~\cite{Takahashi2012Security} this implies the design of strong security boundaries in order to isolate tenants when using these shared resources. 
-Thus, the system to control the access to the available resources becomes a critical aspect in order to provide an efficient control over the usage of the architecture.
+Thus, to advance the development and deployment of multi-tenancy, security issues and approaches for the techniques range and cross various technical domains including cryptography, virtualization and programming, as noted by Takahashi~\cite{Takahashi2012Security}. \\
 
-Next to technical security issues, privacy questions need to be addressed to realize the potential of this new model. 
-Multi-tenancy moves the application software and databases to the large data centers, where management of the data and services are not trustworthy. 
-This unique attribute poses many new security challenges, according to Cong Wang et al~\cite{Wang2009Security}. 
+As mentioned in the previous sections, a single definition for multi-tenancy has yet to be established. 
+These different definitions of the concept of multi-tenancy concern different systems and therefore different security concerns.
+For example, the paper by Bezemer~\cite{bezemer2010multi} indicates that a multi-tenant system could be defined as having a single database of all tenants, or as having seperate databases for each of tenants. 
+Naturally, these systems will have a different number of security concerns to deal with. In this paper we mainly address issues related to true multi-tenancy as defined by Bezemer~\cite{bezemer2010multi}.
+
+In this paper we will specifically discuss the issues caused by or enlarged specifically by the use of multi-tenancy. 
+Many other issues, such as platform security and virtualization, are concerns concerning the whole concept of cloud computing, not specifically multi-tenancy. These relevant issues are therefore not within the scope of this paper. 
+However, some of the most relevant security issues will be discussed briefly, to give an indication of security concerns influencing the overall security of multi-tenancy.
 
 \subsection{Security Issues with Multi-Tenancy}
 In this section we will elaborate on the security aspect of the multi-tenancy model. 
@@ -63,7 +62,7 @@ However, this form of authentication lacks multi-tenancy-specific capabilities, 
 The multi-user authorization concept provides no capabilities to grant users privileges over multiple tenants, as noted by Calero et al~\cite{Calero2010Auth}
 This would not allow, for example, two companies or tenants to share certain data with each other, by granting each other specific privileges as a form of collaboration.
 These systems often lack the functionality and complexity to express more advanced forms of authorization, neccessary for multi-tenant systems.
-Thus, the problem lies with designing more advanced schemes of authentication, where users can be granted more detailed custom privileges.
+Thus, the problem lies with designing more advanced schemes of authentication, where users can be granted more detailed custom privileges.\\
 
 Noteworthy progress can be noted in Bernabe~\cite{Bernabe2012Auth}, which proposes an access control model system suitable for multi-tenancy and grants high expressiveness in terms of permissions. 
 Additionally, this expressiveness is supported by the integration of semantic web technologies into the authorization model. 
