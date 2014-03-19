@@ -17,8 +17,6 @@ In the list 'exceeding their quota' can mean exceeding an explicitly defined usa
 The primary mechanism for ensuring a these fairness criteria are met is finding methods for separating the performance of different tenants.
 Several techniques for achieving this will be discussed in the next section.
 
-%TODO: Elaborate on metrics.
-
 \subsection{Tenant Separation Techniques}
 In true multi-tenant applications the primary technique proposed for maintaining \ac{QoS} for multiple tenants is by limiting the amount of requests a tenant can execute. Walraven~\cite{walraven2012towards}, Krebs~\cite{krebs2013metrics} and Lin~\cite{lin2009feedback} all propose methods that include request limiting in some form.
 
@@ -48,12 +46,13 @@ The approaches proposed by Walraven and Krebs both showed promising results in e
 Lins method was effective at maintaining the different \ac{QoS} levels per tenant.
 
 Important topics for future research will be:
-%TODO: Elaborate on metrics..
 \begin{itemize}
-	\item Tenant separation techniques that can manage multiple disruptive tenants.\\
-		The discussed methods have been proven to work with a single disruptive tenant.
-		However the performance with several disruptive tenants has not been measured and may even call for different methods of seperating tenants.
-	\item Finding additional metrics that are useful for measuring tenant resource usage.%TODO: Uitleg.\\
-%TODO: Meer items bedenken.
+	\item \textbf{Multiple disruptive tenants}.
+		Multiple disruptive tenants is a case that has not been tested yet. 
+		However this is a case that should be handled by the tenant seperation techniques discussed in this section.
+		The methods proposed by Walraven and Krebs should be tested with this case.
+	\item \textbf{Metrics for tenant load}.
+		The metrics used by Krebs and Walraven are request response time and response count. 
+		However, as also discussed in the scalability section, there are more metrics that may be useful for measuring tenant seperation and mainting a good \ac{QoS} level. Such metrics must be identified and their usefulness assessed.
 \end{itemize}
 
