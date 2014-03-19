@@ -77,6 +77,8 @@ One group in which the database 'owns' the schema, group where the application '
 
 		These approaches eliminate the performance issue of a very large number of tables.
 		However both the universal table and pivot table have their own disadvantages. 
+		The primary disadvantage is that in both methods most knowledge of the data layout, the type of columns, and entity relations is moved to the application.
+		As a consequence of this the database might miss optimization opportunities.~\cite{schiller2011native}
 
 		For the universal table this is the potential introduction of a large amount of NULLs in the database, not all storage engines are equipped to handle this in an efficient manner. 
 		Additionally it is difficult to add tenant specific indexes on these tables, once a column is indexed it will be indexed for all tenants.
@@ -97,16 +99,13 @@ One group in which the database 'owns' the schema, group where the application '
 		Reading from the extension field will introduce additional overhead. However the actual amount of overhead depends on the type of queries that are executed, for instance any query not querying the extension field will suffer almost no overhead.~\cite{aulbach2009comparison}
 \end{description}
 
-%		In the extension field layout for every entity a table.
-%		All tables of extensible entities contain an extra field that stores extensions in a structured format like XML or JSON.
-%		Certain \acp{RDBMS} support accessing data within such a field. 
-%		b2 does this for xml trough purexml\footnote{http://www-01.ibm.com/software/data/db2/linux-unix-windows/xml/index.html (march 2014)} and postgres allows for reading values from json fields\footnote{http://www.postgresql.org/docs/9.3/static/functions-json.html (march 2014)}
-
-%		The advantage of this schema is that extensions are kept in a single field and that its a very basic extension of the basic layout.
-%		However reading from the extension field will introduce additional overhead.~\cite{aulbach2009comparison}
-%\end{description}
-
 \subsubsection{Tenant aware \acp{DBMS}}
+In the previous section various schema mapping techniques have been discussed.
+A different approach to allow for tenant specific extensions and separating tenant data is to create a \ac{DBMS} that natively supports multi tenancy.
+
+As mentioned in the previous section a disadvantage of some schema mapping techniques is that knowledge of the data layout is moved away from the database.
+Native multi tenancy support gives the full knowledge of the data layout back to the \ac{DBMS}, allowing it to to take full advantage of this knowledge.~\cite{schiller2011native}
+
 Schiller et.al.~\cite{schiller2011native} propose a database with native multi-tenancy support and support for schema extensibility.
 Using their approach a tenant object would exist within the database as a first-class object. 
 Based on these objects for each tenant a context can be maintained that allows the database to determine what data belongs to a specific tenant. 
@@ -115,13 +114,10 @@ These contexts also facilitate direct access to the database for applications wi
 Both Schiller~\cite{schiller2011native} and Aulbach~\cite{aulbach2011extensibility} propose a model where tenants can extend the schema in an object-oriented way.
 Allowing tenants to share the base table and transparently applying the extensions depending on the tenant executing a query.
 
-Schiller also implemented a prototype tenant-aware \ac{RDBMS}.
+Schiller also implemented a prototype tenant-aware \ac{DBMS}.
 This prototype specifically implemented support for the tenant context and extensibility.
-However it is unclear whether their approach really meets the requirements of a multi-tenant application.
+However it is unclear whether their approach really meets the requirements of a multi-tenant application as more testing is required.
 
-
-%Allocation of resources for new tenants, predicting & preventing conflicts / bottlenecks.
-% Espadas et.al en Thomas Kwok et.al.
 
 \subsection{Research Agenda for Scalability}
 Both Kwok et.al.~\cite{kwok2008resource} and Espadas et.al.~\cite{espadas2013tenant} name identifying bottlenecks and validating existing and proposed methods as the primary challenge.
