@@ -9,23 +9,32 @@ It is required that a multi-tenant application is scalable to maintain this cost
 
 In the scalability section we will focus specifically on how the infrastructure, or specific parts thereof, of a multi-tenant application can deal with an increasing number of tenants.
 
-\subsection{Scaling multi-tenant applications}
+\subsection{Scaling a multi tenant application}
 Scalability in the application layer is about dealing with an increasing amount of tenants on the existing infrastructure.
-Multi-tenant related research in this area focuses on estimating the resources required for new and existing tenants and how to use the multi-tenant characteristics of applications to improve these estimates. 
+Research in this area focuses on estimating the resources required for new and existing tenants and how to optimally distribute the workload of existing and new tenants across the infrastructure. 
+For multi tenant applications it is very important to avoid both under and over utilization of resources.
+Overutilization will result in degraded performance for tenants and underutilization may result in unneeded expenses for the provider.
 
-For multi-tenant applications it is very important to avoid both under and over utilization of resources.
-Under utilization causes unneeded costs and over utilization leads to degraded performance.
+In this subsection methods for estimating the resource consumption per tenant and methods for optimally placing new tenands on an existing infrastructure are discussed.
+
+Kwok et.al.~\cite{kwok2008resource} propose metrics for calculating the resources a tenant will consume.
+Taking into account shared resources, per user resource consumption and per tenant resource consumption.
+The functions for user or tenant resource consumption will vary per application and functions for these will have to be estimated based on measured data.
+In addition to this he proposes a tenant aware tool for optimally placing a new tenant on an exising infrastructure.
+His tool has been used in practice in an internal IBM project and the preliminary results are promising. 
+However it is also noted that gathering enough performance data to accuratly project tenant resource consumption is a very time consuming process.
 
 Espadas et.al.~\cite{espadas2013tenant} propose a resource allocation model for scaling SaaS applications.
-Their proposed system uses a core SaaS application that handles incoming requests.
-This application maintains a tenant context that tracks the number of logged in users, services used by the tenants and the resource consumption of the tenant.
-Based on the data stored in the context the system determines the amount of resources currently required by the tenants and adjusts the amount of allocated resources if needed.
+The method they propose assumes that the underlying architecture is elastic and that scaling up or down is something that can be easily done.
+Therefore their method is most suitable for applications running on a cloud platform like \ac{GAE} or \ac{AWS}. 
 
-Performance tests with the new model lead to a statistically significant reduction in under utilization, but no statistically significant reduction in over utilization.
+Their proposed system uses a core SaaS application that handles incoming requests and maintains a tenant specific context that tracks the number of logged in users, services used, and resource consumption.
+Based on the data stored in these context the system determines the amount of resources currently required by the tenants and adjusts the amount of allocated resources if needed.
 
-%TODO: Paper thomas kwok.
+Performance tests with the new model show that without reducing the performance the tenants experience their system leads to a statistically significant reduction in under utilization, but no statistically significant reduction in over utilization. 
 
-\subsection{Scalability in the data layer}
+
+\subsection{Scaling a multi tenant data layer}
 The schema of the data model presented in a multi-tenant application should be extensible by tenants.
 Extensibility is required because this allows tenants to modify their view of the application in such a way that a better fits their needs.
 
