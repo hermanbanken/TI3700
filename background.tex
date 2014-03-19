@@ -15,28 +15,15 @@ From the variety of definitions above it can be concluded that there still is no
 
 \subsection{Different types of multi-tenancy}
 
-There are two general options for the architectural design of applications shared by multiple tenants: multiple instances and native multi-tenancy [4]. The former supports separated application instance for each tenant over a shared hosting environment whereas the latter use a single shared application instance to serve all tenants. The two approaches are different in terms of supportable tenant density, management cost, security isolation, and performance assurance. Following a native multi-tenant architecture generally means higher tenant density and lower management cost, but it also implies more work on security and performance isolation due to extensive resource sharing among tenants.~\cite{lin2009feedback}
-
-
-% Schakelzinnen
-% Meer papers over niveaus
-
-% aantal niveaus, en welke papers welke niveaus
-Multi-tenancy invariably occurs at the database layer of a service;~\cite{aulbach2008multi}
-compleet delen~\cite{aulbach2009comparison}
-
-% helikopter overview, algemene niveaus
-
-% Onderstaande "mappen" op applicatie delen, applicatie en database delen en compleet delen
-Krebs et al.~\cite{krebs2012architecture} describe various layers of sharing, in order of increasing benefits:
+There are three main levels of multi-tenancy, as described by Bezemer and Zaidman~\cite{bezemer2010multi}:
 \begin{enumerate}
-\item Sharing a data center (very limited benefits)
-\item Virtualization, thus sharing a server (large overhead)
-\item Middleware sharing (difficult isolation and overhead)
-\item Multi-Tenant Application
+\item shared application with a separated database
+\item shared application with a shared database (separate schema)
+\item shared application with a shared schema
 \end{enumerate}
+They consider the latter as pure multi-tenancy. Lin et al.~\cite{lin2009feedback}, Aulbach et al.~\cite{aulbach2009comparison}, \ldots all agree on this, sometimes calling it \emph{native} multi-tenancy. Krebs et al.~\cite{krebs2012architecture} use the affinity and persistency concepts: affinity describes which server(s) handle which tenant(s) and persistency describes the way of usage of the database (shared or separated). These concepts can easily be translated into the levels of Bezemer and Zaidman~\cite{bezemer2010multi}. 
 
-According to Bezemer and Zaidman~\cite{bezemer2010multi}, there are also various ways of implementing multi-tenancy: a shared application with a separate database, a shared application with a shared database with a separate table and a shared application, with a shared table. They consider the latter as pure multi-tenancy. Krebs et al.~\cite{krebs2012architecture} divide this into affinity and persistency, with affinity describing which server(s) handle which tenant(s) and with persistency describing the way of usage of the database (shared or separated).
+% Discuss multiple instances (as some call it) here?
 
 Guo et al.~\cite{guo2007framework} suggest the implementation of a multi-tenancy enablement layer. This should create a separation between usage and resources, creating the required isolations and allowing customizations. This can be compared to the blueprint of Bezemer and Zaidman~\cite{bezemer2010multi}, since both approaches should have little impact on the single-tenant code.
 
@@ -45,7 +32,7 @@ Guo et al.~\cite{guo2007framework} suggest the implementation of a multi-tenancy
 % waarom zit dit in deze survey? het is niet gelijk aan elkaar en het is niet afhankelijk van elkaar
 Multi-tenancy has a relationship with the cloud, but that does not implicate they are the same. For example, a multi-tenant application does not have to run in the cloud and a cloud application does not have to be multi-tenant.
 
-Dillon et al.~\cite{dillon2010cloud} comprehensively elaborate on various aspects of cloud services. They mention the following service models: 
+There are various service models for cloud services, as discussed by Dillon et al.~\cite{dillon2010cloud}:
 \begin{enumerate}
 \item \acf{SaaS} (example: Google Mail/Docs)
 \item \acf{PaaS} (example: Google AppEngine)
@@ -53,7 +40,7 @@ Dillon et al.~\cite{dillon2010cloud} comprehensively elaborate on various aspect
 \item \acf{DaaS} (example: Google BigTable)
 \end{enumerate}
 
-Multi-tenancy falls mostly within the \ac{SaaS} domain, as mentioned by Tsai et al.~\cite{tsai2010towards}. Multi-tenancy gains the most benefits within this model.
+Multi-tenancy has the biggest relationshop with the \ac{SaaS} domain, as mentioned by Tsai et al.~\cite{tsai2010towards}, because multi-tenancy gains the most benefits within this model.
 
 Dillon et al.~\cite{dillon2010cloud} also describe the several essential characteristics of cloud services, including resource pooling (`pooling' computing resources together in an effort to serve multiple consumers) and rapid elasticity (the consumption of resources can rapidly increase and the usage is not predictable upfront). These are both challenges for multi-tenant applications, as also mentioned by Krebs et al.~\cite{krebs2012architecture} and Bezemer and Zaidman~\cite{bezemer2010multi}.
 
@@ -61,6 +48,6 @@ Dillon et al.~\cite{dillon2010cloud} also describe the several essential charact
 
 The multi-tenancy model has created two new security issues~\cite{dillon2010cloud}. Sharing resources on the same physical machine pose a danger to the data of the tenants. This falls within the isolation challenge. Another issue is reputation fate-sharing, since one might be sharing resources with possible criminal users, creating the possibility to (for example) get blacklisted.
 
-Another challenge is the charging model. The costs of developing multi-tenancy can be very substantial for \ac{SaaS} providers, because they need to re-design or re-develop single-tenant software, introduce new features for customization and enhance the security. % voordeel noemen; citaties!
+Another challenge is the charging model. The costs of developing multi-tenancy can be very substantial for \ac{SaaS} providers, because they need to re-design or re-develop single-tenant software, introduce new features for customization and enhance the security. % voordeel noemen (Guo 2007); citaties!
 
 Bezemer and Zaidman~\cite{bezemer2010multi} also mention performance as a challenge, since multiple tenants are using the same hardware resources. Other challenges are scalability (usage of resources can suddenly increase), zero-downtime (the user expects the system to be online when he needs it) and maintenance (added complexity due to multi-tenancy could make code harder to maintain).
