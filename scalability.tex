@@ -13,16 +13,16 @@ In the scalability section we will focus specifically on how the infrastructure,
 Scalability in the application layer is about dealing with an increasing amount of tenants on the existing infrastructure.
 Research in this area focuses on estimating the resources required for new and existing tenants and how to optimally distribute the workload of existing and new tenants across the infrastructure. 
 For multi tenant applications it is very important to avoid both under and over utilization of resources.
-Overutilization will result in degraded performance for tenants and underutilization may result in unneeded expenses for the provider.
+Over utilization will result in degraded performance for tenants and under utilization may result in unneeded expenses for the provider.
 
-In this subsection methods for estimating the resource consumption per tenant and methods for optimally placing new tenands on an existing infrastructure are discussed.
+In this subsection methods for estimating the resource consumption per tenant and methods for optimally placing new tenants on an existing infrastructure are discussed.
 
 Kwok et.al.~\cite{kwok2008resource} propose metrics for calculating the resources a tenant will consume.
 Taking into account shared resources, per user resource consumption and per tenant resource consumption.
 The functions for user or tenant resource consumption will vary per application and functions for these will have to be estimated based on measured data.
-In addition to this he proposes a tenant aware tool for optimally placing a new tenant on an exising infrastructure.
+In addition to this he proposes a tenant aware tool for optimally placing a new tenant on an existing infrastructure.
 His tool has been used in practice in an internal IBM project and the preliminary results are promising. 
-However it is also noted that gathering enough performance data to accuratly project tenant resource consumption is a very time consuming process.
+However it is also noted that gathering enough performance data to accurately project tenant resource consumption is a very time consuming process.
 
 Espadas et.al.~\cite{espadas2013tenant} propose a resource allocation model for scaling SaaS applications.
 The method they propose assumes that the underlying architecture is elastic and that scaling up or down is something that can be easily done.
@@ -135,11 +135,11 @@ Below we give a short overview of interesting topics for further research we ide
 \begin{itemize}
 	\item \textbf{Tenant aware \acp{DBMS}}.
 		A tenant aware \ac{DBMS} is an important step forward in finding a scalable database solution for multi tenant applications.
-		Schiller et.al.~\cite{schiller2011native} have implemented a promising prototype. However tenant aware database administration tools are still nonexistant.
+		Schiller et.al.~\cite{schiller2011native} have implemented a promising prototype. However tenant aware database administration tools are still nonexistent.
 		In addition to that we agree with their assessment that more research storage model for the \ac{DBMS} is needed to tailor it to tenant aware data management.
 	\item \textbf{Performance metrics}.
-		Kwok~\cite{kwok2008resource} uses memory and cpu usage for his metrics and so does Espadas~\cite{espadas2013tenant}. 
-		However depending on the characteristics of the application it may be worthwhile to measure other resources as well, such as bandwith, transferred data, used storage or database queries executed. 
+		Kwok~\cite{kwok2008resource} uses memory and CPU usage for his metrics and so does Espadas~\cite{espadas2013tenant}. 
+		However depending on the characteristics of the application it may be worthwhile to measure other resources as well, such as bandwidth, transferred data, used storage or database queries executed. 
 	\item \textbf{Resource allocation}.
 		The methods proposed by Kwok~\cite{kwok2008resource} and Espadas~\cite{espadas2013tenant} have only been tested on a single platform each.
 		To properly evaluate their usefulness these methods need to be validated to work on different platforms, additional case studies are required.
