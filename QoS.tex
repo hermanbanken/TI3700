@@ -1,11 +1,11 @@
-In this section various methods for maintaining a good \ac{QoS} level per tenant will be discussed.
+In this section various methods for maintaining a specific \ac{QoS} level per tenant will be discussed.
 The main challenges here are the metrics to use for measuring the current resource usage per tenant and how to separate tenants in such a way that the behaviour of one tenant will not affect the other tenants.~\cite{krebs2013metrics}
 
 In many cases tenants in a multi-tenant application will have some form of \ac{SLA} with the provider of the application.
 Often these SLAs contain certain \ac{QoS} constraints the provider will have to meet, such as response time or minimum uptime. 
 The tenant on the other hand will have to adhere to a \ac{FUP} or have certain fixed quotas for resource usage.
 
-In a \ac{MTA} the available resources should be fairly distributed among tenants.
+In a multi-tenant application the available resources should be fairly distributed among tenants.
 Krebs~\cite{krebs2013metrics} defines a system as fair when the following criteria are met:
 In the list 'exceeding their quota' can mean exceeding an explicitly defined usage limit or, in the case of a fair use policy, unfair use of the system.
 \begin{enumerate}
