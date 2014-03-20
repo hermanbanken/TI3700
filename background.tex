@@ -21,9 +21,9 @@ There are three main levels of multi-tenancy, as described by Bezemer and Zaidma
 \item shared application with a shared database (separate schema)
 \item shared application with a shared schema
 \end{enumerate}
-They consider the latter as pure multi-tenancy. Lin et al.~\cite{lin2009feedback}, Aulbach et al.~\cite{aulbach2009comparison}, \ldots all agree on this, sometimes calling it \emph{native} multi-tenancy. Krebs et al.~\cite{krebs2012architecture} use the affinity and persistency concepts: affinity describes which server(s) handle which tenant(s) and persistency describes the way of usage of the database (shared or separated). These concepts can easily be translated into the levels of Bezemer and Zaidman~\cite{bezemer2010multi}. 
+They consider the latter as pure multi-tenancy. Lin et al.~\cite{lin2009feedback} and Aulbach et al.~\cite{aulbach2009comparison} agree on this, sometimes calling it \emph{native} multi-tenancy. Guo et al.~\cite{guo2007framework} also mention native multi-tenancy, but they leave out the database. Krebs et al.~\cite{krebs2012architecture} use the affinity and persistency concepts: affinity describes which server(s) handle which tenant(s) and persistency describes the way of usage of the database (shared or separated). These concepts can easily be translated into the levels of Bezemer and Zaidman~\cite{bezemer2010multi}. 
 
-% Discuss multiple instances (as some call it) here?
+The other multi-tenancy pattern (as described by Guo et al.~\cite{guo2007framework}) is the multiple instances pattern. This means each tenant has its own dedicated instance of the application, running on shared hardware. This does not fit in one of the levels of Bezemer and Zaidman~\cite{bezemer2010multi}, and can therefore not really be considered as multi-tenancy.
 
 Guo et al.~\cite{guo2007framework} suggest the implementation of a multi-tenancy enablement layer. This should create a separation between usage and resources, creating the required isolations and allowing customizations. This can be compared to the blueprint of Bezemer and Zaidman~\cite{bezemer2010multi}, since both approaches should have little impact on the single-tenant code.
 
