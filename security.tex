@@ -9,7 +9,7 @@ These different definitions of the concept of multi-tenancy concern different sy
 For example, the paper by Bezemer~\cite{bezemer2010multi} indicates that a multi-tenant system could be defined as having a single database for all tenants, or as having separate databases for each of tenants. 
 Naturally, these systems will have a different number of security concerns to deal with. In this paper we mainly address issues related to true multi-tenancy as defined by Bezemer~\cite{bezemer2010multi}.
 
-In this paper we will specifically discuss the issues caused by or enlarged specifically by the use of multi-tenancy. 
+In this paper we will discuss the issues caused by or enlarged specifically by the use of multi-tenancy. 
 Many other issues, such as platform security and virtualization, are concerns concerning the whole concept of cloud computing, not specifically multi-tenancy. These relevant issues are therefore not within the scope of this paper. 
 However, some of the most relevant security issues will be discussed briefly, to give an indication of security concerns influencing the overall security of multi-tenancy.
 
@@ -101,8 +101,7 @@ Clues provided by the \ac{VMM}, such as time sources and overhead, which can be 
 The detectability of the \ac{VMM} creates the opportunity for malicious users to target specific \ac{VMM} systems and versions.
 
 \subsubsection{Web-dependent Application Security}
-The web is often seen as an aspect of the multi-tenancy model. 
-It ensures the accessibility of the data. 
+Web-dependent Application Security ensures the accessibility of the data. 
 The importance of good security practices in the application-layer is be illustrated by Wade et al~\cite{Wade2008Security}.
 The report about data breaches on the Verizon Business platform, reports that 39\% of the data breaches occur in the service/application layer, which comprises the multi-tenant section. The \ac{OWASP}\footnote{http://owasptop10.googlecode.com/files/OWASP\%20Top\%2010\%20-\%202013.pdf} has identified the 10 greatest security risks faced by network-dependent applications.\\
 
@@ -125,7 +124,7 @@ However, as noted by Subashini et al.~\cite{Subashini2011Security} and confirmed
 Since the publishing of the paper by Subashini.~\cite{Subashini2011Security}, WS-reliability has since been superseded by ReliableMessaging\footnote{http://docs.oasis-open.org/ws-rx/wsrm/200702/wsrm-1.1-spec-os-01.pdf}.
 
 \subsection{Research Agenda for Security}
-The survey of the literature regarding security, revealed the following recommendations for researchers to look in to. 
+The survey of the literature regarding security revealed the following recommendations for researchers to look in to. 
 \begin{itemize}
     \item \textbf{Analysis of proposed authentication models}.
         The papers of Bernabe~\cite{Bernabe2012Auth} and Calero~\cite{Calero2010Auth} proposes an intensive analysis of the proposed authentication models. Furthermore, there needs to be more research on more advanced authorization models, next to having more experimentation with different database-systems for the proposed authorization system.
