@@ -33,7 +33,7 @@ For tenants, it is important that they can use the best tailored variant of the 
 To support negotiation about variability in functionality Schroeter et al.~\cite{schroeter2012towards} identified three appropriate models: feature modeling~\cite{benavides2010automated,kang1990feature}, decision modeling~\cite{schmid2004customizable,schmid2011comparison} and orthogonal variability modeling~\cite{lauenroth2005software,metzger2007disambiguating}.
 
 \begin{itemize}
-\item \textbf{Feature modeling} or a ``feature based component model" is applied by Walraven et al.~\cite{walraven2011middleware} in their paper on a multi tenant middleware layer. A variation is
+\item \textbf{Feature modeling} or a ``feature based component model" is applied by Walraven et al.~\cite{walraven2011middleware} in their paper on a multi-tenant middleware layer. A variation is
 expressed in terms of a feature, a distinctive functionality, service, quality or characteristic of an 
 application. Features can have multiple implementations that can then be composed into the 
 base application as ideally they are modular pieces of software. By splitting the application in 
@@ -42,8 +42,8 @@ customizable and to add implementations in a later stage.
 
 \item \textbf{Decision modeling}, as described by Schmid et al.~\cite{schmid2004customizable}, is used in 
 Software Product Line Engineering to manage the variability of an application that is not specifically 
-multi instance or even multi tenant aware. However the concepts can be similarly applied to 
-multi tenancy. In the decision model, variables are defined that are used throughout the 
+multi-instance or even multi-tenant aware. However the concepts can be similarly applied to 
+multi-tenancy. In the decision model, variables are defined that are used throughout the 
 application. For each variable it is defined when the variable is relevant (e.g., dependencies), 
 what the range of possible values is, what the cardinality is (a set of values is possible), what 
 constraints apply and when the variable is to be bound. The problem with decision variables is 
@@ -94,8 +94,8 @@ This allows for tenants to enable or disable modules that check data or automate
 
 Two ways to implement Controller Changes or System Component Changes are \acl{DI} and \acl{COP}.
 
-\textbf{\acf{DI}} is a variation technique, where one of the (possibly many) classes that implement the same interface are injected by a provider. Tools such as Spring Framework~\cite{walls2005spring} and Google Guice~\cite{vanbrabant2008google} provide a framework for \ac{DI}. The main use case of \ac{DI} is mocking components while testing an application, however it proves useful in multi tenant applications as well:
-Walraven et al.~\cite{walraven2011middleware} created a multi tenancy middleware layer that uses Guice, which is compatible with \ac{GAE}. An issue with Guice, that did not allow per-request switching of implementations, was quickly solved by adding a small abstraction layer, making Guice usable in a multi-tenant environment\footnote{
+\textbf{\acf{DI}} is a variation technique, where one of the (possibly many) classes that implement the same interface are injected by a provider. Tools such as Spring Framework~\cite{walls2005spring} and Google Guice~\cite{vanbrabant2008google} provide a framework for \ac{DI}. The main use case of \ac{DI} is mocking components while testing an application, however it proves useful in multi-tenant applications as well:
+Walraven et al.~\cite{walraven2011middleware} created a multi-tenancy middleware layer that uses Guice, which is compatible with \ac{GAE}. An issue with Guice, that did not allow per-request switching of implementations, was quickly solved by adding a small abstraction layer, making Guice usable in a multi-tenant environment\footnote{
 Additionally, their case study shows that \ac{GAE} leverages the effort of separating tenant data a lot by providing the so-called Namespaces API. By linking each tenant to an unique namespace all data in that namespace is only accessible by a that specific tenant.}.
 
 One of the conclusions of Walraven et al.~\cite{walraven2011middleware} is that \ac{AOSD} looks promising as an alternative to \ac{DI} for more complex customizations, such as when features have to be combined.
@@ -113,7 +113,7 @@ While there has been done a lot of research, much remains to be covered:
 For variability to become manageable, tools must exist for \ac{SaaS} providers to manage the configuration of tenants and to deploy new tenants. Mietzner et al. try to make variability easier to manage by creating so called \textit{customization processes}~\cite{mietzner2008generation} to guide the customer through the customization, and \textit{solutions}~\cite{mietzner2008defining}, that define which variants should be bound. It could be investigated how deployment scripts could be derived from these solutions, to automatically deploy tenants.
 
 \item \textbf{Cost Models}.
-While it is researched how the costs of multi tenant aware applications compare to non-multi-tenant aware applications~\cite{mietzner2009variability}, no research is done to relate a cost model to a variability model. Future research could be done to determine the cost of creating, maintaining and managing variants. The providers can then decide whether or not it makes more sense, economically, to keep a variant or to remove it.
+While it is researched how the costs of multi-tenant aware applications compare to non-multi-tenant aware applications~\cite{mietzner2009variability}, no research is done to relate a cost model to a variability model. Future research could be done to determine the cost of creating, maintaining and managing variants. The providers can then decide whether or not it makes more sense, economically, to keep a variant or to remove it.
 
 \item \textbf{Identify more \aclp{VRT}}. 
 Kabbedijk and Jansen~\cite{kabbedijk2011variability} have determined some \acp{VRT}, but note that more \acp{VRT} could be identified and should be tested on effectiveness, maintainability, scalability and performance.

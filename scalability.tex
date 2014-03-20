@@ -9,10 +9,10 @@ In the scalability section we will focus specifically on how the infrastructure,
 
 First methods for placing new tenants and calculating the resources needed per tenant are discussed. After that scalability in the  storage layer will be discussed. Finally a research agenda for scalability research will be presented.
 
-\subsection{Scaling a multi tenant application}
+\subsection{Scaling a multi-tenant application}
 Scalability in the application layer is about dealing with an increasing amount of tenants on the existing infrastructure.
 Research in this area focuses on estimating the resources required for new and existing tenants and how to optimally distribute the workload of existing and new tenants across the infrastructure. 
-For multi tenant applications it is very important to avoid both under- and overutilization of resources.
+For multi-tenant applications it is very important to avoid both under- and overutilization of resources.
 Overutilization will result in degraded performance for tenants and underutilization may result in unneeded expenses for the provider.
 
 In this subsection methods for estimating the resource consumption per tenant and methods for optimally placing new tenants on an existing infrastructure are discussed.
@@ -34,7 +34,7 @@ Based on the data stored in these context the system determines the amount of re
 Performance tests with the new model show that without performance loss for tenants their system leads to a statistically significant reduction in underutilization, but no statistically significant reduction in overutilization. 
 
 
-\subsection{Scaling a multi tenant data layer}
+\subsection{Scaling a multi-tenant data layer}
 The schema of the data model presented in a multi-tenant application should be extensible by tenants.
 Extensibility is required because this allows tenants to modify their view of the application in such a way that a better fits their needs.
 
@@ -110,10 +110,10 @@ One group in which the database owns the schema, a group where the application o
 
 \subsubsection{Tenant aware \acp{DBMS}}
 In the previous section various schema mapping techniques have been discussed.
-A different approach to allow for tenant specific extensions and separating tenant data is to create a \ac{DBMS} that natively supports multi tenancy.
+A different approach to allow for tenant specific extensions and separating tenant data is to create a \ac{DBMS} that natively supports multi-tenancy.
 
 As mentioned in the previous section a disadvantage of some schema mapping techniques is that knowledge of the data layout is moved away from the database.
-Native multi tenancy support gives the full knowledge of the data layout back to the \ac{DBMS}, allowing it to to take full advantage of this knowledge.~\cite{schiller2011native}
+Native multi-tenancy support gives the full knowledge of the data layout back to the \ac{DBMS}, allowing it to to take full advantage of this knowledge.~\cite{schiller2011native}
 
 Schiller et.al.~\cite{schiller2011native} propose a database with native multi-tenancy support and support for schema extensibility.
 Using their approach a tenant object would exist within the database as a first-class object. 
@@ -134,7 +134,7 @@ Below we give a short overview of interesting topics for further research we ide
 
 \begin{itemize}
 	\item \textbf{Tenant aware \acp{DBMS}}.
-		A tenant aware \ac{DBMS} is an important step forward in finding a scalable database solution for multi tenant applications.
+		A tenant aware \ac{DBMS} is an important step forward in finding a scalable database solution for multi-tenant applications.
 		Schiller et.al.~\cite{schiller2011native} have implemented a promising prototype. However tenant aware database administration tools are still nonexistent.
 		In addition to that we agree with their assessment that more research storage model for the \ac{DBMS} is needed to tailor it to tenant aware data management.
 	\item \textbf{Performance metrics}.
