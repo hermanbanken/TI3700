@@ -35,13 +35,13 @@
 \acrodef{FUP}{Fair Use Policy}
 \acrodef{AWS}{Amazon Web Services}
 
-\title{Multi-Tenancy: ready to rock? a survey}
+\title{\highlight{Multi-Tenancy: ready to rock? a survey}}
 % We moeten nog wat leukers verzinnen...
 \author{Herman Banken\and
     Jasper Dijt\and
     Erwin van Eyk\and
     Rick Wieman\and
-\\Delft University of Technology, P.O. Box 5031, 2600 GA Delft, The Netherlands
+\\Delft University of Technology
 \\\{H.J.Banken, J.W.Dijt, E.D.C.vanEyk, R.Wieman\}@student.tudelft.nl
 }
 \date{\today}
@@ -56,28 +56,29 @@
 \thispagestyle{empty}
 
 \begin{abstract}
-Multi-tenancy allows multiple organizations to use a single application with their own configuration, on the same system. Despite many authors have researched multi-tenancy, no clear definition exists.
+Multi-tenancy allows multiple organizations to use a single application with their own configuration, on the same system. Despite the fact that many authors have done research on multi-tenancy, no clear definition exists.
 
 In our survey, we research the current state of multi-tenancy. We identified four major software concepts that need extra care or provide extra opportunities in multi-tenant application development: 
 security, as the security concerns are holding back adoption of multi-tenancy; 
 scalability, as an unscalable application cannot leverage the benefits of the economics of scale; 
 quality of service, as performance must be upheld for all active tenants;
-and variability, as that's where value is added for tenants. \\ 
+and variability, as that is where value is added for tenants. \\ 
 
-Our Research~Agenda provides an overview of possible research opportunities, such as automation (automatic deployment, wizards for tenants, et cetera), guarantees (solutions to new problems need to be provable) and tenant aware components (such as load balancers and databases).
+Our research agenda provides an overview of possible research opportunities, such as automation (automatic deployment, wizards for tenants), guarantees (solutions to new problems need to be provable) and tenant-aware components (such as load balancers and databases).
 \\
 
 \textbf{Keywords}: multi-tenancy, security, scalability, quality of service, variability
 \end{abstract}
 
 \section{Introduction}
-Due to the uprising of cloud services, more and more applications are converted into multi-tenancy applications. 
-This allows multiple organizations with multiple users to use the same application, and allows application providers to achieve better economies of scale. 
-There is however not an explicit relationship between multi-tenancy and the cloud, since there are single-tenant cloud applications and vice versa. 
-Additionally, multi-tenant applications pose new challenges, for example in terms of security and scalability. 
-This literature survey merges the information of about 50 papers, in order to create a clear view of the definitions of multi-tenancy, the challenges and the research opportunities.
+Due to the uprising of cloud services, more and more applications are converted into multi-tenancy applications. % TODO citation! (of aan SaaS koppelen) 
+Multi-tenancy is the sharing of resources of blah % <<--
+As a result, ... % <<--
+% This allows multiple organizations with multiple users to use the same application, and allows application providers to achieve better economies of scale. 
+Multi-tenant applications pose new challenges, for example in terms of security and scalability. 
+This literature survey merges the information of about \highlight{50 papers}, in order to create a clear view of the definitions of multi-tenancy, the challenges and the research opportunities.
 
-This survey continues with some background information on multi-tenancy in Section~\ref{sec:bg}. Thereafter, the most common challenges for multi-tenancy will be discussed: security (Section~\ref{sec:security}), scalability (Section~\ref{sec:scalability}), \ac{QoS} (Section~\ref{sec:qos}) and variability (Section~\ref{sec:variability}). After these challenges we conclude the survey in Section~\ref{sec:conclusion}.
+In this survey we will first give background information on multi-tenancy in Section~\ref{sec:bg}. Thereafter, the most common challenges for multi-tenancy will be discussed: security (Section~\ref{sec:security}), scalability (Section~\ref{sec:scalability}), \ac{QoS} (Section~\ref{sec:qos}) and variability (Section~\ref{sec:variability}). After the discussion of these challenges we conclude the survey in Section~\ref{sec:conclusion}.
 
 \section{Background information}
 \label{sec:bg}
