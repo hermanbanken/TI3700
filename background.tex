@@ -1,5 +1,5 @@
 %!TEX root = paper.tex
-Multi-tenancy is a vague term, since it has never had an exact and official definition. During the last years, also due to the uprising of cloud applications, multi-tenancy gets researched and used more and more. This can also be seen in the reference list: 80\% of the papers used in this survey was published after 2007. In this section we discuss various definitions and we shortly describe the various types of multi-tenancy. We also discuss the relationship with the cloud.
+Multi-tenancy is not clearly defined, since it has never had an exact and official definition. During the last years, also due to the uprising of cloud applications, multi-tenancy gets researched and used more and more. This can also be seen in the reference list: \highlight{80\% of the papers} used in this survey was published after 2007. In this section we discuss various definitions and we shortly describe the various types of multi-tenancy. We also discuss the relationship with the cloud.
 
 \subsection{Definitions}
 
@@ -21,15 +21,15 @@ There are three main levels of multi-tenancy, as described by Bezemer and Zaidma
 \item shared application with a shared database (separate schema)
 \item shared application with a shared schema
 \end{enumerate}
-They consider the latter as pure multi-tenancy. Lin et al.~\cite{lin2009feedback} and Aulbach et al.~\cite{aulbach2009comparison} agree on this, sometimes calling it \emph{native} multi-tenancy. Guo et al.~\cite{guo2007framework} also mention native multi-tenancy, but they leave out the database. Krebs et al.~\cite{krebs2012architecture} use the affinity and persistency concepts: affinity describes which server(s) handle which tenant(s) and persistency describes the way of usage of the database (shared or separated). These concepts can easily be translated into the levels of Bezemer and Zaidman~\cite{bezemer2010multi}. 
+They consider the latter as pure multi-tenancy. Lin et al.~\cite{lin2009feedback} and Aulbach et al.~\cite{aulbach2009comparison} agree on this, sometimes calling it \emph{native} multi-tenancy. Guo et al.~\cite{guo2007framework} also mention native multi-tenancy, but they leave out the database. Krebs et al.~\cite{krebs2012architecture} use the \emph{affinity} and \emph{persistency} concepts: affinity describes which server(s) handle which tenant(s) and persistency describes the way of usage of the database (shared or separated). These concepts can easily be translated into the levels of Bezemer and Zaidman~\cite{bezemer2010multi}. 
 
-The other multi-tenancy pattern (as described by Guo et al.~\cite{guo2007framework}) is the multiple instances pattern. This means each tenant has its own dedicated instance of the application, running on shared hardware. This does not fit in one of the levels of Bezemer and Zaidman~\cite{bezemer2010multi}, and can therefore not really be considered as multi-tenancy.
+A fourth level of multi-tenancy (as described by Guo et al.~\cite{guo2007framework}) is the multiple instances pattern. This means each tenant has its own dedicated instance of the application, running on shared hardware.
 
 Guo et al.~\cite{guo2007framework} suggest the implementation of a multi-tenancy enablement layer. This should create a separation between usage and resources, creating the required isolations and allowing customizations. This can be compared to the blueprint of Bezemer and Zaidman~\cite{bezemer2010multi}, since both approaches should have little impact on the single-tenant code.
 
 \subsection{Multi-tenancy vs. the cloud}
 
-Multi-tenancy has a relationship with the cloud, but that does not implicate they are the same. For example, a multi-tenant application does not have to run in the cloud and a cloud application does not have to be multi-tenant. In this section we explain this relationship.
+Multi-tenancy has a relationship with the cloud, but that does not imply they are the same. For example, a multi-tenant application does not have to run in the cloud and a cloud application does not have to be multi-tenant. In this section we explain this relationship.
 
 Firstly, there are various service models for cloud services, as discussed by Dillon et al.~\cite{dillon2010cloud}:
 \begin{enumerate}
@@ -43,4 +43,4 @@ According to them, multi-tenancy has a close relationship with the \ac{SaaS} dom
 
 Dillon et al.~\cite{dillon2010cloud} also describe the several essential characteristics of cloud services, including resource pooling (`pooling' computing resources together in an effort to serve multiple consumers) and rapid elasticity (the consumption of resources can rapidly increase and the usage is not predictable upfront). These are both challenges that also exist for multi-tenant applications, as mentioned by Krebs et al.~\cite{krebs2012architecture} and Bezemer and Zaidman~\cite{bezemer2010multi}.
 
-In the following sections we discuss the current state of research on multi-tenancy. We do so by discussing the main topics in multi-tenancy, namely Security, Scalability, \ac{QoS} and Variability. For each subject we describe what it means and how it can be achieved in the context of multi-tenancy. We also address the points of interest for future research.
+In the following sections we discuss the current state of research on multi-tenancy. We do so by discussing the main challenges of multi-tenancy, namely Security, Scalability, \ac{QoS} and Variability. For each subject we describe what it means and how it can be achieved in the context of multi-tenancy. We also address the points of interest for future research.
