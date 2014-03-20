@@ -28,7 +28,7 @@ Espadas et.al.~\cite{espadas2013tenant} propose a resource allocation model for 
 The method they propose assumes that the underlying architecture is elastic and that scaling up or down is something that can be easily done.
 Therefore their method is most suitable for applications running on a cloud platform like \ac{GAE} or \ac{AWS}. 
 
-Their proposed system uses a core SaaS application that handles incoming requests and maintains a tenant specific context that tracks the number of logged in users, services used, and resource consumption.
+Their proposed system uses a core SaaS application that handles incoming requests and acts as a load balancer. The core applications maintains a tenant specific context that tracks the number of logged in users, services used, and resource consumption.
 Based on the data stored in these context the system determines the amount of resources currently required by the tenants and adjusts the amount of allocated resources if needed.
 
 Performance tests with the new model show that without performance loss for tenants their system leads to a statistically significant reduction in underutilization, but no statistically significant reduction in overutilization. 
