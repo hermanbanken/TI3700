@@ -10,6 +10,7 @@ In the scalability section we will focus specifically on how the infrastructure,
 First methods for placing new tenants and calculating the resources needed per tenant are discussed. After that scalability in the  storage layer will be discussed. Finally a research agenda for scalability research will be presented.
 
 \subsection{Scaling a Multi-Tenant Application}
+\label{sec:scal_mta}
 Scalability in the application layer is about dealing with an increasing amount of tenants on the existing infrastructure.
 Research in this area focuses on estimating the resources required for new and existing tenants and how to optimally distribute the workload of existing and new tenants across the infrastructure. 
 For multi-tenant applications it is very important to avoid both under- and overutilization of resources.
@@ -107,6 +108,7 @@ One group in which the database owns the schema, a group where the application o
 \end{description}
 
 \subsubsection{Tenant Aware \acp{DBMS}}
+\label{sec:tenant_aware}
 In the previous section various schema mapping techniques have been discussed.
 A different approach to allow for tenant specific extensions and separating tenant data is to create a \ac{DBMS} that natively supports multi-tenancy.
 
@@ -126,7 +128,7 @@ This prototype specifically implemented support for the tenant context and exten
 However it is unclear whether their approach really meets the requirements of a multi-tenant application as more testing is required.
 
 
-\subsection{Research Agenda for Scalability}
+\subsection{Research Agenda for Scalability}\label{sec:scal_agenda}
 In this section some promising research has been discussed, however many problems remain unsolved.
 Below we give a short overview of interesting topics for further research we identified.
 
