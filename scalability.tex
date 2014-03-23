@@ -64,7 +64,7 @@ One group in which the database owns the schema, a group where the application o
 		Each table is augmented with a 'tenant Id' column that binds specific rows to specific tenants~\cite{aulbach2008multi}.
 
 		In the case of a shared database and schema extension tables can be used to allow for tenant specific extensions.
-		This is a method that finds its roots in the decomposed storage model.\cite{copeland1985decomposition}.
+		This is a method that finds its roots in the decomposed storage model~\cite{copeland1985decomposition}.
 		These are tables that contain the additional columns added by tenants. 
 		Based on a stored 'tenant id' and 'row id' the extension tables are joined with the base table when data is fetched from the database~\cite{aulbach2008multi}.
 
