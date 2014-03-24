@@ -54,11 +54,12 @@ In a multi-tenant environment, this technique would increase the security for th
 % Challenge: improve homomorphic encryption
 
 \subsubsection{Authentication and Authorization}
-The matter of authentication and authorization, often referred to as data access control, in multi-tenancy has been discussed extensively over the last years. 
+The matter of authentication and authorization, often referred to as access control systems by Bernabe~\cite{Bernabe2012Auth}, in multi-tenancy has been discussed extensively over the last years. 
 Simple authentication schemes, where a user either has or has no access to all content, are widely available.
 According to Bernabe et al.~\cite{Bernabe2012Auth} current providers such as Rackspace\footnote{http://www.rackspace.com/} or Amazon EC2\footnote{http://aws.amazon.com/ec2/} only rely on simple authentication schemes which do not provide enhanced access control capabilities. 
 Multi-user authentication provides enhanced access control capabilities.
-However, this form of authentication lacks multi-tenancy-specific capabilities, where the user authorization is confined to each individual tenant. 
+The central notion of these enhanced access control capabilities is that permissions are associated with roles, and users are assigned to appropriate roles, according to Sandhu et al.~\cite{Sandhu1996Auth}
+However, this form of authentication lacks multi-tenancy-specific capabilities. 
 The multi-user authorization concept provides no capabilities to grant users privileges over multiple tenants, as noted by Calero et al.~\cite{Calero2010Auth}
 This would not allow, for example, two companies or tenants to share certain data with each other, by granting each other specific privileges as a form of collaboration.
 These systems often lack the functionality and complexity to express more advanced forms of authorization, necessary for multi-tenant systems.
