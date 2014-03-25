@@ -59,7 +59,7 @@ Typically this layer rewrites queries from tenants into a generic query that can
 Schema mapping techniques for multi-tenant applications can be separated into three groups. 
 One group in which the database owns the schema, a group where the application owns the schema and maps this into generic database structures, and a group that uses a hybrid model where the database partially owns the schema~\cite{aulbach2009comparison}.
 
-\begin{compactitem}
+\begin{itemize}
 	\item \textbf{Database owned schema:} The most basic case for database owned schema is an inextensible schema.
 		In this case the entities in the application are mapped to their own tables.
 		Each table is augmented with a 'tenant Id' column that binds specific rows to specific tenants~\cite{aulbach2008multi}.
@@ -106,7 +106,7 @@ One group in which the database owns the schema, a group where the application o
 		Certain \acp{DBMS} support accessing data from within such a field. DB2 achieves this for XML trough pureXML\footnote{http://www-01.ibm.com/software/data/db2/linux-unix-windows/xml/index.html (march 2014)} and Postgres allows for reading values from JSON fields\footnote{http://www.postgresql.org/docs/9.3/static/functions-json.html (march 2014)}
 		
 		Reading from the extension field will introduce additional overhead. However the actual amount of overhead depends on the type of queries that are executed, for instance any query not querying the extension field will suffer almost no overhead~\cite{aulbach2009comparison}.
-\end{compactitem}
+\end{itemize}
 
 \subsubsection{Tenant Aware \acp{DBMS}}
 \label{sec:tenant_aware}
@@ -133,7 +133,7 @@ However it is unclear whether their approach really meets the requirements of a 
 In this section some promising research has been discussed, however many problems remain unsolved.
 Below we give a short overview of interesting topics for further research we identified.
 
-\begin{compactitem}
+\begin{itemize}
 	\item \textbf{Tenant aware \acp{DBMS}}.
 		A tenant aware \ac{DBMS} is an important step forward in finding a scalable database solution for multi-tenant applications.
 		Schiller et al.~\cite{schiller2011native} have implemented a promising prototype. However tenant aware database administration tools are still nonexistent.
@@ -144,4 +144,4 @@ Below we give a short overview of interesting topics for further research we ide
 	\item \textbf{Resource allocation}.
 		The methods proposed by Kwok~\cite{kwok2008resource} and Espadas~\cite{espadas2013tenant} have only been tested on a single platform each.
 		To properly evaluate their usefulness these methods need to be validated to work on different platforms, additional case studies are required.
-\end{compactitem}
+\end{itemize}

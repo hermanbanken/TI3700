@@ -23,11 +23,11 @@ From the variety of definitions above it can be concluded that there still is no
 \subsection{Different types of multi-tenancy}
 
 There are three main levels of multi-tenancy, as described by Chong et al.~\cite{chong2006multi} and Bezemer and Zaidman~\cite{bezemer2010multi}:
-\begin{compactenum}
+\begin{enumerate}
 \item shared application with a separated database
 \item shared application with a shared database (separate schema)
 \item shared application with a shared schema
-\end{compactenum}
+\end{enumerate}
 They consider the latter as pure multi-tenancy. Lin et al.~\cite{lin2009feedback} and Aulbach et al.~\cite{aulbach2009comparison} agree on this, sometimes calling it \emph{native} multi-tenancy. Guo et al.~\cite{guo2007framework} also mention native multi-tenancy, but they leave out the database. Krebs et al.~\cite{krebs2012architecture} use the \emph{affinity} and \emph{persistency} concepts: affinity describes which server(s) handle which tenant(s) and persistency describes the way of usage of the database (shared or separated). These concepts can easily be translated into the levels of Bezemer and Zaidman~\cite{bezemer2010multi}. 
 
 A fourth level of multi-tenancy (as described by Guo et al.~\cite{guo2007framework}) is the multiple instances pattern. This means each tenant has its own dedicated instance of the application, running on shared hardware.
@@ -39,12 +39,12 @@ Guo et al.~\cite{guo2007framework} suggest the implementation of a multi-tenancy
 Multi-tenancy has a relationship with the cloud, but that does not imply they are the same. For example, a multi-tenant application does not have to run in the cloud and a cloud application does not have to be multi-tenant. In this section we explain this relationship.
 
 Firstly, there are various service models for cloud services, as discussed by Dillon et al.~\cite{dillon2010cloud}:
-\begin{compactenum}
+\begin{enumerate}
 \item \acf{SaaS} (example: Google Mail/Docs)
 \item \acf{PaaS} (example: Google AppEngine)
 \item \acf{IaaS} (example: Amazon EC2)
 \item \acf{DaaS} (example: Google BigTable)
-\end{compactenum}
+\end{enumerate}
 
 According to them, multi-tenancy has a close relationship with the \ac{SaaS} domain, because multi-tenancy gains the most benefits within this model. Tsai et al.~\cite{tsai2010towards} go even further, stating \ac{SaaS} ``is characterized by its multi-tenancy architecture''. 
 
