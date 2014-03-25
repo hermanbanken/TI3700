@@ -105,14 +105,14 @@ The detectability of the \ac{VMM} creates the opportunity for malicious users to
 \subsubsection{Web-dependent Application Security}
 Web-dependent Application Security ensures the accessibility of the data. 
 The importance of good security practices in the application-layer is be illustrated by Wade et al.~\cite{Wade2008Security}.
-The report about data breaches on the Verizon Business platform, reports that 39\% of the data breaches occur in the service/application layer, which comprises the multi-tenant section. The \ac{OWASP}\footnote{http://owasptop10.googlecode.com/files/OWASP\%20Top\%2010\%20-\%202013.pdf} has identified the 10 greatest security risks faced by network-dependent applications.\\
+The report about data breaches on the Verizon Business platform, reports that 39\% of the data breaches occur in the service/application layer, which comprises the multi-tenant section. The \ac{OWASP}\footnote{http://owasptop10.googlecode.com/files/OWASP\%20Top\%2010\%20-\%202013.pdf (march 2014)} has identified the 10 greatest security risks faced by network-dependent applications.\\
 
 In Takahashi et al.~\cite{Takahashi2012Security} the authors describe a couple of ways to detect vulnerabilities in the server-side and client-side of the web application. 
 Endpoint risk detection techniques detect client-side vulnerabilities at the endpoint (the user). 
 There are a good number of implementations, such as FLAX~\cite{saxena10kudzu} and Zozzle~\cite{curtsinger2011zozzle} that target JavaScript issues. 
 Another form of detection is called the middle-box risk detection. 
 This kind of detection requires no adjustments of the code, as the detection is performed in between the server and client-side, using custom HTTP requests. 
-Projects implementing this kind detection, such as SpyProxy\footnote{\url{http://homes.cs.washington.edu/~gribble/papers/spyproxy.pdf}}, BrowserShield\footnote{\url{http://research.microsoft.com/en-us/news/features/browsershield.aspx}} and WebShield\footnote{\url{http://www.isoc.org/isoc/conferences/ndss/11/pdf/6_2.pdf}}, are still in early development stages, but these projects already look very promising.
+Projects implementing this kind detection, such as SpyProxy\footnote{\url{http://homes.cs.washington.edu/~gribble/papers/spyproxy.pdf} (march 2014)}, BrowserShield\footnote{\url{http://research.microsoft.com/en-us/news/features/browsershield.aspx} (march 2014)} and WebShield\footnote{\url{http://www.isoc.org/isoc/conferences/ndss/11/pdf/6_2.pdf} (march 2014)}, are still in early development stages, but these projects already look very promising.
 
 \subsubsection{Data Integrity and Network Security}
 With the dependence on extensive usage of networks, the multi-tenancy model is highly dependent on good network security.  
@@ -121,9 +121,9 @@ According to Subashini~\cite{Subashini2011Security}, one of the biggest challeng
 At the protocol level, HTTP does not offer any support for transaction or guaranteed delivery of packets. 
 Thus, to ensure transactions are indeed delivered one needs to implement this functionality into the multi-tenancy system.\\
 
-Currently there are some standards available trying to fix this security issue, namely WS-Transaction\footnote{http://msdn.microsoft.com/en-us/library/ms951262.aspx} and WS-Reliability.
+Currently there are some standards available trying to fix this security issue, namely WS-Transaction\footnote{http://msdn.microsoft.com/en-us/library/ms951262.aspx (march 2014)} and WS-Reliability.
 However, as noted by Subashini et al.~\cite{Subashini2011Security} and confirmed by our web-based survey based upon these techniques, these standards haven’t reached technical maturity yet and have therefore yet to experience full adoption by the majority of the multi-tenancy providers.
-Since the publishing of the paper by Subashini.~\cite{Subashini2011Security}, WS-reliability has since been superseded by ReliableMessaging\footnote{http://docs.oasis-open.org/ws-rx/wsrm/200702/wsrm-1.1-spec-os-01.pdf}.
+Since the publishing of the paper by Subashini.~\cite{Subashini2011Security}, WS-reliability has since been superseded by ReliableMessaging\footnote{http://docs.oasis-open.org/ws-rx/wsrm/200702/wsrm-1.1-spec-os-01.pdf (march 2014)}.
 
 \subsection{Research Agenda for Security}\label{sec:security_agenda}
 The survey of the literature regarding security revealed the following recommendations for researchers to look in to. 
