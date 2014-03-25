@@ -7,11 +7,11 @@ The tenant on the other hand will have to adhere to a \ac{FUP} or have certain f
 
 In a multi-tenant application the available resources should be fairly distributed among tenants.
 Krebs~\cite{krebs2013metrics} defines a system as fair when the following criteria are met:
-\begin{enumerate}
+\begin{compactenum}
 	\item Tenants who do not exceed their quota should not be affected by tenants who do.
 	\item Tenants who do exceed their quota should experience performance degradation. 
 	\item Tenants with a higher quota should experience better performance compared to tenants with a lower quota.
-\end{enumerate}
+\end{compactenum}
 In the list 'exceeding their quota' can mean exceeding an explicitly defined usage limit or, in the case of a fair use policy, unfair use of the system.
 
 The primary mechanism for ensuring that these fairness criteria are met is finding methods for separating the performance of different tenants.
@@ -47,7 +47,7 @@ The approaches proposed by Walraven and Krebs both showed promising results in e
 Lins method was effective at maintaining the different \ac{QoS} levels per tenant.
 
 Important topics for future research will be:
-\begin{itemize}
+\begin{compactitem}
 	\item \textbf{Multiple disruptive tenants}.
 		Multiple disruptive tenants is a case that has not been tested yet. 
 		However this is a case that should be handled by the tenant separation techniques discussed in this section.
@@ -55,5 +55,5 @@ Important topics for future research will be:
 	\item \textbf{Metrics for tenant load}.
 		The metrics used by Krebs and Walraven are request response time and response count. 
 		However, as also discussed in the scalability section, there are more metrics that may be useful for measuring tenant separation and maintaining a good \ac{QoS} level. Such metrics must be identified and must have their usefulness assessed.
-\end{itemize}
+\end{compactitem}
 

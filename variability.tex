@@ -18,10 +18,10 @@ Dependent on the scale of the application, different patterns become relevant. L
 In smaller applications and within components, different patterns become relevant. For example, one can customize an application by using dependency injection~\cite{walraven2011middleware} or context oriented programming~\cite{truyen2012context}. We will discus these techniques in more detail in Section~\ref{sec:vrt}.
 
 When looking to realized variability, two types of variability can be distinguished: external and internal variability~\cite{mietzner2009variability}:
-\begin{itemize}
+\begin{compactitem}
 \item \textbf{External variability} is the variability that is communicated to the customers. Most of the time, this variability is \textbf{customer-driven} and is implemented because customers asked for it or because the developers thought the customers would ask for it. The possibility to upload a custom logo, to select data-separation requirements (such as guaranteed data isolation) or to define custom workflows are examples of external variability.
 \item \textbf{Internal variability} exists because of implementation details, is visible only to the developer or provider and is mostly \textbf{realization-driven}. For example some - external - variant may depend on some internal variation, that guarantees a certain property. When one tenant requires its data to be stored separately, the internal variability consists of the possibility to launch either a single or multiple instances of the database server. It might be more economic to use the same internal variant for all tenants on the same instance to accomplish different external variations, even if this internal variant alone is more expensive.
-\end{itemize}
+\end{compactitem}
 Figure~\ref{fig:ovm} depicts this distinction by the a line separating the two types.
 
 \subsection{Variability Modeling}
@@ -32,7 +32,7 @@ For tenants, it is important that they can use the best tailored variant of the 
 
 To support negotiation about variability in functionality Schroeter et al.~\cite{schroeter2012towards} identified three appropriate models: feature modeling~\cite{benavides2010automated,kang1990feature}, decision modeling~\cite{schmid2004customizable,schmid2011comparison} and orthogonal variability modeling~\cite{lauenroth2005software,metzger2007disambiguating}.
 
-\begin{itemize}
+\begin{compactitem}
 \item \textbf{Feature modeling} or a ``feature based component model" is applied by Walraven et al.~\cite{walraven2011middleware} in their paper on a multi-tenant middleware layer. A variation is
 expressed in terms of a feature, a distinctive functionality, service, quality or characteristic of an 
 application. Features can have multiple implementations that can then be composed into the 
@@ -60,7 +60,7 @@ when lots of variables exist that might be used thorough different features and 
 \end{figure}
 
 In \ac{OVM}, the \textit{\acp{VP}} are the key items. One variation point has multiple \textit{variants} that are either optional or mandatory. Relations between \acp{VP} exist that define whether some variant is mutually exclusive with some other variant or whether some variant requires an other variant. Relations are drawn as lines between \acp{VP}. External and internal variability are separated by a dashed line to show which variability customers can choose and which is internally bound. An example can be seen in Figure \ref{fig:ovm}.
-\end{itemize}
+\end{compactitem}
 
 % \subsection{Developing with variability in mind}
 % Efficient customization of multi-tenant Software-as-a-Service applications with service lines
@@ -69,28 +69,28 @@ In \ac{OVM}, the \textit{\acp{VP}} are the key items. One variation point has mu
 \subsection{\aclp{VRT}}
 \label{sec:vrt}
 Jansen et al.~\cite{jansen2010customization} note that while lot of research has been done on variability modeling, there is lack of research on techniques needed to implement variability. They divide \acp{VRT} in two categories, with further subdivisions:
-\begin{itemize}
+\begin{compactitem}
 \item \textit{\ac{MVC} Customization}
-\begin{itemize}
+\begin{compactitem}
 \item \textbf{Model changes} allow tenants to fit the application to their domain. Model changes include changing entity attributes, adding entities and entity-relationships. Some changes require a more abstract application and therefore need to be thought upon earlier in the design process than more simple changes which could easily be added later on.
 \item \textbf{View Changes} is one of the simpler types of customization, because in the \ac{MVC}-pattern, views do not interact with other components, but instead receive the data to be displayed.
 \item \textbf{Controller Changes} allow the most freedom, ranging from restricting data to one tenant only, till fully customized workflows.
-\end{itemize}
+\end{compactitem}
 \item \textit{System Customization} \\ Within large systems, built of components delivering services, variations of a different magnitude can be created, on system level.
-\begin{itemize}
+\begin{compactitem}
 \item \textbf{System Connector Changes} occur when connections to remote services are made variable. Examples include having multiple connectors for printing photos or multiple physical mail delivery providers.
 \item \textbf{System Component Changes} require that multiple components deliver the same service. Based on the configuration, one of the components for a service is selected. For example tenants might select different authentication components for either SAML\footnote{Security Assertion Markup Language - \url{http://en.wikipedia.org/wiki/Security_Assertion_Markup_Language} (march 2014)}, OAuth\footnote{Open Authorization - \url{http://en.wikipedia.org/wiki/OAuth} (march 2014)} or password-based login.
-\end{itemize}
-\end{itemize}
+\end{compactitem}
+\end{compactitem}
 
 Kabbedijk and Jansen~\cite{kabbedijk2011variability} describe three \acp{VRT} they observed in case studies. These \acp{VRT}  fit into the categories above.
-\begin{itemize} 
+\begin{compactitem} 
 \item \textbf{Customizable Data Views}: a pattern to store tenant specific representation settings, e.g. how tenants want to filter or sort their data. 
 Although this technique requires some table storing data and needs a small controller, it can be seen as mainly a View Change.
 \item \textbf{Module Dependent Menu}: modules can add items to the menu. Depending on which modules are associated with a tenant, the menu is thus customized. This is another View Change pattern. 
 \item \textbf{Pre/Post Update Hooks}: execute pieces of code before or after certain events happen in the application. This is a Controller Change. 
 This allows for tenants to enable or disable modules that check data or automate certain tasks.
-\end{itemize}
+\end{compactitem}
 
 Two ways to implement Controller Changes or System Component Changes are \acl{DI} and \acl{COP}.
 
@@ -107,7 +107,7 @@ Multiple layers can be active at once, doing their work in a predefined order.
 
 \subsection{Research Agenda for Variability}\label{sec:var_agenda}
 While there has been done a lot of research, much remains to be covered:
-\begin{itemize}
+\begin{compactitem}
 
 \item \textbf{Automation}.
 For variability to become manageable, tools must exist for \ac{SaaS} providers to manage the configuration of tenants and to deploy new tenants. Mietzner et al. try to make variability easier to manage by creating so called \textit{customization processes}~\cite{mietzner2008generation} to guide the customer through the customization, and \textit{solutions}~\cite{mietzner2008defining}, that define which variants should be bound. It could be investigated how deployment scripts could be derived from these solutions, to automatically deploy tenants.
@@ -124,5 +124,5 @@ Truyen et al.~\cite{truyen2012context} found that \ac{COP} was useful as a \ac{V
 \item \textbf{Maintaining State Consistency while doing Updates}.
 Another open issue is maintaining global state consistency when doing (partial) updates of components that potentially service a lot of tenants~\cite{truyen2012context,dumitracs2009upgrades}. The tenants that do not use any of the updated functionality should not experience any interruptions. This is especially difficult if multiple versions of components must coexist, since each component may depend on other components. When \acp{SLA} are sold this consistency and uninterrupted service should be provable.
 
-\end{itemize}
+\end{compactitem}
 % schroeter2012towards
