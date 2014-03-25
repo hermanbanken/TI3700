@@ -7,7 +7,8 @@ It is required that a multi-tenant application is scalable to maintain this cost
 
 In the scalability section we will focus specifically on how the infrastructure, or specific parts thereof, of a multi-tenant application can deal with an increasing number of tenants.
 
-First methods for placing new tenants and calculating the resources needed per tenant are discussed. After that scalability in the  storage layer will be discussed. Finally a research agenda for scalability research will be presented.
+First scalability in the application, placing new tenants and calculating the resources needed per tenant, will be discussed, after that scalability in the storage layer will be discussed. 
+Finally a research agenda for scalability research will be presented.
 
 \subsection{Scaling a Multi-Tenant Application}
 \label{sec:scal_mta}
@@ -28,8 +29,8 @@ However it is also noted that gathering enough performance data to accurately pr
 Espadas et al.~\cite{espadas2013tenant} propose a resource allocation model for scaling SaaS applications.
 The method they propose assumes that the underlying architecture is elastic and that scaling up or down is something that can be easily done.
 Therefore their method is most suitable for applications running on a cloud platform like \ac{AWS}. 
-Their proposed system uses a core SaaS application that handles incoming requests and acts as a load balancer. The core applications maintains a tenant specific context that tracks the number of logged in users, services used, and resource consumption.
-Based on the data stored in these context the system determines the amount of resources currently required by the tenants and adjusts the amount of allocated resources if needed.
+Their proposed system uses a core SaaS application that handles incoming requests and acts as a load balancer. The core application maintains a tenant specific context that tracks the number of logged in users, services used, and resources consumed.
+Based on the data stored in these context the system determines the amount of resources currently required by all tenants combined and adjusts the amount of allocated resources if needed.
 Performance tests with the new model show that without performance loss for tenants their system leads to a statistically significant reduction in underutilization, but no statistically significant reduction in overutilization. 
 
 
@@ -47,8 +48,8 @@ For instance, PostgreSQL has several available solutions for scaling and cluster
 
 The multi-tenant specific problem in the data layer of multi-tenant applications is finding a method that remains scalable with both increasing schema complexity and increasing load.
 Research on this subject focuses on two methods to achieve this.
-How to efficiently map the extensible schema onto existing \acp{DBMS}~\cite{aulbach2008multi, aulbach2009comparison}.
-Or, more recently, on creating multi-tenant aware \acp{DBMS}~\cite{schiller2011native, aulbach2011extensibility}.
+How to efficiently map the extensible schema used in the application onto existing \acp{DBMS}~\cite{aulbach2008multi, aulbach2009comparison}.
+Or, more recently, on creating multi-tenant aware \acp{DBMS} that facilitate per tenant extensions on the schema~\cite{schiller2011native, aulbach2011extensibility}.
 
 \subsubsection{Schema Mapping Techniques}
 Schema mapping techniques are techniques for mapping an extensible schema into a traditional \ac{DBMS}.
@@ -136,7 +137,7 @@ Below we give a short overview of interesting topics for further research we ide
 	\item \textbf{Tenant aware \acp{DBMS}}.
 		A tenant aware \ac{DBMS} is an important step forward in finding a scalable database solution for multi-tenant applications.
 		Schiller et al.~\cite{schiller2011native} have implemented a promising prototype. However tenant aware database administration tools are still nonexistent.
-		In addition to that we agree with their assessment that more research storage model for the \ac{DBMS} is needed to tailor it to tenant aware data management.
+		In addition to that we agree with their assessment that more work on the storage model for the \ac{DBMS} is needed to tailor it to tenant aware data management.
 	\item \textbf{Performance metrics}.
 		Kwok~\cite{kwok2008resource} uses memory and CPU usage for his metrics and so does Espadas~\cite{espadas2013tenant}. 
 		However depending on the characteristics of the application it may be worthwhile to measure other resources as well, such as bandwidth, transferred data, used storage or database queries executed. 
