@@ -1,4 +1,4 @@
-In this section various methods for maintaining a specific \ac{QoS} level per tenant will be discussed.
+In this section various methods for maintaining a specific \acf{QoS} level per tenant will be discussed.
 The main challenges here are the metrics to use for measuring the current resource usage per tenant and how to separate tenants in such a way that the behaviour of one tenant will not affect the other tenants~\cite{krebs2013metrics}.
 
 In many cases tenants in a multi-tenant application will have some form of \ac{SLA} with the provider of the application.
@@ -14,11 +14,11 @@ Krebs~\cite{krebs2013metrics} defines a system as fair when the following criter
 \end{enumerate}
 In the list 'exceeding their quota' can mean exceeding an explicitly defined usage limit or, in the case of a fair use policy, unfair use of the system.
 
-The primary mechanism for ensuring a these fairness criteria are met is finding methods for separating the performance of different tenants.
+The primary mechanism for ensuring that these fairness criteria are met is finding methods for separating the performance of different tenants.
 Several techniques for achieving this will be discussed in the next section.
 
 \subsection{Tenant Separation Techniques}
-In true multi-tenant applications the primary technique proposed for maintaining \ac{QoS} for multiple tenants is by limiting the amount of requests a tenant can execute using an entry point, or load balancer, that is aware of the resource consumption per tenant.
+In multi-tenant applications the primary technique proposed for maintaining \ac{QoS} for multiple tenants is by limiting the amount of requests a tenant can execute using an entry point, or load balancer, that is aware of the resource consumption per tenant.
 Walraven~\cite{walraven2012towards}, Krebs~\cite{krebs2013metrics} and Lin~\cite{lin2009feedback} all propose methods that include request limiting in some form.
 
 The method proposed by Walraven et al.~\cite{walraven2012towards} uses a pluggable middleware framework for performance isolation.
