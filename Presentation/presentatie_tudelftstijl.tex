@@ -84,28 +84,58 @@
 \end{frame}
 %==============================================================
 
-\begin{frame}\frametitle{\textbf{\LARGE{\textrm{What is Multi-Tenancy}}}}
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Introduction}}}}
+	%Uitleg wat we gedaan hebben; Survey met als doel..
+	%Indeling presentatie
+	%Evt.: Uitleg dat we MT specifieke problemen pakken. (DB Schalen niet persé moeilijk, MT DB wel.., dat idee).
 \end{frame}
 
-\begin{frame}\frametitle{\textbf{\LARGE{\textrm{What is Multi-Tenancy pt2}}}}
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{What is Multi-Tenancy.}}}}
+	%TODO
 \end{frame}
 
-\begin{frame}\frametitle{\textbf{\LARGE{\textrm{The State of Security Research}}}}
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{The State of Security}}}}
+	%TODO
 \end{frame}
 
-\begin{frame}\frametitle{\textbf{\LARGE{\textrm{The State of Scalability Research}}}}
+%% LET OP: Eerste opzet, ga nog even nachtje slapen over of dit nu een handige slideindeling is.
+%% Zet m.n. met dat nu niet de problemen, maar wel de oplossingen opgenomen zijn.
+%% Probleem is dat we zo ranzig weinig tijd hebben :p.
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{The State of Scalability}}}}
+	\begin{itemize}
+		\item Multi-Tenant applications must be scalable.
+		\item Approaches in app layer:
+			\begin{itemize}
+				\item Estimating resource usage per tenant, per user.
+				\item Elasically allocate resources per tenant.
+			\end{itemize}
+		\item Approaches in the data layer:
+			\begin{itemize}
+				\item Schema mapping.
+				\item Tenant aware DBMSs.
+			\end{itemize}
+	\end{itemize}
 \end{frame}
 
-\begin{frame}\frametitle{\textbf{\LARGE{\textrm{The State of QoS Research}}}}
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{The State of Quality of Service}}}}
+	\begin{itemize}
+		\item Tenants should not be able to affect other tenants.
+		\item Performance requirements may differ per tenant.
+		\item Approaches:
+			\begin{itemize}
+				\item Per tenant request throttling.
+				\item Feedback controller.
+			\end{itemize}
+	\end{itemize}
 \end{frame}
 
-\begin{frame}\frametitle{\textbf{\LARGE{\textrm{The State of Variability Research}}}}
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{The State of Variability}}}}
 \end{frame}
 
 \begin{frame}\frametitle{\textbf{\LARGE{\textrm{Research Opportunities}}}}
 \end{frame}
 
-\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Research Opportunities pt2}}}}
+\begin{frame}\frametitle{\textbf{\LARGE{\textrm{Research Opportunities cont'd}}}}
 \end{frame}
 
 \begin{frame}\frametitle{\textbf{\LARGE{\textrm{Questions and Discussion}}}}
