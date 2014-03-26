@@ -1,6 +1,6 @@
 The scalability of a system is a measure for how well a system can handle increasing workload, stored data and utilization.
 A system is considered scalable when it can be extended to support an increasing load with a well manageable cost increase.
-On the contrary, for an unscalable system supporting increased load might be technically infeasible or prohibitively expensive~\cite{bondi2000scalability}.
+On the contrary, for an unscalable system supporting increasing load might be technically infeasible or prohibitively expensive~\cite{bondi2000scalability}.
 
 As one of the key advantages of multi-tenant applications is a higher utilization of resources and the associated cost reduction per tenant~\cite{bezemer2010multi}.
 It is required that a multi-tenant application is scalable to maintain this cost reduction and to accommodate for an increasing number of tenants.
@@ -20,10 +20,10 @@ Overutilization will result in degraded performance for tenants and underutiliza
 In this subsection methods for estimating the resource consumption per tenant and methods for optimally placing new tenants on an existing infrastructure are discussed.
 
 Kwok et al.~\cite{kwok2008resource} propose metrics for calculating the resources a tenant will consume.
-Taking into account shared resources, per user resource consumption and per tenant resource consumption.
+These metrics take into account shared resources, per user resource consumption and per tenant resource consumption.
 The functions for user or tenant resource consumption will vary per application and functions for these will have to be estimated based on measured data.
-In addition to this they propose a tenant aware tool for optimally placing a new tenant on an existing infrastructure.
-His tool has been used in practice in an internal IBM project and the preliminary results are promising. 
+In addition to this they propose a tenant-aware tool for optimally placing a new tenant on an existing infrastructure.
+This tool has been used in practice in an internal IBM project and the preliminary results are promising. 
 However it is also noted that gathering enough performance data to accurately project tenant resource consumption is a very time consuming process.
 
 Espadas et al.~\cite{espadas2013tenant} propose a resource allocation model for scaling SaaS applications.
@@ -36,20 +36,20 @@ Performance tests with the new model show that without performance loss for tena
 
 \subsection{Scaling a Multi-Tenant Data Layer}
 The schema of the data model presented in a multi-tenant application should be extensible by tenants.
-Extensibility is required because this allows tenants to modify their view of the application in such a way that a better fits their needs.
+Extensibility is required because this allows tenants to modify their view of the application in such a way that it better fits their needs.
 
 Within a multi-tenant application the data layer will have to deal with two things when it comes to scalability.
 First, as the number of tenants increases so will database load.
-Second, as the number of tenants increases so will the amount of extensions on the the schema.
+Second, as the number of tenants increases so will the amount of extensions on the schema.
 The database should  manage simultaneously increasing load and schema complexity in a scalable way.
 
-Scaling a database under just increasing load is not a multi-tenant specific problem and for most \acp{DBMS} solutions exist for this. 
+Scaling a database under just increasing load is not a multi-tenant specific problem and for most \acp{DBMS} solutions for this exist. 
 For instance, PostgreSQL has several available solutions for scaling and clustering\footnote{http://wiki.postgresql.org/wiki/Replication,\_Clustering,\_and\_Connection\_Pooling (march 2014)}, and so does MySQL\footnote{https://www.mysql.com/products/cluster/scalability.html (march 2014)}.
 
 The multi-tenant specific problem in the data layer of multi-tenant applications is finding a method that remains scalable with both increasing schema complexity and increasing load.
-Research on this subject focuses on two methods to achieve this.
-How to efficiently map the extensible schema used in the application onto existing \acp{DBMS}~\cite{aulbach2008multi, aulbach2009comparison}.
-Or, more recently, on creating multi-tenant aware \acp{DBMS} that facilitate per tenant extensions on the schema~\cite{schiller2011native, aulbach2011extensibility}.
+Research on this subject focuses on two approaches for achieving this.
+First, investigating ways to efficiently map the extensible schema used in the application onto existing \acp{DBMS}~\cite{aulbach2008multi, aulbach2009comparison}.
+Second and in more recent research, creating multi-tenant aware \acp{DBMS} that facilitate per tenant extensions on the schema~\cite{schiller2011native, aulbach2011extensibility}.
 
 \subsubsection{Schema Mapping Techniques}
 Schema mapping techniques are techniques for mapping an extensible schema into a traditional \ac{DBMS}.
@@ -57,19 +57,19 @@ This mapping is usually managed in an application layer that performs various op
 Typically this layer rewrites queries from tenants into a generic query that can be executed on a database shared among tenants.
 
 Schema mapping techniques for multi-tenant applications can be separated into three groups. 
-One group in which the database owns the schema, a group where the application owns the schema and maps this into generic database structures, and a group that uses a hybrid model where the database partially owns the schema~\cite{aulbach2009comparison}.
+One group in which the database owns the schema, a group in which the application owns the schema and maps this into generic database structures, and a group that uses a hybrid model in which the database partially owns the schema~\cite{aulbach2009comparison}.
 
 \begin{itemize}
-	\item \textbf{Database owned schema:} The most basic case for database owned schema is an inextensible schema.
+	\item \textbf{Database owned schema:} The most basic case for a database owned schema is an inextensible schema.
 		In this case the entities in the application are mapped to their own tables.
-		Each table is augmented with a 'tenant Id' column that binds specific rows to specific tenants~\cite{aulbach2008multi}.
+		Each table is augmented with a 'tenant id' column that binds specific rows to specific tenants~\cite{aulbach2008multi}.
 
 		In the case of a shared database and schema extension tables can be used to allow for tenant specific extensions.
 		This is a method that finds its roots in the decomposed storage model~\cite{copeland1985decomposition}.
 		These are tables that contain the additional columns added by tenants. 
 		Based on a stored 'tenant id' and 'row id' the extension tables are joined with the base table when data is fetched from the database~\cite{aulbach2008multi}.
 
-		In the case of a private schema, where each tenant has his own set of tables, or a private database per tenant the base database schema can be extended in the traditional way by adding columns~\cite{aulbach2009comparison}.
+		In the case of a private schema, in which each tenant has his own set of tables, or a private database per tenant the base database schema can be extended in the traditional way by adding columns~\cite{aulbach2009comparison}.
 		Each tenant has his own set of tables in these cases so the extensions will always remain private. 
 	
 		A major scalability issue in these cases is that, assuming the schema must be extensible, the number of tables increases with the number of tenants, as every new tenant might add additional extensions.
@@ -90,12 +90,12 @@ One group in which the database owns the schema, a group where the application o
 		As a consequence of this the database might miss optimization opportunities~\cite{schiller2011native}.
 
 		For the universal table this is the potential introduction of a large amount of NULLs in the database, not all storage engines are equipped to handle this in an efficient manner. 
-		Additionally it is difficult to add tenant specific indexes on these tables, once a column is indexed it will be indexed for all tenants.
+		Additionally it is difficult to add tenant specific indexes on these tables: once a column is indexed it will be indexed for all tenants.
 
 		The main disadvantages for the pivot table are that for a logical table with $n$ columns $(n-1)$ joins are needed to query all fields. 
 		An advantage of pivot tables is that NULLs are not stored.
 	\item \textbf{Hybrid schemas:} These schemas attempt to combine the strong points of the previous groups. 
-		Two such schemas will be discussed here, the Extension Field layout and Chunk folding.
+		Two such schemas will be discussed here, Chunk folding and the Extension Field layout.
 
 		Chunk folding is an approach that uses conventional tables for the unextended entities from the logical schema.
 		Extensions are stored in chunk tables. A chunk table is a generic table that is similar to a pivot table but may contain more than one data field.
@@ -118,7 +118,7 @@ Native multi-tenancy support gives the full knowledge of the data layout back to
 
 Schiller et al.~\cite{schiller2011native} propose a database with native multi-tenancy support and support for schema extensibility.
 Using their approach a tenant object would exist within the database as a first-class object. 
-Based on these objects for each tenant a context can be maintained that allows the database to determine what data belongs to a specific tenant. 
+Based on these objects for each tenant a context can be maintained that allows the database to determine which data belongs to a specific tenant. 
 These contexts also facilitate direct access to the database for applications without needing a query rewriter.
 
 Both Schiller~\cite{schiller2011native} and Aulbach~\cite{aulbach2011extensibility} propose a model where tenants can extend the schema in an object-oriented way.
@@ -126,12 +126,12 @@ Allowing tenants to share the base table and transparently applying the extensio
 
 Schiller also implemented a prototype tenant-aware \ac{DBMS}.
 This prototype specifically implemented support for the tenant context and extensibility.
-However it is unclear whether their approach really meets the requirements of a multi-tenant application as more testing is required.
+However it is unclear whether Schiller's approach really meets the requirements of a multi-tenant application as more testing is required.
 
 
 \subsection{Research Agenda for Scalability}\label{sec:scal_agenda}
 In this section some promising research has been discussed, however many problems remain unsolved.
-Below we give a short overview of interesting topics for further research we identified.
+Below we give a short overview of interesting topics we identified for further research.
 
 \begin{itemize}
 	\item \textbf{Tenant aware \acp{DBMS}}.
@@ -143,5 +143,5 @@ Below we give a short overview of interesting topics for further research we ide
 		However depending on the characteristics of the application it may be worthwhile to measure other resources as well, such as bandwidth, transferred data, used storage or database queries executed. 
 	\item \textbf{Resource allocation}.
 		The methods proposed by Kwok~\cite{kwok2008resource} and Espadas~\cite{espadas2013tenant} have only been tested on a single platform each.
-		To properly evaluate their usefulness these methods need to be validated to work on different platforms, additional case studies are required.
+		To properly evaluate their usefulness these methods need to be validated to work on different platforms. Additional case studies are required.
 \end{itemize}
