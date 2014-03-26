@@ -24,6 +24,24 @@
 \setbeamersize{text margin left=1cm}
 \setbeamersize{text margin right=1cm}
 
+\setbeamertemplate{footline}
+{%
+  \begin{beamercolorbox}[colsep=1.5pt]{upper separation line foot}
+  \end{beamercolorbox}
+  \hbox{%
+    \begin{beamercolorbox}[wd=0.2\paperwidth, ht=2.5ex, dp=1.125ex, left]{title in head/foot}%
+      \usebeamerfont{author in head/foot}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.6\paperwidth, ht=2.5ex, dp=1.125ex, center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.2\paperwidth, ht=2.5ex, dp=1.125ex, right]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertframenumber/\inserttotalframenumber\hspace*{2ex}
+    \end{beamercolorbox}}
+  \begin{beamercolorbox}[colsep=1.5pt]{lower separation line foot}
+  \end{beamercolorbox}
+}
+
 %---------------------------------------------------------------------------------
 %  Take attention for the parts you may change. See the comment lines with: %>>>
 %---------------------------------------------------------------------------------
@@ -44,6 +62,7 @@
 \date[]{\today}
 \tikzset{textlabel/.style={color=white}}
 \beamertemplatetransparentcovereddynamicmedium
+\setbeamertemplate{navigation symbols}{}%remove navigation symbols
 
 %==============================================================
 %%% DO NOT CHANGE this part below, except maybe the folder where you placed the "TUDelft bies"
@@ -70,8 +89,8 @@
             {\includegraphics[height=8.65cm]{images/background-titlepage.jpg}};
 
             \fill [cyan!95!black!70!blue] (0,2.9) -- (0,5.35) -- (-.5,5.35) -- (-.5,2.9) -- cycle ;%squareNorthWest
-            \draw [fill=black] (0,0) -- (11,0) -- (11,2.9) -- (0,2.9) -- cycle ;
-            \fill [fill=cyan!65!blue!80] (7,-3.9) -- (12.4,-3.9) -- (12.4,-3.65) -- (7,-3.65) -- cycle;
+            \draw [fill=black] (0,0) -- (11.5,0) -- (11.5,2.9) -- (0,2.9) -- cycle ;
+            %\fill [fill=cyan!65!blue!80] (7,-3.9) -- (12.4,-3.9) -- (12.4,-3.65) -- (7,-3.65) -- cycle;
             \node [shift={(0.8cm,-2.9cm)},textlabel,right]  at (current page.north west) {\textbf{\large{\textrm{\titel}}}};
             \node [shift={(0.8cm,-3.5cm)},textlabel,cyan!95!black!70!blue,right]  at (current page.north west)
             {\textbf{\large{\textrm{\subkop}}}};
