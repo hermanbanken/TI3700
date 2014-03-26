@@ -10,6 +10,7 @@
 \setbeamersize{sidebar width left=0.5cm}
 \usepackage[english]{babel}
 \usepackage{tikz}
+\usepackage{paralist}
 
 \newcommand{\field}[1]{\mathbb{#1}}
 \newcommand{\Zset}{\field{Z}}
@@ -85,46 +86,69 @@
 %==============================================================
 
 \begin{frame}\frametitle{\textbf{\LARGE{\textrm{Introduction}}}}
+	\begin{itemize}
+		\item Literature survey.
+		\item 21 papers on Multi-Tenancy.
+		\item Published between 2006 - now.
+	\end{itemize}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=.7\columnwidth]{../assets/papers.pdf}
+		\caption{Referenced papers per year.}
+	\end{figure}
 	%Uitleg wat we gedaan hebben; Survey met als doel..
 	%Indeling presentatie
 	%Evt.: Uitleg dat we MT specifieke problemen pakken. (DB Schalen niet persé moeilijk, MT DB wel.., dat idee).
 \end{frame}
 
 \begin{frame}\frametitle{\textbf{\LARGE{\textrm{What is Multi-Tenancy.}}}}
-	%TODO
+	\begin{columns}
+		\column{.7\textwidth}
+		\begin{itemize}
+			\item No official definition!
+			\item Tenant: Group of users sharing view on app.
+			\item Multiple tenants on the same instance.
+			\item Key subjects:
+				\begin{itemize}
+				\item Security
+				\item Scalability \& QoS
+				\item Variability
+				\end{itemize}
+		\end{itemize}
+		\column{.3\textwidth}
+		\includegraphics[width=.8\columnwidth]{images/large_questionmark.jpg}
+	\end{columns}
 \end{frame}
 
 \begin{frame}\frametitle{\textbf{\LARGE{\textrm{The State of Security}}}}
 	%TODO
 \end{frame}
 
-%% LET OP: Eerste opzet, ga nog even nachtje slapen over of dit nu een handige slideindeling is.
-%% Zet m.n. met dat nu niet de problemen, maar wel de oplossingen opgenomen zijn.
-%% Probleem is dat we zo ranzig weinig tijd hebben :p.
+%TODO: Plaatje
 \begin{frame}\frametitle{\textbf{\LARGE{\textrm{The State of Scalability}}}}
 	\begin{itemize}
 		\item Multi-Tenant applications must be scalable.
-		\item Approaches in app layer:
+		\item Subjects in the application layer:
 			\begin{itemize}
 				\item Estimating resource usage per tenant, per user.
-				\item Elasically allocate resources per tenant.
+				\item Tenant placement \& resource allocation.
 			\end{itemize}
-		\item Approaches in the data layer:
+		\item Subjects in the data layer:
 			\begin{itemize}
-				\item Schema mapping.
-				\item Tenant aware DBMSs.
+				\item Scalable handling of extensible schemas.
 			\end{itemize}
 	\end{itemize}
 \end{frame}
 
+%TODO: Plaatje
 \begin{frame}\frametitle{\textbf{\LARGE{\textrm{The State of Quality of Service}}}}
 	\begin{itemize}
 		\item Tenants should not be able to affect other tenants.
 		\item Performance requirements may differ per tenant.
-		\item Approaches:
+		\item Subjects:
 			\begin{itemize}
-				\item Per tenant request throttling.
-				\item Feedback controller.
+				\item Aggressive tenant handling.
+				\item Performance isolation.
 			\end{itemize}
 	\end{itemize}
 \end{frame}
