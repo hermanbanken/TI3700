@@ -10,6 +10,7 @@
 \setbeamersize{sidebar width left=0.5cm}
 \usepackage[english]{babel}
 \usepackage{tikz}
+\usepackage{paralist}
 
 \newcommand{\field}[1]{\mathbb{#1}}
 \newcommand{\Zset}{\field{Z}}
@@ -101,7 +102,22 @@
 \end{frame}
 
 \begin{frame}\frametitle{\textbf{\LARGE{\textrm{What is Multi-Tenancy.}}}}
-	%TODO
+	\begin{columns}
+		\column{.7\textwidth}
+		\begin{itemize}
+			\item No official definition!
+			\item Tenant: Group of users sharing view on app.
+			\item Multiple tenants on the same instance.
+			\item Key subjects:
+				\begin{compactenum}%Latex geeft geen tellertjes? dan maar met de hand..
+				\item 1. Security
+				\item 2. Scalability \& QoS
+				\item 3. Variability
+				\end{compactenum}
+		\end{itemize}
+		\column{.3\textwidth}
+		\includegraphics[width=.8\columnwidth]{images/large_questionmark.jpg}
+	\end{columns}
 \end{frame}
 
 \begin{frame}\frametitle{\textbf{\LARGE{\textrm{The State of Security}}}}
@@ -114,15 +130,14 @@
 \begin{frame}\frametitle{\textbf{\LARGE{\textrm{The State of Scalability}}}}
 	\begin{itemize}
 		\item Multi-Tenant applications must be scalable.
-		\item Approaches in app layer:
+		\item Subjects in the application layer:
 			\begin{itemize}
 				\item Estimating resource usage per tenant, per user.
-				\item Elasically allocate resources per tenant.
+				\item Tenant placement \& resource allocation.
 			\end{itemize}
-		\item Approaches in the data layer:
+		\item Subjects in the data layer:
 			\begin{itemize}
-				\item Schema mapping.
-				\item Tenant aware DBMSs.
+				\item Scalable handling of extensible schemas.
 			\end{itemize}
 	\end{itemize}
 \end{frame}
