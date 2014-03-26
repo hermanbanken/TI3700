@@ -1,4 +1,4 @@
-In multi-tenancy \textit{variability} is a key concept. The term was first introduced in the car industry, where customers could choose certain \textit{variants} of chassis, engine and color~\cite[p. 153]{kabbedijk2011variability}. 
+In multi-tenancy variability is a key concept. The term was first introduced in the car industry, where customers could choose certain \textit{variants} of chassis, engine and color~\cite[p. 153]{kabbedijk2011variability}. 
 In research on software engineering the concept was defined as ``the ability of a software system or artefact to be efficiently extended, changed, customized or configured for use in a particular context''~\cite{svahnberg2005taxonomy}.
 Two keywords from this definition are customization and configuration. 
 In a multi-tenant context, configuration is preferred over customization~\cite{sun2008software}, as customization requires the process of reengineering an application, maintaining multiple branches and deploying these branches separately, while configuration can be done at run-time and does not require multiple instances or branches.
@@ -20,9 +20,9 @@ In smaller applications and within components, different patterns become relevan
 When looking to realized variability, two types of variability can be distinguished: external and internal variability~\cite{mietzner2009variability}:
 \begin{itemize}
 \item \textbf{External variability} is the variability that is communicated to the customers. Most of the time, this variability is \textbf{customer-driven} and is implemented because customers asked for it or because the developers thought the customers would ask for it. The possibility to upload a custom logo, to select data-separation requirements (such as guaranteed data isolation) or to define custom workflows are examples of external variability.
-\item \textbf{Internal variability} exists because of implementation details, is visible only to the developer or provider and is mostly \textbf{realization-driven}. For example some - external - variant may depend on some internal variation, that guarantees a certain property. When one tenant requires its data to be stored separately, the internal variability consists of the possibility to launch either a single or multiple instances of the database server. It might be more economic to use the same internal variant for all tenants on the same instance to accomplish different external variations, even if this internal variant alone is more expensive.
+\item \textbf{Internal variability} exists because of implementation details, is visible only to the developer or provider and is mostly \textbf{realization-driven}. For example some - external - variant may depend on some internal variation, that guarantees a certain property. When one tenant requires its data to be stored separately, the internal variability consists of the possibility to launch either a single or multiple instance(s) of the database server. It might be more economic to use the same internal variant for all tenants on the same instance to accomplish different external variations, even if this internal variant alone is more expensive.
 \end{itemize}
-Figure~\ref{fig:ovm} depicts this distinction by the a line separating the two types.
+Figure~\ref{fig:ovm} depicts this distinction by a line separating the two types.
 
 \subsection{Variability Modeling}
 For all stakeholders in a multi-tenant application it is important that a variability model exists~\cite{schroeter2012towards}. For the developer, it is important to document all variation built into the application to keep the application maintainable for both current and new developers. 
@@ -35,8 +35,8 @@ To support negotiation about variability in functionality Schroeter et al.~\cite
 \begin{itemize}
 \item \textbf{Feature modeling} or a ``feature based component model" is applied by Walraven et al.~\cite{walraven2011middleware} in their paper on a multi-tenant middleware layer. A variation is
 expressed in terms of a feature, a distinctive functionality, service, quality or characteristic of an 
-application. Features can have multiple implementations that can then be composed into the 
-base application as ideally they are modular pieces of software. By splitting the application in 
+application. Features can have multiple implementations that can be composed into the 
+base application, as ideally they are modular pieces of software. By splitting the application in 
 these kind of features it is easier to keep functionality together, to make each feature 
 customizable and to add implementations in a later stage.
 
@@ -44,11 +44,11 @@ customizable and to add implementations in a later stage.
 Software Product Line Engineering to manage the variability of an application that is not specifically 
 multi-instance or even multi-tenant aware. However the concepts can be similarly applied to 
 multi-tenancy. In the decision model, variables are defined that are used throughout the 
-application. For each variable it is defined when the variable is relevant (e.g., dependencies), 
+application. For each variable it is defined when the variable is relevant (e.g. dependencies), 
 what the range of possible values is, what the cardinality is (a set of values is possible), what 
 constraints apply and when the variable is to be bound. The problem with decision variables is 
 that the configuration points and the application code can quickly become incomprehensible 
-when lots of variables exist that might be used thorough different features and components.
+when lots of variables exist that might be used throughout different features and components.
 
 \item \textbf{\acf{OVM}} is used by Mietzner et al.~\cite{mietzner2009variability} as their variability model. \ac{OVM} differs from other approaches in that it does provide a separate view on variability. This reduces the size of the model and makes it easier to understand the models as commonalities are left out and only the variability is modeled. This allows for understanding the model without understanding the application's design model. 
 
@@ -59,7 +59,7 @@ when lots of variables exist that might be used thorough different features and 
     \label{fig:ovm}
 \end{figure}
 
-In \ac{OVM}, the \textit{\acp{VP}} are the key items. One variation point has multiple \textit{variants} that are either optional or mandatory. Relations between \acp{VP} exist that define whether some variant is mutually exclusive with some other variant or whether some variant requires an other variant. Relations are drawn as lines between \acp{VP}. External and internal variability are separated by a dashed line to show which variability customers can choose and which is internally bound. An example can be seen in Figure \ref{fig:ovm}.
+In \ac{OVM}, the \textit{\acp{VP}} are the key items. One variation point has multiple \textit{variants} that are either optional or mandatory. Between \acp{VP}, relations exist that define whether some variant is mutually exclusive with some other variant or whether some variant requires an other variant. Relations are drawn as lines between \acp{VP}. External and internal variability are separated by a dashed line to show which variability customers can choose and which is internally bound. An example can be seen in Figure \ref{fig:ovm}.
 \end{itemize}
 
 % \subsection{Developing with variability in mind}
@@ -106,20 +106,20 @@ Multiple layers can be active at once, doing their work in a predefined order.
 % MAYBE-TODO: this paragraph could be more elaborate
 
 \subsection{Research Agenda for Variability}\label{sec:var_agenda}
-While there has been done a lot of research, much remains to be covered:
+Although a lot of research has been done, much remains to be covered:
 \begin{itemize}
 
 \item \textbf{Automation}.
-For variability to become manageable, tools must exist for \ac{SaaS} providers to manage the configuration of tenants and to deploy new tenants. Mietzner et al. try to make variability easier to manage by creating so called \textit{customization processes}~\cite{mietzner2008generation} to guide the customer through the customization, and \textit{solutions}~\cite{mietzner2008defining}, that define which variants should be bound. It could be investigated how deployment scripts could be derived from these solutions, to automatically deploy tenants.
+For variability to become manageable, tools must exist for \ac{SaaS} providers to manage the configuration of tenants and to deploy new tenants. Mietzner et al. try to make variability easier to manage by creating so called \textit{customization processes}~\cite{mietzner2008generation} to guide the customer through the customization, and \textit{solutions}~\cite{mietzner2008defining} that define which variants should be bound. It could be investigated how deployment scripts could be derived from these solutions, to automatically deploy tenants.
 
 \item \textbf{Cost Models}.
-While it is researched how the costs of multi-tenant aware applications compare to non-multi-tenant aware applications~\cite{mietzner2009variability}, no research is done to relate a cost model to a variability model. Future research could be done to determine the cost of creating, maintaining and managing variants. The providers can then decide whether or not it makes more sense, economically, to keep a variant or to remove it.
+While it is researched how the costs of multi-tenant aware applications compare to non-multi-tenant aware applications~\cite{mietzner2009variability}, no research is done to relate a cost model to a variability model. Future research could be done to determine the cost of creating, maintaining and managing variants. With the outcome of this research, providers will be able to decide whether or not it makes more sense, economically, to keep a variant or to remove it.
 
 \item \textbf{Identify more \aclp{VRT}}. 
 Kabbedijk and Jansen~\cite{kabbedijk2011variability} have determined some \acp{VRT}, but note that more \acp{VRT} could be identified and should be tested on effectiveness, maintainability, scalability and performance.
 
 \item \textbf{Maintaining Context in \ac{COP}}. 
-Truyen et al.~\cite{truyen2012context} found that \ac{COP} was useful as a \ac{VRT} but ContextJ lacked support for asynchronous request because context is not shared to new threads. Research could be done to see if it is possible to bridge this gap to make \ac{COP} more usable as more and more applications are using asynchronous functionality.
+Truyen et al.~\cite{truyen2012context} found that \ac{COP} was useful as a \ac{VRT} but ContextJ lacked support for asynchronous request because context is not shared to new threads. Research could be done to determine if it is possible to bridge this gap to make \ac{COP} more usable as more and more applications are using asynchronous functionality.
 
 \item \textbf{Maintaining State Consistency while doing Updates}.
 Another open issue is maintaining global state consistency when doing (partial) updates of components that potentially service a lot of tenants~\cite{truyen2012context,dumitracs2009upgrades}. The tenants that do not use any of the updated functionality should not experience any interruptions. This is especially difficult if multiple versions of components must coexist, since each component may depend on other components. When \acp{SLA} are sold this consistency and uninterrupted service should be provable.
