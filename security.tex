@@ -1,35 +1,37 @@
 As multi-tenancy is a relatively new concept, the security aspect of multi-tenancy has not received much attention. The importance of security is particularly apparent in the adoption process of the multi-tenant model. 
-Many potential businesses which would be interested in multi-tenancy are still reluctant to adopt it due to security and privacy concerns, according to Bernabe et al.~\cite{Bernabe2012Auth}. 
-Though multi-tenancy is targeted to provide better utilization of resources using virtualization techniques and to take up much of the work load from the client, it is fraught with security risks, following Seccombe et al.~\cite{Seccombe2009Security}. 
+According to Bernabe et al.~\cite{Bernabe2012Auth} many potential businesses which would be interested in multi-tenancy are still reluctant to adopt it due to security and privacy concerns.
+Though multi-tenancy is targeted to provide better utilization of resources using virtualization techniques and to take up much of the work load from the client, it is fraught with security risks, in accordance with Seccombe et al.~\cite{Seccombe2009Security}. 
 According to Takahashi~\cite{Takahashi2012Security} this implies the design of strong security boundaries in order to isolate tenants when using these shared resources. 
 Thus, to advance the development and deployment of multi-tenancy, security issues and approaches for the techniques range and cross various technical domains including cryptography, virtualization and programming, as noted by Takahashi~\cite{Takahashi2012Security}.
 
-As mentioned in the previous sections, a single definition for multi-tenancy has yet to be established. 
-These different definitions of the concept of multi-tenancy concern different systems and therefore different security concerns.
-For example, Bezemer~\cite{bezemer2010multi} indicates that a multi-tenant system could be defined as having a single database for all tenants, or as having separate databases for each of tenants. 
+As mentioned in the previous sections, a single definition for multi-tenancy has to be established yet. 
+The different definitions of the concept of multi-tenancy concern different systems and therefore different security issues.
+For example, Bezemer~\cite{bezemer2010multi} indicates that a multi-tenant system could be defined as having a single database for all tenants, or as having separate databases for each tenant. 
 Naturally, these systems will have a different number of security concerns to deal with. In this paper we mainly address issues related to true multi-tenancy as defined by Bezemer~\cite{bezemer2010multi}.
 
 In this paper we will discuss the issues caused by or enlarged specifically by the use of multi-tenancy. 
 Many other issues, such as platform security and virtualization, concern cloud computing in general, not specifically multi-tenancy. 
-We will briefly address these relevant issues in this paper. 
+We will briefly address these relevant issues. 
 
 \subsection{Security Issues with Multi-Tenancy}
 In this section we will elaborate on the security aspect of the multi-tenancy model. 
 We will discuss security issues inherently caused by the multi-tenancy model.
 The security issues covered in this section are localization, secure data storage and authentication and authorization.
-For each of these issues we will describe the security concern, followed by the current solutions for these issues. 
+For each of these issues we will describe the security concerns, followed by the current solutions for these issues. 
 Lastly, we will list the remaining challenges in the research agenda.
 
 \subsubsection{Localization}
 One of the data confidentiality issues with multi-tenancy systems is the issue regarding the physical location of the data. 
 Although it is easy to forget, all the data stored by the clients in a multi-tenant system still has to be stored somewhere on a physical location. 
 The choice of the physical company can cause a lot of privacy and legal issues. 
-According to Softlayer~\cite{Softlayer2009Security}, compliance and data privacy laws in various countries locality of data are of utmost importance in many enterprise architectures. 
+According to Softlayer~\cite{Softlayer2009Security}, compliance and data privacy laws in various countries locality of data is of utmost importance in many enterprise architectures. 
 For example, in many European and South American countries, certain types of data cannot leave the country because of potentially sensitive information, according to Subashini~\cite{Subashini2011Security}.
 Besides these restrictions, there is the issue of jurisdiction.
-The often difficult question is raised which locality has the jurisdiction over the data, when an investigation would occur.
-As stated in~\cite{Subashini2011Security}, a secure model must be capable of providing reliability to the customer regarding on the location of the data of the customer.
-However, the multi-tenancy concept makes control of the physical location of the data more difficult. The data of all tenants is mixed, due to the shared database of the multi-tenancy concept, and is therefore hard to adapt to comply with local law.\\
+Often this difficult question is raised which locality has the jurisdiction over the data, when an investigation would occur.
+As stated in Subashini et al.~\cite{Subashini2011Security}, a secure model must be capable of providing reliability to the customer regarding to the location of the data of the customer.
+However, the multi-tenancy concept makes control of the physical location of the data more difficult. 
+The data of all tenants is mixed, due to the shared database of the multi-tenancy concept. 
+It is therefore hard to adapt to comply with local law.\\
 
 Although localization is a huge security issue in multi-tenancy, by itself data localization is a field of research older than the concept of multi-tenancy, as illustrated by the paper of Johnson et al.~\cite{Johnson1996Law}. 
 The potential delivery and deployment models that attempt to make multi-tenant systems comply with the issue of localization are discussed by Mahmood~\cite{Mahmood2011Security}.
