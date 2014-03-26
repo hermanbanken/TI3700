@@ -113,13 +113,13 @@ Multi-tenancy can be divided in three levels: a shared application with a separa
 
 The relationship between multi-tenancy and the \ac{SaaS} domain is considered close~\cite{dillon2010cloud}, or even stronger: multi-tenancy is a characteristic of the \ac{SaaS} domain~\cite{tsai2010towards}. Additionally, the challenges of cloud services overlap with the challenges of multi-tenancy~\cite{dillon2010cloud,krebs2012architecture}.
 
-In security, an overview has been provided of the new security concerns and their solutions introduced in multi-tenancy, including data localization, data storage and authentication and authorization. We showed that there is a thin line between security issues caused by multi-tenancy and security issues caused by the general cloud technologies. Multi-tenancy is a high-level concept, relying on a multitude of other technologies, which thereby inherits traditional security issues.  
+In Section~\ref{sec:security} on security, an overview has been provided of the new security concerns and their solutions introduced in multi-tenancy, including data localization, data storage and authentication and authorization. We showed that there is a thin line between security issues caused by multi-tenancy and security issues caused by the general cloud technologies. Multi-tenancy is a high-level concept, relying on a multitude of other technologies, which thereby inherits traditional security issues.  
 
-In Scalability research on estimating resource consumption per tenant and using these estimations to place tenants within the existing infrastructure was discussed. In addition to that an overview of data layer specific scalability research was presented.
+In Section~\ref{sec:scalability} on scalability, research on estimating resource consumption per tenant and using these estimations to place tenants within the existing infrastructure was discussed. In addition to that an overview of data layer specific scalability research was presented.
 
-\ac{QoS} research was surveyed separately from scalability. Three techniques that use a form of per tenant request limiting for separating tenants where discussed.
+\ac{QoS} research was surveyed separately from scalability. Three techniques that use a form of per tenant request limiting for separating tenants were discussed.
 
-In Variability, most research is done on modeling variations and describing techniques to build variants. We provided an overview of the levels of variability (e.g. external variability, visible to the customer; and internal variability, invisible to the customer), three modeling techniques (Feature modeling, Decision modeling and Orthogonal Variability modeling) and the various variation techniques.
+On the subject of variability, most research is done on modeling variations and describing techniques to build variants. We provided an overview of the levels of variability (e.g. external variability, visible to the customer; and internal variability, invisible to the customer), three modeling techniques (Feature modeling, Decision modeling and Orthogonal Variability modeling) and the various variation techniques.
 
 \subsection{Research Agenda}
 \label{sec:ra}
@@ -128,25 +128,25 @@ Throughout the paper we identified several research opportunities. Below we list
 
 \item \textbf{Automation}. 
 To exploit economies of scale, providers of multi-tenant applications want to attract as many tenants and users as possible. 
-However managing all these tenants and their configuration, takes a lot of time without the proper tools. 
+However, managing all these tenants and their configurations takes a lot of time without the proper tools. 
 Research has been done on creating wizards for tenants~\cite{mietzner2008generation,mietzner2008defining}, but this field is not completely covered yet and additionally, automatic deployment of the outcome of these wizards can be investigated (Section~\ref{sec:var_agenda}).
 \item \textbf{Guarantees}. 
 In all aspects of multi-tenancy new problems arise. 
 The solutions proposed for these problems need to be provable, for multi-tenancy to be usable in high availability or business critical applications. 
 Open research opportunities lie in state consistency while updating the platform (Section~\ref{sec:var_agenda}), proving data isolation between tenants (Section~\ref{sec:security_agenda}), providing performance isolation and minimal performance (Section~\ref{sec:qos_agenda}).
 \item \textbf{Effective security}.
-Although security measures have been proposed to secure multi-tenant systems, research should dedicated to finding a effective balance between security and performance. Traditional and new Security mechanisms should be redesigned to increase their effectiveness in multi-tenancy environments (Section~\ref{sec:security_agenda}).
+Although security measures have been proposed to secure multi-tenant systems, research should be dedicated to finding a effective balance between security and performance. Traditional and new security mechanisms should be redesigned to increase their effectiveness in multi-tenancy environments (Section~\ref{sec:security_agenda}).
 \item \textbf{Tenant aware components}.
 In scalability and \ac{QoS} research, tools like tenant aware load balancers and tenant aware databases are used or proposed (Section~\ref{sec:scal_mta} and \ref{sec:tenant_aware}).
 The benefits of such tools in a multi-tenant environment have already been proven.
 The proposed multi-tenant aware database is still incomplete as it lacks tenant aware administration tooling and more work on the storage model is needed. 
-For the multi-tenant aware load balancers the approaches used need to be validated further.
+Also, the approaches used for making load balancers multi-tenant aware, need to be validated further.
 
 %\item \highlight{Voeg hier je belangrijkste punten toe}  en probeer te kijken of het niet overlapt met andere punten en zo ja: voeg samen.
 \end{itemize}
 
 \section{Acknowledgements}
-This literature survey was done in the context of the TI3700 course on the Delft University of Technology. We thank Cor-Paul Bezemer, as the first reviewer, for his helpful comments to improve this paper.
+This literature survey was done in the context of the TI3700 course on the Delft University of Technology. We thank Cor-Paul Bezemer, as our first reviewer, for his helpful comments to improve this paper.
 
 \bibliographystyle{plain}
 \bibliography{ref}
