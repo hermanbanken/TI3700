@@ -33,7 +33,7 @@ However, the multi-tenancy concept makes control of the physical location of the
 The data of all tenants is mixed, due to the shared database of the multi-tenancy concept. 
 It is therefore hard to adapt to comply with local law.\\
 
-Although localization is a huge security issue in multi-tenancy, by itself data localization is a field of research older than the concept of multi-tenancy, as illustrated by the paper of Johnson et al.~\cite{Johnson1996Law}. 
+Although localization is a huge security issue in multi-tenancy, data localization in itself is a field of research older than the concept of multi-tenancy, as illustrated by the paper of Johnson et al.~\cite{Johnson1996Law}. 
 The potential delivery and deployment models that attempt to make multi-tenant systems comply with the issue of localization are discussed by Mahmood~\cite{Mahmood2011Security}.
 Other suggestions for improvements to ensure the privacy of data in specifically multi-tenancy are made by Chen et al.~\cite{Chen2012Security}. These suggestions include a proposal for a Bayesian data distributing system, which distributes the data while attempting to uphold predefined constraints. For example, a tenant could specify that a specific set of data may only be kept in a few selected countries, to prevent breaking privacy laws in other countries. 
 
@@ -42,19 +42,17 @@ One of the characteristics of multi-tenancy is that tenants are only able to vie
 Data isolation is a difficult security issue for these systems, due to the fact that all tenants share the same application functionality and databases. 
 Malicious tenants could use potential loop holes to hack their way to access of the data of other tenants. 
 In contrast to regular cloud applications, multi-tenant systems are more at risk of data leakage, as tenants share a single database.
-Tenants are often allowed to add custom code to these services, which makes the risk of data intrusion even bigger when precautions are not properly taken. 
-A multi-tenant model should therefore ensure a clear ‘firewall’ for each tenant’s data.
+Tenants are often allowed to add custom code to these services, which makes the risk of data intrusion even bigger when precautions are not properly taken; 
+therefore, a multi-tenant model should ensure a clear ‘firewall’ for each tenant’s data.
 The boundary must be ensured not only at physical level but additionally at the application level, as stated in the paper by Subashini~\cite{Subashini2011Security}.\\
 %Kan nog wat over data redundancy cancellation
 
 To ensure the secure data storing, the paper of Takahashi et al.~\cite{Takahashi2012Security} suggests the use of encrypted data manipulation using cryptographical techniques. 
 One such technique is called \acf{PECE}, which allows a user to encrypt a file in multiple layers, while being able to decrypt with a single key.
-This technique would allow the tenant, the multi-tenant provider and any middleware providers to encrypt the data separately, while only allowing the tenant to hold the key for decryption.
+This technique would allow the tenant, the multi-tenant provider and any middleware provider to encrypt the data separately, while only allowing the tenant to hold the key for decryption.
 Next to that, the authors propose the use of homomorphic encryption. 
 This cryptographical technique enables the users to perform operations on encrypted files without the need to decrypt the files.
-In a multi-tenant environment, this technique would increase the security for the tenants, because encrypted data would be decrypted and prone to leakage.
-% Laatste zin lijkt niet lekker te lopen..
-% Challenge: improve homomorphic encryption
+In a multi-tenant environment, this technique would increase the security for the tenants, because the encrypted data would prevent confidential data leakage.
 
 \subsubsection{Authentication and Authorization}
 The matter of authentication and authorization, often referred to as access control systems by Bernabe~\cite{Bernabe2012Auth}, in multi-tenancy has been discussed extensively over the last years. 
@@ -66,12 +64,12 @@ However, this form of authentication lacks multi-tenancy-specific capabilities.
 The multi-user authorization concept provides no capabilities to grant users privileges over multiple tenants, as noted by Calero et al.~\cite{Calero2010Auth}
 This would not allow, for example, two companies or tenants to share certain data with each other, by granting each other specific privileges as a form of collaboration.
 These systems often lack the functionality and complexity to express more advanced forms of authorization, necessary for multi-tenant systems.
-Thus, the problem lies with designing more advanced schemes of authentication, where users can be granted more detailed custom privileges.\\
+Thus, the problem lies with designing more advanced schemes of authentication, in which users can be granted more detailed custom privileges.\\
 
 Noteworthy progress has been made by Bernabe~\cite{Bernabe2012Auth}, who proposes an access control model system suitable for multi-tenancy and grants high expressiveness in terms of permissions. 
 Additionally, this expressiveness is supported by the integration of semantic web technologies into the authorization model. 
-The system allows a fine-grained definition of what resources should available for each particular tenant. 
-Another influence in this area is the system proposed in Calero~\cite{Calero2010Auth}. 
+The system allows a fine-grained definition of which resources should be available for each particular tenant. 
+Another influence in this area is the system proposed in Calero et al.~\cite{Calero2010Auth}. 
 This authorization system is able to support collaboration agreements, often referred to as federations, between tenants or businesses.
 
 \subsection{Related Security Issues}
@@ -79,7 +77,7 @@ Taking a wider scope on the subject, the surveyed papers indicate a lot of secur
 These security issues should be taken into account due to the following two reasons.
 First off, as mentioned earlier, the definition of multi-tenancy is still quite ambiguous. 
 It is often used to indicate all sorts of cloud services, including \ac{IaaS} and \ac{PaaS} models, as seen by Jasti et al.~\cite{Jasti2010Security}. 
-The scope of multi-tenancy is sometimes larger than our definition of multi-tenancy. Due to the increased scope, more security issues can be considered to belong to multi-tenancy.
+The scope of multi-tenancy is sometimes larger than the definition of multi-tenancy by Bezemer et al.~\cite{bezemer2010multi}. Due to the increased scope, more security issues can be considered to belong to multi-tenancy.
 Another reason for taking into account related security issues, is the fact that multi-tenancy is a high-level model. 
 The model depends on a bundle of underlying technologies, such as the hardware infrastructure, operating systems and server software. 
 Each of these technologies has a particular share of security issues, impacting the level of security of the multi-tenancy system on top. \\
@@ -91,50 +89,54 @@ These systems implement the concept of a \acp{VMM}, which is tasked to manage an
 In these systems, a tenant generally has the ability to migrate his custom \acp{VM} to another \acp{VMM}. 
 However, when a \ac{VM} is placed in a server with an untrusted \ac{VMM} it would allow \ac{VMM} to track the data flows inside the guest VM, as noted by Takahashi~\cite{Takahashi2012Security}.
 
-Another current issue is the adaptation of VM-based Root-kits. 
+Another current issue is the adaptation of VM-based root-kits. 
 These root-kits, in contrast to traditional root-kits, do not stop at OS level, but continue to attempt to infect the supervising \ac{VMM}. 
-According to Takahashi~\cite{Takahashi2012Security}, several proof-of-concept VM-based root-kits, such as Blue Pill, were able to successfully identify and infect the VM, followed by the \ac{VMM}.
+According to Takahashi~\cite{Takahashi2012Security}, several proof-of-concept VM-based root-kits, such as Blue Pill, were able to identify and infect the VM successfully and after that the \ac{VMM}.
 
 \subsubsection{Virtual Machine Monitor Security}
 The \acl{VMM} has the essential role of isolating and controlling the virtual machines, which in multi-tenancy are managed by the tenants.
 However, an investigation was conducted by Ormandy et al.~\cite{Ormandy2007Security}of six major \acp{VMM} and emulators, using source code auditing techniques. All six systems had major flaws, leading to unexpected aborts and possible exploits.
 
-Additionally there is the problem of the detectability of the \ac{VMM}’s. Ideally, the \ac{VMM} is completely transparent; the tenant has no notion what kind of \ac{VMM} is running the virtual machines. 
+Additionally there is the problem of the detectability of the \ac{VMM}’s. 
+Ideally, the \ac{VMM} is completely transparent; the tenant has no notion what kind of \ac{VMM} is running the virtual machines. 
 However, as argued in the paper by Takahashi~\cite{Takahashi2012Security}, the idea of complete \ac{VMM} transparency is unrealistic. 
-Clues provided by the \ac{VMM}, such as time sources and overhead, which can be used to identify the type of \ac{VMM}
+Clues provided by the \ac{VMM}, such as time sources and overhead, can be used to identify the type of \ac{VMM}.
 The detectability of the \ac{VMM} creates the opportunity for malicious users to target specific \ac{VMM} systems and versions.
 
 \subsubsection{Web-dependent Application Security}
 Web-dependent Application Security ensures the accessibility of the data. 
-The importance of good security practices in the application-layer is be illustrated by Wade et al.~\cite{Wade2008Security}.
-The report about data breaches on the Verizon Business platform, reports that 39\% of the data breaches occur in the service/application layer, which comprises the multi-tenant section. The \ac{OWASP}\footnote{http://owasptop10.googlecode.com/files/OWASP\%20Top\%2010\%20-\%202013.pdf (march 2014)} has identified the 10 greatest security risks faced by network-dependent applications.\\
+The importance of good security practices in the application-layer is being illustrated by Wade et al.~\cite{Wade2008Security}.
+The report about data breaches on the Verizon Business platform states that 39\% of the data breaches occur in the service/application layer, which comprises the multi-tenant section. The \ac{OWASP}\footnote{http://owasptop10.googlecode.com/files/OWASP\%20Top\%2010\%20-\%202013.pdf (march 2014)} has identified the 10 greatest security risks faced by network-dependent applications.\\
 
 In Takahashi et al.~\cite{Takahashi2012Security} the authors describe a couple of ways to detect vulnerabilities in the server-side and client-side of the web application. 
 Endpoint risk detection techniques detect client-side vulnerabilities at the endpoint (the user). 
-There are a good number of implementations, such as FLAX~\cite{saxena10kudzu} and Zozzle~\cite{curtsinger2011zozzle} that target JavaScript issues. 
+There ia a good number of implementations, such as FLAX~\cite{saxena10kudzu} and Zozzle~\cite{curtsinger2011zozzle} that target JavaScript issues. 
 Another form of detection is called the middle-box risk detection. 
 This kind of detection requires no adjustments of the code, as the detection is performed in between the server and client-side, using custom HTTP requests. 
 Projects implementing this kind detection, such as SpyProxy\footnote{\url{http://homes.cs.washington.edu/~gribble/papers/spyproxy.pdf} (march 2014)}, BrowserShield\footnote{\url{http://research.microsoft.com/en-us/news/features/browsershield.aspx} (march 2014)} and WebShield\footnote{\url{http://www.isoc.org/isoc/conferences/ndss/11/pdf/6_2.pdf} (march 2014)}, are still in early development stages, but these projects already look very promising.
 
 \subsubsection{Data Integrity and Network Security}
-With the dependence on extensive usage of networks, the multi-tenancy model is highly dependent on good network security.  
+With the extensive usage of networks, the multi-tenancy model is highly dependent on good network security.  
 Multi-tenant systems have an extended emphasis on data integrity, because data transmissions of one tenant also need to be secure on the internal level of the multi-tenant system to prevent other tenants from accessing the potentially classified data.
 According to Subashini~\cite{Subashini2011Security}, one of the biggest challenges with multi-tenant services is transaction management. 
 At the protocol level, HTTP does not offer any support for transaction or guaranteed delivery of packets. 
-Thus, to ensure transactions are indeed delivered one needs to implement this functionality into the multi-tenancy system.\\
+Thus, to ensure transactions are being delivered correctly, one needs to implement this functionality into the multi-tenancy system.\\
 
 Currently there are some standards available trying to fix this security issue, namely WS-Transaction\footnote{http://msdn.microsoft.com/en-us/library/ms951262.aspx (march 2014)} and WS-Reliability.
-However, as noted by Subashini et al.~\cite{Subashini2011Security} and confirmed by our web-based survey based upon these techniques, these standards haven’t reached technical maturity yet and have therefore yet to experience full adoption by the majority of the multi-tenancy providers.
-Since the publishing of the paper by Subashini.~\cite{Subashini2011Security}, WS-reliability has since been superseded by ReliableMessaging\footnote{http://docs.oasis-open.org/ws-rx/wsrm/200702/wsrm-1.1-spec-os-01.pdf (march 2014)}.
+However, as noted by Subashini et al.~\cite{Subashini2011Security} and confirmed by our web-based survey based upon these techniques, these standards have not reached technical maturity yet and therefore lack full adoption by the majority of the multi-tenancy providers.
+Since the publishing of the paper by Subashini et al.~\cite{Subashini2011Security}, WS-reliability has since been superseded by ReliableMessaging\footnote{http://docs.oasis-open.org/ws-rx/wsrm/200702/wsrm-1.1-spec-os-01.pdf (march 2014)}.
 
 \subsection{Research Agenda for Security}\label{sec:security_agenda}
 The survey of the literature regarding security revealed the following recommendations for researchers to look in to. 
 \begin{itemize}
     \item \textbf{Analysis of proposed authentication models}.
-        The papers of Bernabe~\cite{Bernabe2012Auth} and Calero~\cite{Calero2010Auth} proposes an intensive analysis of the proposed authentication models. Furthermore, there needs to be more research on more advanced authorization models, next to having more experimentation with different database-systems for the proposed authorization system.
+        The papers of Bernabe~\cite{Bernabe2012Auth} and Calero~\cite{Calero2010Auth} propose an intensive analysis of the proposed authentication models. 
+        Furthermore, there needs to be more research on more advanced authorization models, next to having more experimentation with different database-systems for the proposed authorization system.
     \item \textbf{Tradeoff between security and performance}.
-        Although a lot of security measures are proposed to secure multi-tenant systems, more research should dedicated to finding a balance between security and performance, according to Guo~\cite{guo2007framework} and Hashizume~\cite{Hashizume2013Security}. Traditional and new Security mechanisms should be redesigned to increase the effectiveness of the mechanisms in multi-tenancy environments.
+        Although a lot of security measures are proposed to secure multi-tenant systems, more research should dedicated to finding the optimal balance between security and performance, according to Guo~\cite{guo2007framework} and Hashizume~\cite{Hashizume2013Security}. 
+        Traditional and new security mechanisms should be redesigned to increase the effectiveness of the mechanisms in multi-tenancy environments.
     \item \textbf{Improve data security}.
-        More research needs to be conducted on techniques to ensure that data of tenants is completely isolated. Currently, many papers, such as Jasti~\cite{Jasti2010Security}, Merino~\cite{Merino2011Security} and Takahashi~\cite{Takahashi2012Security}, have pointed out that there are many methods on different levels, ranging from VM security to data localization, to comprise confidential data. 
+        More research needs to be conducted on techniques to ensure that data of tenants is completely isolated. 
+        Currently, many papers, such as Jasti~\cite{Jasti2010Security}, Merino~\cite{Merino2011Security} and Takahashi~\cite{Takahashi2012Security}, have pointed out that there are many methods on different levels, ranging from VM security to data localization, to comprise confidential data. 
 \end{itemize}
 
